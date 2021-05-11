@@ -1,0 +1,266 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: Rakkas, Verdana, Geneva, Tahoma, sans-serif;  
+}
+
+@media screen and (max-width:420px){
+    
+.header{
+    width: 100%;
+    height: 100vh;
+}    
+
+
+.header .cabezera__header{
+    background: rgba(2, 2, 41, 0.800);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgba(0, 255, 234, 0.918);
+    z-index: 20;
+}
+
+    .header .slider__header{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        overflow: hidden;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+    }
+    .header .slider__header::after{
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 1; 
+        background:-webkit-linear-gradient(top, #fff2, #1162fff0);  
+    }
+    .header .contenedor__header{
+        position: relative;
+        top: 7rem;
+        left: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        z-index: 10;
+    }
+    .header .contenedor__header h1{
+        margin-bottom: 20rem;
+        color: black;
+        text-shadow: 0 0 10px #0F0;
+        font-size: 2.8rem;
+    }
+
+        /* Iconos del Header */
+        .menu__header ul{
+            list-style: none;
+            margin: auto;
+        }
+    .header .cabezera__header .izquierda ul{
+        display: flex;  
+    }
+    .header .cabezera__header .izquierda .carro{
+        opacity: .4;
+    }
+    .header .cabezera__header .izquierda ul a{
+        list-style-type: none;
+        margin: 15px;
+    }
+    .header .cabezera__header .derecha{  
+        padding: 0 10px;
+    }
+    .header .cabezera__header i{
+        margin: 15px 10px;
+        font-size: 2rem;
+        color: rgba(0, 255, 234, 0.918);
+    }
+
+
+
+    /* Menu del Header */
+.menu__header {
+    width: 12rem;
+    height: auto;
+    padding: 2rem;
+    font-size: 2rem;    
+    position: absolute;
+    top: 6rem;
+    left: 13.5rem;
+    color: #f50;
+    background: #fff8;
+    border-radius: 20px;
+}    
+    .header .fondo__header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background: #000A;
+        z-index: -10;   
+    }
+    .rotar{
+        transform: rotate(90deg);
+        transition: 1s ease-in-out;
+    }
+       
+
+    /* Titulo y Saludo del Header */
+.contenedor__header{
+    position: absolute;
+    top: 300px;
+    padding: 0 50px;
+    font-size: 20px;
+    text-align: center;
+}
+    .contenedor__header .saludo{
+        text-shadow: 0 0 10px #FC0;
+    }
+
+.main{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 20px 0;
+    background:-webkit-linear-gradient(top, #fff2, #1162fff0);
+    background: #000a;
+    
+}
+
+    /* Imagenes del Grid */
+.main .img__main {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    grid-gap: 30px 15px;
+    
+}
+        .padreGrid{
+            border: 5px solid rebeccapurple;
+            display: flex;
+        }
+
+        .main .img__main .grid {
+            width: 100%;
+            height: 300px;
+            margin: auto;
+            border-radius: 20px;
+            background-size: cover;
+            box-shadow: 0 0 10px #fff;
+            border: 2px solid green;
+        }   
+          
+        
+    .coral{
+        position: absolute;
+        margin: 235px 105px;
+        font-size: 50px;
+        color: #FC0;
+        opacity: .7; 
+    }   
+        .corazon__pulsado{
+            transition: 1s;
+            font-size: 60px;
+            color: #F00;
+            opacity: 3;
+            
+        }
+
+        
+/* Imagenes De Muestra */
+.mostrador__activo{
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-55%);
+    background-size: cover;
+    border-radius: 30px;
+    box-shadow: 0 0 10px #0F0;        
+    transition: 1s ease-in-out;
+    z-index: 50;
+}
+
+
+      /* Clase para Ocultar Elementos */
+      .ocultar{
+        visibility: hidden;
+        transition: .5s;
+     }
+
+
+    /* Controles y Detalles */
+.controles{
+    position: fixed;
+    top: 65%;
+    left: 0;
+    width: 80%;
+    height: 20%;
+    margin: 10%;
+    display: block;
+    z-index: 100;
+}
+    .controles .marcos{
+            font-size: 50px;
+            padding:6%;
+            color: #fCfB;
+            margin-top: -17%;
+            margin-left: -10%;
+            width: 25%;
+            height: 55%;
+            display: block;
+            background: #0008;
+            opacity: 1;
+            border-radius: 15px;
+        }
+
+    .controles .marco__derecha{
+       margin-left: 85%;
+       margin-top: -27%;
+    }
+    
+  
+        /* Cuadro Informacion Producto */
+    .controles .info{
+        margin-top: -20px;
+        width: 100%;
+        height: 120%;      
+        background: #FFF7;
+        color: #000;
+        border-radius: 30px;
+        font-size: 25px;
+        padding: 0 15px;
+        text-align: center;
+        
+    }
+    .controles .info span{
+        color: #f50;
+    }
+
+.fondo__activo{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: #000C;
+   z-index: 10;
+}
+
+
+}
