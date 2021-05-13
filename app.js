@@ -1,8 +1,4 @@
 import { imgsHeader,all,womans,mens,kids} from "./imgs.js";
-//import { all } from "./imgs.js";
-//import { womans } from "./imgs.js";
-//import { mens } from "./imgs.js";
-//import { kids } from "./imgs.js";
 
 const mostrador = document.querySelector(".marco");
 const fondo = document.querySelector(".fondo");
@@ -23,15 +19,13 @@ const menuShow = document.querySelector(".menu__header");
 const menuFondo = document.querySelector('.fondo__header');
 
 let foto = "";
-
-//const favoritos2 = document.querySelectorAll('.coral');
+let array = [];
 
 document.addEventListener("DOMContentLoaded", function () {
   
-    
+  //console.log(all.length)
   secciones();
   mostrarControles();
-  cambioImagen();
   headerImagenes();
   botones();
 
@@ -54,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         menuFondo.classList.toggle('ocultar');
     });
 
-    /*  Mostrar Corazon  */
+    /*  Mostrar Favoritos - Corazon Principal */
     favoritos.addEventListener('click', ()=>{
         favoritos.classList.toggle('fas');
         if(menu.className!='ocultar'){
@@ -65,6 +59,18 @@ document.addEventListener("DOMContentLoaded", function () {
           menuFondo.classList.add('ocultar')
           menuShow.classList.add('ocultar');
         }
+        const clase = favoritos.className;
+        if(clase.slice(-3)=='fas'){
+          console.log('Entro',array);
+          if(!array.isEmpty){
+            bucleBorrar();
+            bucleMostrar(array);
+          }
+        }else{
+          bucleBorrar();
+          bucleMostrar(all);
+          console.log('Fuera');
+        }
     });  
     
     
@@ -73,37 +79,80 @@ document.addEventListener("DOMContentLoaded", function () {
 };
 
 
+
+    
+
       /* Favoritos -- En Construccion  */
 function meGusta(){
-     const favoritos2 = document.querySelectorAll('.coral');
-      let contador = 0;
-      let data = [];
-
-    favoritos2.forEach(e=>{             
-
-            e.addEventListener('click', ()=>{
-              
+    const favoritos2 = document.querySelectorAll('.coral');
+         
+    favoritos2.forEach(e=>{
+      
+             e.addEventListener('click', ()=>{
              e.classList.toggle('fas');
              e.classList.toggle('corazon__pulsado');
-             
+            /* ------------------------------- */
+            
+            let img = e.previousSibling.getAttribute('src')
+            let clase = e.className;
+     
+            mostrarFavoritos(img,clase);
+            // console.log("Clase ",clase,"Img ",img);
+
+
+
         });  
     });      
   };
 
 
+
         /* Mostrar Favoritos */
-function mostrarFavoritos(foto){
-  //  if (foto.length!=0)
+function mostrarFavoritos(foto,clase){
+  array.push(foto);
+  let posicion = array.indexOf(foto);
+  let local = localStorage;  
+  
 
-
+  local.setItem(`${foto}`,Math.floor(Math.random()*1000));
+  
+  
+  console.log(local);
+  if (!array.isEmpty&&clase.slice(-5)=='heart'){
+    console.log("Borrando");
+    array.splice(posicion);
+    local.removeItem(`${foto}`);
+    console.log("Nuevo Storage ",local);
+  }
 };
+
+
 
 
         /* Crea y Muestra Las Imagenes */
 function bucleMostrar(mostrar){
-    for (let i = 0; i < mostrar.length; i++) {
-      let miimg = mostrar[i];
+let num1 = Math.ceil(Math.random()*(mostrar.length/3));
+let num2 = Math.ceil(Math.random()*(mostrar.length/6));
+let num3 = Math.ceil(Math.random()*(mostrar.length));
+let array1 = [];
+let array2 = [];
+let array3 = [];  
+let array4 = [];  
+array1 = mostrar.slice(0,num1);
+array2 = mostrar.slice(num1,num2);
+array3 = mostrar.slice(num2,num3);
+array4 = mostrar.slice(num3,-1);
+let arrayTotal = [];
+arrayTotal = array4.concat(array1).concat(array3).concat(array2)
+/* console.log("num1",num1);
+console.log("num2",num2);
+console.log("num3",num3);
 
+console.log("arrayTotal",arrayTotal.length);
+
+ */
+    for (let i = 0; i < arrayTotal.length; i++) {
+      let miimg = arrayTotal[i];
       const nodoDiv = document.createElement("div");
       const nodoImg = document.createElement("img");
       const nodoIco = document.createElement("i");
@@ -119,6 +168,7 @@ function bucleMostrar(mostrar){
       
       eventoImagenes();
       meGusta();
+      cambioImagen(arrayTotal);
     //console.log("Mostrando Imagenes dentro");
 };
 
@@ -147,7 +197,7 @@ function bucleBorrar(){
     kid.addEventListener('click',e => {
         bucleBorrar(); 
         bucleMostrar(kids);
-        contador++
+        contador++;
      });
      home.addEventListener('click',e => {
       console.log(menu.className)
@@ -226,8 +276,9 @@ function eventoImagenes(){
   };
 
         /* Cambio por los controles */
-  function cambioImagen() {
-    let cuenta = 0;
+  function cambioImagen(all) {
+   // console.log(all)
+    let cuenta = all.length;
     control1.addEventListener("click", function () {
       if (cuenta == 0) cuenta = all.length;
       mostrador.style.backgroundImage = `url(${all[cuenta]})`;
