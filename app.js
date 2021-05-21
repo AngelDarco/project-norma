@@ -13,17 +13,14 @@ const man = document.querySelector(".caballeros");
 const kid = document.querySelector(".ninos");
 const home = document.querySelector('.home');
 const favoritos = document.querySelector('.corazon');
-//const car = document.querySelector(".carro");
 const menu = document.querySelector(".menu");
 const menuShow = document.querySelector(".menu__header");
 const menuFondo = document.querySelector('.fondo__header');
 
 let foto = "";
-let array = [];
 
 document.addEventListener("DOMContentLoaded", function () {
   
-  //console.log(all.length)
   secciones();
   mostrarControles();
   headerImagenes();
@@ -72,8 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log('Fuera');
         }
     });  
-    
-    
+
 
 
 };
@@ -93,13 +89,13 @@ function meGusta(){
              e.classList.toggle('corazon__pulsado');
             /* ------------------------------- */
             
-            let img = e.previousSibling.getAttribute('src')
+           /*  let img = e.previousSibling.getAttribute('src')
             let clase = e.className;
      
             mostrarFavoritos(img,clase);
             // console.log("Clase ",clase,"Img ",img);
 
-
+ */
 
         });  
     });      
@@ -130,29 +126,27 @@ function mostrarFavoritos(foto,clase){
 
 
         /* Crea y Muestra Las Imagenes */
-function bucleMostrar(mostrar){
-let num1 = Math.ceil(Math.random()*(mostrar.length/3));
-let num2 = Math.ceil(Math.random()*(mostrar.length/6));
-let num3 = Math.ceil(Math.random()*(mostrar.length));
-let array1 = [];
-let array2 = [];
-let array3 = [];  
-let array4 = [];  
-array1 = mostrar.slice(0,num1);
-array2 = mostrar.slice(num1,num2);
-array3 = mostrar.slice(num2,num3);
-array4 = mostrar.slice(num3,-1);
-let arrayTotal = [];
-arrayTotal = array4.concat(array1).concat(array3).concat(array2)
-/* console.log("num1",num1);
-console.log("num2",num2);
-console.log("num3",num3);
+function bucleMostrar(array){
+  let mostrar=[];
+  let llenarItems;
 
-console.log("arrayTotal",arrayTotal.length);
+  let random;
+  let borrar;
+  while(array.length!=0){
+      for(let item in array){
+      random = Math.ceil(Math.random()*(array.length));
+       while(array[random]==undefined) {
+        random = Math.ceil(Math.random()*array.length-1);  
+        random = 0;
+      }
+      llenarItems = array[random]
+      mostrar.push(llenarItems);
+      borrar = array.splice(random,1);  
+      }
+  };
 
- */
-    for (let i = 0; i < arrayTotal.length; i++) {
-      let miimg = arrayTotal[i];
+    for (let i = 0; i < mostrar.length; i++) {
+      let miimg = mostrar[i];
       const nodoDiv = document.createElement("div");
       const nodoImg = document.createElement("img");
       const nodoIco = document.createElement("i");
@@ -165,10 +159,10 @@ console.log("arrayTotal",arrayTotal.length);
       nodoDiv.appendChild(nodoIco);
       gridImgs.appendChild(nodoDiv);
        };
-      
+
       eventoImagenes();
       meGusta();
-      cambioImagen(arrayTotal);
+      cambioImagen(array);
     //console.log("Mostrando Imagenes dentro");
 };
 
