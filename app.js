@@ -18,12 +18,30 @@ const menuShow = document.querySelector(".menu__header");
 const menuFondo = document.querySelector('.fondo__header');
 
 let foto = "";
+let a;
+let b;
+let c;
+let d;
+
 
 document.addEventListener("DOMContentLoaded", function () {
-  
+     a = localStorage.getItem('id2');
+     b = parseInt(a)
+     c = localStorage.getItem('id');
+     d = parseInt(c);
+
+     if(!isNaN(b)){
+       localStorage.setItem('id2',d);
+       localStorage.setItem('id',d);
+     }
+    else localStorage.setItem('id2',0);
+    
+    
+
+    
   secciones();
   mostrarControles();
-  headerImagenes();
+  //headerImagenes();
   botones();
 
 }); // Llave final del Main
@@ -56,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
           menuFondo.classList.add('ocultar')
           menuShow.classList.add('ocultar');
         }
-        const clase = favoritos.className;
+         const clase = favoritos.className;
         if(clase.slice(-3)=='fas'){
           console.log('Entro',array);
           if(!array.isEmpty){
@@ -67,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
           bucleBorrar();
           bucleMostrar(all);
           console.log('Fuera');
-        }
+        } 
     });  
 
 
@@ -76,74 +94,90 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    
 
       /* Favoritos -- En Construccion  */
 function meGusta(){
     const favoritos2 = document.querySelectorAll('.coral');
-         
     favoritos2.forEach(e=>{
-      
              e.addEventListener('click', ()=>{
              e.classList.toggle('fas');
              e.classList.toggle('corazon__pulsado');
             /* ------------------------------- */
-            
-           /*  let img = e.previousSibling.getAttribute('src')
-            let clase = e.className;
-     
-            mostrarFavoritos(img,clase);
-            // console.log("Clase ",clase,"Img ",img);
+            let img = e.previousSibling.getAttribute('src');
+            let clase = e.classList[3];
 
- */
-
+            if(clase!=undefined){              
+              agregarFavoritos(img);
+              console.log('like');
+            }else{
+              eliminarFavoritos(img);
+              console.log('dislike');            
+            }
         });  
     });      
   };
 
-
+  
 
         /* Mostrar Favoritos */
-function mostrarFavoritos(foto,clase){
-  array.push(foto);
-  let posicion = array.indexOf(foto);
-  let local = localStorage;  
-  
+function agregarFavoritos(img){  
+  //let posicion = array.indexOf(img);
 
-  local.setItem(`${foto}`,Math.floor(Math.random()*1000));
-  
-  
-  console.log(local);
-  if (!array.isEmpty&&clase.slice(-5)=='heart'){
-    console.log("Borrando");
-    array.splice(posicion);
-    local.removeItem(`${foto}`);
-    console.log("Nuevo Storage ",local);
-  }
+    let id = localStorage.getItem('id');
+    let data = parseInt(id);
+    if(isNaN(data)){
+    data = 0;    
+    localStorage.setItem('id',data);
+    }
+    data++;
+    localStorage.setItem(data,img);
+    localStorage.setItem('id',data);
 };
+
+function eliminarFavoritos(img){
+     
+    for(let i=100; i >= 1; i--){
+     if(localStorage.getItem(i)==img){
+       localStorage.removeItem(i);
+     } 
+ }
+        let data = localStorage.getItem('id');
+        let id = parseInt(data);
+        id--;
+       localStorage.setItem('id',id);
+       console.log("FueraBorrar: ",id);
+}
+
+
+
+
+
+
+
 
 
 
 
         /* Crea y Muestra Las Imagenes */
-function bucleMostrar(array){
+function bucleMostrar(arrayRandom){
   let mostrar=[];
   let llenarItems;
-
   let random;
-  let borrar;
-  while(array.length!=0){
-      for(let item in array){
-      random = Math.ceil(Math.random()*(array.length));
-       while(array[random]==undefined) {
-        random = Math.ceil(Math.random()*array.length-1);  
+  while(arrayRandom.length!=0){
+      for(let item in arrayRandom){
+      random = Math.ceil(Math.random()*(arrayRandom.length));
+       while(arrayRandom[random]==undefined) {
+        random = Math.ceil(Math.random()*arrayRandom.length-1);  
         random = 0;
       }
-      llenarItems = array[random]
+      llenarItems = arrayRandom[random]
       mostrar.push(llenarItems);
-      borrar = array.splice(random,1);  
+      arrayRandom.splice(random,1);  
       }
   };
+
+    
+   
 
     for (let i = 0; i < mostrar.length; i++) {
       let miimg = mostrar[i];
@@ -162,7 +196,7 @@ function bucleMostrar(array){
 
       eventoImagenes();
       meGusta();
-      cambioImagen(array);
+      cambioImagen(mostrar);
     //console.log("Mostrando Imagenes dentro");
 };
 
@@ -206,6 +240,7 @@ function bucleBorrar(){
         bucleBorrar(); 
         bucleMostrar(all);
         contador++
+        console.log("El Home")
      });  
 
               //En Construcción

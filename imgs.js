@@ -1,24 +1,15 @@
 export const imgsHeader = [
 
-  ' https://images.unsplash.com/photo-1612811604179-a0f381ba7841?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
-
-    'https://images.unsplash.com/photo-1615240945501-58d2563db9e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-
-   ' https://images.unsplash.com/photo-1527189919029-aeb3d997547d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
-
+   'https://images.unsplash.com/photo-1612811604179-a0f381ba7841?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
+   'https://images.unsplash.com/photo-1615240945501-58d2563db9e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+   'https://images.unsplash.com/photo-1527189919029-aeb3d997547d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
    'https://images.unsplash.com/photo-1503342394128-c104d54dba01?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-
    'https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-
    'https://images.unsplash.com/photo-1551113006-731674fbb3ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-
    'https://images.unsplash.com/photo-1485230977869-27a4eaf8c0e2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-
-    'https://images.unsplash.com/photo-1616874535244-73aea5daadb9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-   
-    'https://images.unsplash.com/photo-1615898290837-e9e8cdc3a7fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d29tYW4lMjBmYXNoaW9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-
-    'https://images.unsplash.com/photo-1618214802314-7dff34596edb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
+   'https://images.unsplash.com/photo-1616874535244-73aea5daadb9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+   'https://images.unsplash.com/photo-1615898290837-e9e8cdc3a7fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d29tYW4lMjBmYXNoaW9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+   'https://images.unsplash.com/photo-1618214802314-7dff34596edb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
 
 ];
 export let all = [];
@@ -28,13 +19,13 @@ export let all = [];
 export const womans = [
     
     
-  ' https://images.unsplash.com/photo-1612811604179-a0f381ba7841?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
+  'https://images.unsplash.com/photo-1612811604179-a0f381ba7841?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
   'https://images.unsplash.com/photo-1615240945501-58d2563db9e1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
- ' https://images.unsplash.com/photo-1527189919029-aeb3d997547d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
- 'https://images.unsplash.com/photo-1503342394128-c104d54dba01?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
- 'https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
- 'https://images.unsplash.com/photo-1551113006-731674fbb3ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
- 'https://images.unsplash.com/photo-1485230977869-27a4eaf8c0e2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1527189919029-aeb3d997547d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
+  'https://images.unsplash.com/photo-1503342394128-c104d54dba01?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1551113006-731674fbb3ff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1485230977869-27a4eaf8c0e2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1616874535244-73aea5daadb9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1615898290837-e9e8cdc3a7fc?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8d29tYW4lMjBmYXNoaW9ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1618214802314-7dff34596edb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
@@ -69,37 +60,4 @@ export const kids = [
 
 
 all = womans.concat(mens).concat(kids);
-
-
-
-
-
-
-
-
-
-
-
-
-
- const id = "Mujer";
- const nombre = "Polo Dama";
- const  talla = "M";
- const  estado = "Agotado";
- const  color = "Negro";
- const  cantidad = "10/U";
- const  precio = "$/50.0";
-
-
-export  const codigos = {
-    "id"      : `${id}`  ,
-    "nombre"  : `${nombre}`,
-    "talla"   : `${talla}` ,
-    "estado"  : `${estado}`,
-    "color"   : `${color}` ,
-    "cantidad": `${cantidad}`,
-    "precio"  : `${precio}`,
-  //  "img"    :  `${damas}`
-  };
-
 
