@@ -1,87 +1,78 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Boutique Joselyn</title>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
-       <link rel="shortcut icon" href="/img/icono.svg" type="image/x-icon">
-        <script src="https://kit.fontawesome.com/1239704031.js" crossorigin="anonymous"></script>        <link rel="stylesheet" href="style.css">
-        <script src="app.js" type='module'></script>
-        
-    </head>
-    <body>
-        <div class="header">
-            <!-- Iconos Del Header -->
-            <div class="cabezera__header">
-                <div class="izquierda">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Joselyn</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/icono.svg" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/1239704031.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" type='module'></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <!-- Iconos Del Header -->
+        <div class="cabezera__header">
+            <div class="izquierda">
                 <ul>
                     <a href="#redireccion" class="home"><i class="fas fa-home"></i></a>
                     <a href="#redireccion" class="cvacio"><i class="far fa-heart corazon"></i></a>
                     <a class="carro"><i class="fas fa-shopping-cart"></i></a>
-                    
-                </ul> 
-            </div>
- 
-            <!-- Menu Oculto del Header -->
-                <div class="fondo__header ocultar"></div>
-            <div class="menu__header ocultar">
-                <ul>
-                    <a href="#redireccion" class="damas">Damas</a>
-                    <a href="#redireccion" class="caballeros">Caballeros</a>
-                    <a href="#redireccion" class="ninos">Niños</a>
-                    <a href="#redireccion" class="home">Todo</a>
                 </ul>
             </div>
 
-                <div class="derecha">
-                    <i class="menu fa fa-bars" aria-hidden="true"></i>
-                </div>
+            <!-- Menu Oculto del Header -->
+            <div class="fondo__header ocultar"></div>
+            
+            <div class="menu__header ocultar">
+                <ul>
+                    <a href="#redireccion" class="filtro damas">Damas</a>
+                    <a href="#redireccion" class="filtro caballeros">Caballeros</a>
+                    <a href="#redireccion" class="filtro ninos">Niños</a>
+                    <a href="#redireccion" class="filtro casa">Todo</a>
+                </ul>
             </div>
 
-            <!-- Contenido del Header -->
-            <div class="contenedor__header">
-                <h1 class="titulo">Boutique Norma</h1>
-                <p class="saludo">
-                    La Señora Norma saluda y da la bienvenida a todas y a todos los visitantes de nuestra Boutique.
-                    Esperamos que su consulta o visita le ofrezca la información que precise de forma ágil y dinámica.
-                </p>
-              </div>
-
-              <!-- Imagenes del Header -->
-            <div class="slider__header">
-                <img src="/img/header.jpeg">
+            <div class="derecha">
+                <i class="menu fa fa-bars" aria-hidden="true"></i>
             </div>
         </div>
- 
- 
-        <main>
 
-            <div class="main">
-                    <div class="fondo"></div>
-                    <div class="marco"></div>
-                        <div class="controles ocultar">
-                            <div class="marcos marco__izquierda"><i class="fas fa-backward"></i></div>
-                            <div class="marcos marco__derecha"><i class="fas fa-forward"></i></div>
-                            
-                                    <!-- Marco de Informacion -->
-                            <div class="info ocultar">
-                                <p class="texto">Nombre : <span class="nombre">Polo Dama</span> </p>
-                                <p class="texto">Tallas : <span class="talla">S, M, L </span></p>
-                                <p class="texto">Precio : <span class="precio">$/25.00</span></p>
-                                <p class="texto">Colores : <span class="color">Roj, Verd, Azul</span></p>
-                                <p class="texto">Cantidades : <span class="cantidad">10 unidades</span></p>
-                            </div>
-                        </div>
+        <!-- Contenido del Header -->
+        <div class="contenedor__header">
+            <h1 class="titulo">Boutique Norma</h1>
+            <p class="saludo">
+                La Señora Norma saluda y da la bienvenida a todas y a todos los visitantes de nuestra Boutique.
+                Esperamos que su consulta o visita le ofrezca la información que precise de forma ágil y dinámica.
+            </p>
+        </div>
 
-                    <!-- Imagenes de Muestra -->
+        <!-- Imagenes del Header -->
+        <div class="slider__header">
+            <img src="/img/header.jpeg">
+        </div>
+    </div>
 
-                <div class="img__main" id="redireccion"> 
-                </div>
-                
+    <main>
+        <div class="main">
+            <div class="fondo ocultar"></div>
+            <div class="marco ocultar">
+            <i class="fas fa-backward"></i>
+            <i class="fas fa-forward"></i>
+        </div>
+
+            <!-- Imagenes de Muestra -->
+            <div class="img__main" id="redireccion">
             </div>
-        </main>
-    </body>
+        </div>
+    </main>
+
+</body>
+
 </html>

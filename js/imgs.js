@@ -1,3 +1,5 @@
+export let all = [];
+
 export const imgsHeader = [
 
    'https://images.unsplash.com/photo-1612811604179-a0f381ba7841?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHdvbWFuJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60 ',
@@ -12,9 +14,6 @@ export const imgsHeader = [
    'https://images.unsplash.com/photo-1618214802314-7dff34596edb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80'
 
 ];
-export let all = [];
-
-
 
 export const womans = [
     
@@ -57,7 +56,6 @@ export const kids = [
   'https://images.unsplash.com/photo-1612196616593-80991db7df1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8a2lkcyUyMGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
   'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8a2lkcyUyMGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
 ];
-
 
 all = womans.concat(mens).concat(kids);
 

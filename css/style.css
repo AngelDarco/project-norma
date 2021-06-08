@@ -12,7 +12,6 @@
     height: 100vh;
 }    
 
-
 .header .cabezera__header{
     background: rgba(2, 2, 41, 0.800);
     position: fixed;
@@ -177,10 +176,8 @@
             font-size: 60px;
             color: #F00;
             opacity: 3;
-            
         }
-
-        
+  
 /* Imagenes De Muestra */
 .mostrador__activo{
     width: 80%;
@@ -199,59 +196,13 @@
 
       /* Clase para Ocultar Elementos */
       .ocultar{
+        display: none;
         visibility: hidden;
-        transition: .5s;
+        transition: .2s;
      }
 
 
     /* Controles y Detalles */
-.controles{
-    position: fixed;
-    top: 65%;
-    left: 0;
-    width: 80%;
-    height: 20%;
-    margin: 10%;
-    display: block;
-    z-index: 100;
-}
-    .controles .marcos{
-            font-size: 50px;
-            padding:6%;
-            color: #fCfB;
-            margin-top: -17%;
-            margin-left: -10%;
-            width: 25%;
-            height: 55%;
-            display: block;
-            background: #0008;
-            opacity: 1;
-            border-radius: 15px;
-        }
-
-    .controles .marco__derecha{
-       margin-left: 85%;
-       margin-top: -27%;
-    }
-    
-  
-        /* Cuadro Informacion Producto */
-    .controles .info{
-        margin-top: -20px;
-        width: 100%;
-        height: 120%;      
-        background: #FFF7;
-        color: #000;
-        border-radius: 30px;
-        font-size: 25px;
-        padding: 0 15px;
-        text-align: center;
-        
-    }
-    .controles .info span{
-        color: #f50;
-    }
-
 .fondo__activo{
    position: fixed;
    top: 0;
@@ -262,5 +213,32 @@
    z-index: 10;
 }
 
+
+.marco i{
+    font-size: 50px;
+    padding:6%;
+    color: #fCfB;
+    margin-top: 130%;
+    width: 25%;
+    display: block;
+    background: #0008;
+    opacity: 1;
+    border-radius: 15px;
+}
+
+.marco .fa-forward{
+    margin-left: 75%;
+    margin-top: -25%;
+}
+
+
+.vistaPrevia{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    top: 0;
+    z-index: -10;
+}
 
 }
