@@ -1,0 +1,182 @@
+
+ @media screen and (min-width: 600px) {
+    :root{
+        /* Imagenes Grid */
+    --grid_columnas: repeat(3, 1fr);
+    --row-gap: 3rem;  
+    --column-gap: 2rem;
+            /* Iconos Header Derecha*/
+    --header_iconos_margin: 20px;
+    --header_iconos_size: 2.2rem;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    :root{
+        /* Contenido Header */
+    --header_height: 100px;
+        /* Iconos Header */
+    --header_iconos_margin: 15px;
+    --header_iconos_size: 2.2rem;
+    /* Iconos Header izquierda*/
+    --pocicion-iconosIz: flex-start;
+    --margin-iconoHome: 4rem;
+        /* Vista Previa */
+    --width_vistaP: 80%;
+    --height_vistaP: 90%;
+        /* Imagenes Grid */
+    --grid_columnas: repeat(4, 1fr);
+    --row-gap: 4rem;  
+    --column-gap: 2rem;
+    /* Menu del Header */    
+    --width_menuH: 30rem;
+    --heigth_menuH: 100px;
+    --background_menu: inherit;
+    --padding-menu: 0;
+ }
+    .menu__header ul {
+    width: 100%;
+    height: var(--header_height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+    text-shadow: 0 0 5px #FFF;
+    font-size: 1.9rem;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    :root{
+        /* Iconos Header */
+        --header_iconos_margin: 23px;
+        --header_iconos_size: 2.3rem;
+            /* Menu del Header */    
+    --width_menuH: 35rem;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    :root{
+        /* Contenido Header */
+    --header_content_top: 13rem;
+    --header_texto_size: 2rem;
+    --header_h1_margbotton: 8rem;
+    --header_h1_fontsize: 5rem;
+    --header_height: 80px;
+
+        /* Iconos Header */
+    --header_iconos_margin: 25px;
+    --header_iconos_size: 2.3rem;
+    --header_iconos_color: rgba(0, 255, 234, 0.918);
+    /* Iconos Header izquierda*/
+    --pocicion-iconosIz: space-around;
+    --margin-iconoHome: 0;
+        /* Body */
+    --color_fondo_body: #000C;
+    
+        /* Imagenes Grid */
+    --grid_columnas: repeat(4, 1fr);
+    --row-gap: 4rem;  
+    --column-gap: 2rem;
+
+        /* Vista Previa */
+    --width_vistaP: 80%;
+    --height_vistaP: 90%;
+    
+    /* Menu del Header */    
+    --width_menuH: 40rem;
+    --heigth_menuH: 100px;
+    --top_menu: 0;
+    --right_menu: 0;
+    --background_menu: inherit;
+    --padding-menu: 0;
+ }
+    .menu__header ul {
+    width: 100%;
+    height: var(--header_height);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;  
+    text-shadow: 0 0 5px #FFF;  
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 500px) {
+    :root{
+        /* Contenido Header */
+    --header_texto_size: 1.7rem;
+    --header_h1_margbotton: 6rem;
+    --header_h1_fontsize: 3.5rem;
+    --header_content_top: 7rem;
+            /* Imagenes Grid */
+    --grid_columnas: repeat(2, 1fr);
+    --row-gap: 2rem;  
+    --column-gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    :root{
+           /* Contenido Header */
+    --header_h1_margbotton: 5rem;
+    --header_content_top: 7rem;
+    --header_texto_size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root{
+    /* Contenido Header */
+    --header_content_top: 5rem;
+    --header_h1_margbotton: 4rem;
+    --header_h1_fontsize: 3.5rem;
+    --header_content_top: 7rem;
+    --header_texto_size: 1.5rem;
+
+    }
+}
+
+@media screen and (max-width: 350px) {
+    :root{
+    /* Header */
+    --header_height: 70px;
+    /* Iconos Header */
+    --header_iconos_margin: 10px;
+    --header_iconos_size: 1.8rem;
+    /* Body */
+    --grid_columnas: repeat(1, 1fr);
+    /* Imagenes Grid */
+    --marco_grid: 18rem;
+    --width_img: 80%;
+    /* Corazon */
+    --corazon_pulsado: 2.3rem;
+    --corazonY: 15rem;
+    /* Contenido Header */
+    --header_content_top: 5rem;
+    --header_h1_margbotton: 4rem;
+    --header_h1_fontsize: 2.9rem;
+    --header_texto_size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    :root{
+        /* Contenido Header */
+    --header_texto_size: 1.3rem;
+    --header_h1_margbotton: 3rem;
+    }
+}    
+
+
+

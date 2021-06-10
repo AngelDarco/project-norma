@@ -1,0 +1,63 @@
+:root{
+
+    --color_texto: #000;
+    --color_fondos: #000C;
+    --width: 100%;
+
+        /* Header */
+    --header_background: rgba(2, 2, 41, 0.800);
+    --header_height: 100px;
+    --header_color: rgba(0, 255, 234, 0.918);
+
+        /* Slider */
+    --slider_height: 100vh;
+    --slider_background: -webkit-linear-gradient(top, #fff2, #1162fff0);
+
+        /* Contenido Header */
+    --header_content_top: 8rem;
+    --header_texto_size: 1.5rem;
+    --header_texto_weight: 600;
+    --header_h1_margbotton: 16rem;
+    --header_h1_fontsize: 2.8rem;
+
+
+        /* Iconos Header Derecha*/
+    --header_iconos_margin: 15px;
+    --header_iconos_size: 2rem;
+    --header_iconos_color: rgba(0, 255, 234, 0.918);
+        /* Iconos Header izquierda*/
+    --margin-iconoHome: 1rem;
+    --pocicion-iconosIz: space-around;
+
+
+    /* Menu del Header */    
+    --width_menuH: 12rem;
+    --heigth_menuH: 100vh;
+    --top_menu: 100px;
+    --right_menu: 0;
+    --background_menu: #FFF8;
+    --padding-menu: 100px;
+
+        /* Body */
+    --color_fondo_body: #000C;
+    
+        /* Imagenes Grid */
+    --grid_columnas: repeat(2, 1fr);
+    --marco_grid: 22rem;
+    --width_img: 90%;
+    --row-gap:30px;  
+    --column-gap:15px;
+
+    /* Corazon */
+    --corazon: 2rem;
+    --corazon_color: #e5ff00be;
+    --corazon_pulsado: 2.3rem;
+    --corazon_pulsado_color: #FF0000;
+    --corazonY: 19rem;
+    --corazonX:  1rem;
+
+        /* Vista Previa */
+    --width_vistaP: 80%;
+    --height_vistaP: 80%;
+    
+}

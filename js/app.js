@@ -13,20 +13,21 @@ const favoritos = document.querySelector('.corazon');
 const menu = document.querySelector(".menu");
 const menuShow = document.querySelector(".menu__header");
 const menuFondo = document.querySelector('.fondo__header');
-let a,b,c,d,e;
+let a,b,c,d,e,f;
 
 
 document.addEventListener("DOMContentLoaded", function () {
     cockies();
     bucleMostrar(all);
     mostrarControles();
-    headerImagenes();
+    //slider();
     fondoFiltro();
     botonMenu();
     botonFavoritos();
     botonHome();
     filtroImagenes();
     cambioImagen();
+    querys();
 }); // Llave final del Main
 
 
@@ -162,8 +163,15 @@ function agregarFavoritos(img){
     
     if(isNaN(b) || a==b){
     localStorage.setItem('id3',data);
-
     }
+
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Guardado',
+      showConfirmButton: false,
+      timer: 500
+    })
 };
         /* Eliminar Favoritos */
 function eliminarFavoritos(img){
@@ -179,6 +187,13 @@ let id = parseInt(data);
      } 
  }        
        localStorage.setItem('id',id);
+       Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Borrado',
+        showConfirmButton: false,
+        timer: 500
+      })
 };
 
         /* Muestra Las Imagenes */
@@ -346,11 +361,10 @@ fondo.addEventListener("click", () => {
      newNode.setAttribute('id',id2);
      newNode.setAttribute('class','vistaPrevia');
     mostrador.replaceChild(newNode,oldNode);
-      console.log("ID ",id," Num ",num);
 };
 
          // Lanzador de Imagenes en el Header 
-  function headerImagenes() {
+  function slider() {
     let timeIni;
     let contador = 0;
     timeIni = setInterval(function () {
@@ -362,4 +376,15 @@ fondo.addEventListener("click", () => {
     }, 3500);
 };
 
- 
+ function querys(){
+   let pcs = window.matchMedia('(min-width: 800px)');
+   let dispositivos = window.matchMedia('(max-width: 800px)');
+   
+   if (pcs.matches){
+    menuShow.classList.remove('ocultar');
+    menu.classList.add('ocultar');  
+  }else if(dispositivos.matches){
+    menuShow.classList.add('ocultar');
+    menu.classList.remove('ocultar');
+  }
+} 
