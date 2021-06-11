@@ -171,30 +171,3 @@ body{
 	padding: 10px;
 	resize: none;
 }
-
-
-
-
-
-/* Card */
-.for-span{
-	margin: .4rem;
-	font-size: 1rem;
-	color: black;
-	text-shadow: 0 0 5px #fff;
-}
-
-.li-color{
-	display: flex;
-	width: 100%;
-	height: auto;
-	margin: 1rem 0;
-}
-
-.li-descripcion{
-	display: flex;
-	flex-flow: row wrap;
-	width: 100%;
-	height: auto;
-	
-} 

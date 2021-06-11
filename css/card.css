@@ -9,7 +9,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 /* default */
-*,
+/* *,
 *::after,
 *::before {
   margin: 0;
@@ -17,7 +17,7 @@
   box-sizing: border-box;
 }
 
-/* body */
+/* body 
 body {
   min-height: 100vh;
   padding: 40px;
@@ -29,7 +29,7 @@ body {
 
   background: hsl(220, 10%, 12%);
   font-family: "Lato", "Segoe Ui", -apple-system, BlinkMacSystemFont, sans-serif;
-}
+} */
 
 /* .flip-card-container */
 .flip-card-container {
@@ -112,7 +112,7 @@ figure,
 }
 
 /* img */
-img {
+figure img {
   height: 100%;
   border-radius: 24px;
 }
@@ -177,7 +177,7 @@ figcaption {
 }
 
 /* ul */
-ul {
+.card-front ul {
   padding-top: 50%;
   margin: 0 auto;
   width: 70%;
@@ -193,7 +193,7 @@ ul {
 }
 
 /* li */
-li {
+.card-front ul li {
   width: 100%;
   height: 2.5rem;
   margin-top: 12px;
@@ -206,11 +206,11 @@ li {
   position: relative;
 }
 
-li:nth-child(2n) {
+.card-front ul li:nth-child(2n) {
   color: var(--white-2);
 }
 
-li:not(:last-child)::after {
+.card-front ul li:not(:last-child)::after {
   content: "";
 
   position: absolute;
@@ -225,7 +225,7 @@ li:not(:last-child)::after {
 }
 
 /* button */
-button {
+.card-back button {
   font-family: inherit;
   font-weight: bold;
   color: var(--white-1);
@@ -241,14 +241,14 @@ button {
   cursor: pointer;
 }
 
-button:hover,
+.card-back button:hover,
 button:focus {
   color: var(--primary);
   background: hsla(var(--hue), 25%, 10%, .2);
   border-color: currentColor;
 }
 
-button:active {
+.card-back button:active {
   transform: translate(2px);
 }
 
@@ -352,7 +352,7 @@ button:active {
 }
 
 /* states */
-button:hover+.design-container,
+.card-back button:hover+.design-container,
 button:active+.design-container,
 button:focus+.design-container {
   --tr: 20;
@@ -367,3 +367,26 @@ button:focus+.design-container {
   font-size: 16px;
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
 }
+
+
+/* Card */
+.for-span{
+	margin: .4rem;
+	font-size: 1rem;
+	color: black;
+	text-shadow: 0 0 5px #fff;
+}
+
+.li-color{
+	display: flex;
+	width: 100%;
+	height: auto;
+	margin: 1rem 0;
+}
+
+.li-descripcion{
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	height: auto;
+} 

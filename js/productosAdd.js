@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     let descripcion = document.getElementById('descripcion');
 
 
-
     producto.addEventListener('blur',()=>
     document.querySelector('.nombre').innerHTML=producto.value);
     talla.addEventListener('blur',()=>

@@ -196,6 +196,27 @@ let id = parseInt(data);
       })
 };
 
+
+
+
+
+
+
+/* 
+
+
+  
+
+
+
+
+*/
+
+
+
+
+
+
         /* Muestra Las Imagenes */
 function bucleMostrar(array){
   let arrayRandom = array.filter(item=> item!=null);
@@ -215,6 +236,10 @@ function bucleMostrar(array){
       arrayRandom.splice(random,1);  
       }
   };  
+
+
+
+  
     for (let i = 0; i < mostrar.length; i++) {
       let miimg = mostrar[i];
       const nodoDiv = document.createElement("div");
@@ -238,6 +263,28 @@ function bucleMostrar(array){
       meGusta();
       //cambioImagen();
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       /* Borra las imagenes Antes de Mostrarlas */
 function bucleBorrar(){
