@@ -1,13 +1,16 @@
-import { imgsHeader,womans,mens,kids,all} from "./imgs.js";
+'use strict';
+const cajacard = document.querySelector('.img__main');
+const template = document.querySelector('.template-card').content;
+const fragment = new DocumentFragment();
  
 const mostrador = document.querySelector(".marco");
 const fondo = document.querySelector(".fondo");
 const cabezera = document.querySelector(".cabezera__header");
 const izquierda = document.querySelector(".fa-backward");
 const derecha = document.querySelector(".fa-forward");
-const header = document.querySelector(".slider__header");
-const gridImgs = document.querySelector(".img__main");
+const slider = document.querySelector(".slider__header");
 const filtros = document.querySelectorAll('.filtro');
+
 const home = document.querySelector('.home');
 const favoritos = document.querySelector('.corazon');
 const menu = document.querySelector(".menu");
@@ -17,23 +20,66 @@ let a,b,c,d,e,f;
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    cockies();
-    bucleMostrar(all);
+  
+  const datos = async ()=>{
+    try {
+        const res = await fetch('/php/productosRead.php')
+        const data =  await res.json()
+       
+        await cockies(data);
+        await bucleMostrar(data);
+        await botonFavoritos(data);
+        await botonHome(data);
+        await filtroImagenes(data);
+        
+
+    } catch (error) {
+        console.log(error);
+    }
+};datos();
+
+
     mostrarControles();
-    //slider();
+    //sliderCreate();
     fondoFiltro();
     botonMenu();
-    botonFavoritos();
-    botonHome();
-    filtroImagenes();
     cambioImagen();
     querys();
+
 }); // Llave final del Main
 
 
 
+
+    /* database */
+/* function database() {
+  const imagenes = async () =>{
+    try {
+    const res =  await fetch('/php/productosRead.php');
+    const data = await res.json();
+    //extractorImagenes(data);
+                 await bucleMostrar(data);
+  } catch (error) {
+      console.log(error);
+    }
+  };imagenes();
+ */
+
+/* 
+ let array = [];
+ const extractorImagenes = async data=>{
+    await
+       data.forEach(item=>{
+           array.push(item.imagen);
+     });
+     await bucleMostrar(array);
+     console.log(array);
+ } *
+}/
+
+
     /* Local Storage */
-function cockies(){
+function cockies(data){
   a = localStorage.getItem('id2');
   b = parseInt(a)
   c = localStorage.getItem('id');
@@ -44,7 +90,7 @@ function cockies(){
   }
  else localStorage.setItem('id2',0);
   e = localStorage.getItem('id3');
-  if (e>= 2) localStorage.setItem('id3',all.length) 
+  if (e >= data.length) localStorage.setItem('id3',data.length) 
 };
 
     /* Funcionalidad botones del Header */
@@ -65,8 +111,8 @@ function botonMenu(){
 });
 
 };
-function botonFavoritos(){
-    /*  Mostrar Favoritos - Corazon Principal */
+function botonFavoritos(datos){
+    /*  Mostrar Favoritos - Corazon Header  */
     favoritos.addEventListener('click', ()=>{
       favoritos.classList.toggle('fas');
       if(!menuShow.classList.contains('ocultar')){
@@ -77,34 +123,41 @@ function botonFavoritos(){
         menuFondo.classList.add('ocultar')
         menuShow.classList.add('ocultar');
       }
+      
       let data = parseInt(localStorage.getItem('id3'));
       let arrayFavoritos=[];
+      let local=[];
+      let like;
               
         if(favoritos.classList.contains('fas')){
         if(!isNaN(data)&&data!=0){      
-           for(let i = 0; i < data; i++){              
-            arrayFavoritos[i]=localStorage.getItem(i+1);
+           for(let i = 0; i <= data; i++){    
+            if(localStorage.getItem(i+1)!=null&&localStorage.getItem(i+1)!=undefined&&localStorage.getItem(i+1)!=""){
+           arrayFavoritos[i]=localStorage.getItem(i+1);
+            }else break
           } 
            bucleBorrar();
-           bucleMostrar(arrayFavoritos); 
-        }else{
-            bucleBorrar();
-        }
+           for(let i=0;i<arrayFavoritos.length;i++){
+           like = datos.filter(item=> item.codepro == arrayFavoritos[i]);
+            local.push(like[0]);
+           }
+           bucleMostrar(local); 
+        }else bucleBorrar();
 
       }else{
         bucleBorrar();
-        bucleMostrar(all);
+        bucleMostrar(datos);
       } 
   });  
 
 };
-function botonHome(){
+function botonHome(data){
   
   home.addEventListener('click',e => {
     if(favoritos.classList.contains('fas'))
       favoritos.classList.remove('fas');
     bucleBorrar(); 
-    bucleMostrar(all);
+    bucleMostrar(data);
 
    if(!menuShow.classList.contains('ocultar')){
     menu.classList.remove('rotar');
@@ -125,20 +178,25 @@ function meGusta(){
     const favoritos2 = document.querySelectorAll('.coral');
 
     favoritos2.forEach(e=>{
-             e.addEventListener('click', ()=>{
+             e.addEventListener('click', (z)=>{
              e.classList.toggle('fas');
              e.classList.toggle('corazon__pulsado');
             /* ------------------------------- */
-            let img = e.previousSibling.getAttribute('src');
+
+            let icono = e.parentNode;
+            let nodos = icono.parentNode;
+            let nodo2 = nodos.parentNode
+            let nodo3 = nodo2.children
+            let nodoF = nodo3[0].children;
+            let nodoF1 = nodoF[0].children; 
+            let code = nodoF1[2].innerHTML;
+
             let clase = e.classList[3];
-                
-            if(clase!=undefined){
-              agregarFavoritos(img);              
-            }else{
-              eliminarFavoritos(img); 
-                if(favoritos.classList.contains('fas')){
-                }
-            }
+            console.log(clase);
+
+            (clase!=undefined) ? agregarFavoritos(code)
+                               : eliminarFavoritos(code); 
+            
         });  
     });      
 };
@@ -197,33 +255,14 @@ let id = parseInt(data);
 };
 
 
-
-
-
-
-
-/* 
-
-
-  
-
-
-
-
-*/
-
-
-
-
-
-
         /* Muestra Las Imagenes */
 function bucleMostrar(array){
+
   let arrayRandom = array.filter(item=> item!=null);
-  let data = parseInt(localStorage.getItem('id3'));
   let mostrar=[];
   let llenarItems;
   let random;
+
   while(arrayRandom.length!=0){
       for(let item in arrayRandom){
       random = Math.ceil(Math.random()*(arrayRandom.length));
@@ -237,85 +276,98 @@ function bucleMostrar(array){
       }
   };  
 
+  console.log(mostrar)
 
+  let i = 0;
+    mostrar.forEach( item => {
 
+      const id = parseInt(localStorage.getItem('id3'));
+      const corazon = template.querySelector('.card-back figure .coral');
+      corazon.classList.remove('fas','far','fa-heart','corazon__pulsado')
+
+    template.querySelector('.card-front figure .img').setAttribute('src',item.imagen); 
+    template.querySelector('.card-front figure figcaption').innerHTML = item.codepro; 
+    template.querySelector('.card-front ul li .nombre').innerHTML = item.nombre; 
+    template.querySelector('.card-front ul li .talla').innerHTML = item.talla;
+    template.querySelector('.card-front ul li .precio').innerHTML = item.precio;
+    template.querySelector('.card-front ul li .stock').innerHTML = item.stock;
+    template.querySelector('.card-front ul li .genero').innerHTML = item.genero;
+
+    let nuevo = color(mostrar[i].colores);
+    let nodo = template.querySelector('.card-front ul .li-color ').children[0];
+    template.querySelector('.card-front ul .li-color ').replaceChild(nuevo,nodo);
   
-    for (let i = 0; i < mostrar.length; i++) {
-      let miimg = mostrar[i];
-      const nodoDiv = document.createElement("div");
-      const nodoImg = document.createElement("img");
-      const nodoIco = document.createElement("i"); 
-      nodoDiv.setAttribute('class','padreGrid');
-      nodoImg.setAttribute("src", miimg);
-      nodoImg.setAttribute("class", "grid");
-      nodoImg.setAttribute('id',i);
-      nodoIco.setAttribute('class','coral far fa-heart');
-      for(let z = 0; z <= data; z++){
-      if(localStorage.getItem(z)==miimg){
-        nodoIco.setAttribute('class','coral far fa-heart fas corazon__pulsado');
-      }
-    }
-      nodoDiv.appendChild(nodoImg);
-      nodoDiv.appendChild(nodoIco);
-      gridImgs.appendChild(nodoDiv);
-       };
+    template.querySelector('.card-front ul li .span-descripcion').innerHTML = item.descripcion;
+    template.querySelector('.card-back figure .img2').setAttribute('src',item.imagen); 
+    template.querySelector('.card-back figure .img2').setAttribute('id',i); 
+
+    if(!isNaN(id)){
+    for(let x=1;x<=(id+1);x++){
+     (item.codepro==localStorage.getItem(x))  
+     ? corazon.classList.add('fas','fa-heart','corazon__pulsado') 
+     : corazon.classList.add('far','fa-heart');
+        }
+    }else  corazon.classList.add('far','fa-heart');
+
+    const clone = template.cloneNode(true);
+    fragment.appendChild(clone);
+    i++;
+
+    })
+      cajacard.appendChild(fragment);
       eventoImagenes();
       meGusta();
-      //cambioImagen();
-};
+    };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    const color = (dato)=>{
+      let array = dato.split(',');
+      let nodo='';
+      let resultado = document.createElement('span');
+      resultado.setAttribute('class','for-span colores');
+    
+      for(let i=0;i<array.length;i++){ 
+        nodo = document.createElement('span');
+         nodo.setAttribute('class',`color label ${array[i]}`);
+        resultado.appendChild(nodo);
+      }
+     return resultado;
+    }
 
 
       /* Borra las imagenes Antes de Mostrarlas */
 function bucleBorrar(){
-       while (gridImgs.firstChild) {
-        gridImgs.removeChild(gridImgs.firstChild);
+       while (cajacard.firstChild) {
+        cajacard.removeChild(cajacard.firstChild);
         }
         eventoImagenes()
 };
 
       /* Filtrado de Imagenes */
-function filtroImagenes(){
+function filtroImagenes(data){
 
   filtros.forEach(e =>{
     e.addEventListener('click',(z)=>{
       if(favoritos.classList.contains('fas'))
       favoritos.classList.remove('fas');
+
       if(z.target.classList.contains('damas')){
+        let womans = data.filter(item => item.genero == 'Mujer');      
         bucleBorrar();
         bucleMostrar(womans);
 
-      }else if(z.target.classList.contains('caballeros')){      
+      }else if(z.target.classList.contains('caballeros')){   
+        let mens = data.filter(item => item.genero == 'Hombre');   
         bucleBorrar();
         bucleMostrar(mens);
         
       }else if(z.target.classList.contains('ninos')){
+        let kids = data.filter(item => item.genero == 'Niño');
         bucleBorrar();
         bucleMostrar(kids);
 
       }else if(z.target.classList.contains('casa')){
         bucleBorrar();
-        bucleMostrar(all);
+        bucleMostrar(data);
 
       }
     });
@@ -324,7 +376,7 @@ function filtroImagenes(){
 
         /* Detector Imagenes en el Grid */
 function eventoImagenes(){
-  const imagenes = document.querySelectorAll(".grid");
+  const imagenes = document.querySelectorAll(".btn-ver");
   imagenes.forEach(function (e) {
     e.addEventListener("click", function () {
       f=e;
@@ -333,6 +385,7 @@ function eventoImagenes(){
   });
 };
 
+
         /* Lanzador de Vista previa de imagenes */
   function vistaPreviaImagenes(marco) {
     cabezera.classList.add("ocultar");
@@ -340,12 +393,18 @@ function eventoImagenes(){
     fondo.classList.toggle("fondo__activo");
     mostrador.classList.toggle("ocultar")
     mostrador.classList.toggle("mostrador__activo");
+
+    let padreimg = marco.parentNode;
+    let nodoimg = padreimg.children[0];
+    let imgbtn = nodoimg.children[1];
+
     let nodo = document.createElement('img'); 
-    let img = marco.getAttribute('src');
-    let id = marco.getAttribute('id');
+    let img = imgbtn.getAttribute('src');
+    let id = imgbtn.getAttribute('id');
     nodo.setAttribute('src',img);
     nodo.setAttribute('id',id);
     nodo.setAttribute('class','vistaPrevia');
+
     let viejo = mostrador.lastChild;
     let nuevo = mostrador.appendChild(nodo);
     if(mostrador.lastChild.nodeName=='IMG')
@@ -370,6 +429,7 @@ fondo.addEventListener("click", () => {
 
 };
  
+
         /* Cambio Imagenes por los controles */
   function cambioImagen() {
     izquierda.addEventListener("click",(e)=> {  
@@ -388,11 +448,14 @@ fondo.addEventListener("click", () => {
     /* Remplazo de Nodos - Cambio de Imagenes */
   function cambioNodos(e,signo){
     let num;
-    let array = document.querySelectorAll('.grid');
+    let array = document.querySelectorAll('.img2'); //grid
     let padre = e.target.parentNode;
-    let hijo = padre.lastChild;
+    let hijo = padre.children[2];
+    let imgcambio = hijo.getAttribute('src');
+
     let id = hijo.getAttribute('id');
     let oldNode = mostrador.lastChild;
+
     if(signo){
     if (id>=(array.length-1))id=0
     num = parseInt(id)+1;
@@ -411,13 +474,13 @@ fondo.addEventListener("click", () => {
 };
 
          // Lanzador de Imagenes en el Header 
-  function slider() {
+  function sliderCreate() {
     let timeIni;
     let contador = 0;
     timeIni = setInterval(function () {
       let miimg = imgsHeader[contador];
       const construye = `<img  src="${miimg}" alt="" class="slider img1">`;
-      header.innerHTML = construye;
+      slider.innerHTML = construye;
       contador++;
       if (contador >= imgsHeader.length) contador = 0;
     }, 3500);

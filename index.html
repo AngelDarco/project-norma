@@ -15,6 +15,7 @@
     
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="css/style.css">
+    
     <script src="/js/sweetalert2.all.min.js"></script>
     <script src="js/app.js" type='module'></script>
 
@@ -51,21 +52,27 @@
             </div>
         </div>
 
-        <!-- Contenido del Header -->
-        <div class="contenedor__header">
+
+        <!-- Slider -->
+        <div class="contenedor__slider">
+        <!-- Mensaje Central --> 
+        <div class="mensaje__slider">
             <h1 class="titulo">Boutique Norma</h1>
             <p class="saludo">
                 La Señora Norma saluda y da la bienvenida a todas y a todos los visitantes de nuestra Boutique.
                 Esperamos que su consulta o visita le ofrezca la información que precise de forma ágil y dinámica.
             </p>
-        </div>
-
-        <!-- Imagenes del Header -->
-        <div class="slider__header">
-            <img src="/img/header.jpeg">
+        </div>     
+              <!-- Slider -->
+              <div class="slider">
+                <img src="/img/header.jpeg">
+              </div>
         </div>
 
         
+        </div>
+
+
     <main>
         <div class="main">
             <div class="fondo ocultar"></div>
@@ -74,90 +81,66 @@
             <i class="fas fa-forward"></i>
         </div>
 
-        <div class="iconos__favoritos"id="redireccion">
-            
-        </div>
-
             <!-- Imagenes de Muestra -->
-            <div class="img__main" >
-            </div>
+              <div class="img__main"></div>
 
 
+            <template class="template-card">
 
-
-
-
-
-
-
-
-
-
- 
-<!-- flip-card-container 
-<div class="flip-card-container" style="--hue: 350">
-    <div class="flip-card">
-  
-      <div class="card-front">
-        <figure>
-          <div class="img-bg"></div>
-          <img class="img" src="" alt="Brohm Lake">
-          <figcaption>Nuevo</figcaption>
-        </figure>
-  
-        <ul>
-          <li>Producto: <span class="for-span nombre"></span></li>
-          <li>Tallas:   <span class="for-span talla"></span></li>
-          <li>Precio: $/<span class="for-span precio"></span></li>
-          <li>Stock:    <span class="for-span stock"></span>/uni</li>
-          <li>Para:     <span class="for-span genero"></span></li>
-          <li class="li-color">Colores:  <span class="for-span colores"></span></li>
-          <li class="li-descripcion">Descripcion:<span class="for-span span-descripcion"></span></li>
-  
-        </ul>
-      </div>
-  
-      <div class="card-back">
-        only if the image is necessary 
-        <figure>
-          <div class="img-bg"></div>
-          <img class="img2" src="" alt="Brohm Lake">
-        </figure>
-  
-        <button>Ver</button>
-  
-         can add svg here and remove these eight spans 
-        <div class="design-container">
-          <span class="design design--1"></span>
-          <span class="design design--2"></span>
-          <span class="design design--3"></span>
-          <span class="design design--4"></span>
-          <span class="design design--5"></span>
-          <span class="design design--6"></span>
-          <span class="design design--7"></span>
-          <span class="design design--8"></span>
-          <span class="design design--9"></span>
-        </div>
-      </div>
-  
-    </div>
-  </div>
-  /flip-card-container 
-
-
-
- -->
-
-
-
-
-
-
+              <div class="flip-card-container" style="--hue: 350">
+                  <div class="flip-card">
+                
+                    <div class="card-front">
+                      <figure>
+                        <div class="img-bg"></div>
+                        <img class="img" src="" alt="Brohm Lake">
+                        
+                        <figcaption></figcaption>
+                      </figure>
+                
+                      <ul>
+                        <li>Producto: <span class="for-span nombre"></span></li>
+                        <li>Tallas:   <span class="for-span talla"></span></li>
+                        <li>Precio: S/<span class="for-span precio"></span></li>
+                        <li>Stock:    <span class="for-span stock"></span>/uni</li>
+                        <li>Para:     <span class="for-span genero"></span></li>
+                        <li class="li-color">Colores:  <span class="for-span colores"></span></li>
+                        <li class="li-descripcion">Descripcion:<span class="for-span span-descripcion"></span></li>
+                      </ul>
+                    </div>
+                    
+                    <div class="card-back">
+                      <figure>
+                        <div class="img-bg"></div>
+                        <img class="img2" src="" alt="Brohm Lake">
+                        <i class="coral"></i>
+                      </figure>
+                
+                      <button class="btn-ver">Ver</button>
             
+                      <div class="design-container">
+                        <span class="design design--1"></span>
+                        <span class="design design--2"></span>
+                        <span class="design design--3"></span>
+                        <span class="design design--4"></span>
+                        <span class="design design--5"></span>
+                        <span class="design design--6"></span>
+                        <span class="design design--7"></span>
+                        <span class="design design--8"></span>
+                        <span class="design design--9"></span>
+                      </div>
+                    </div>
+                
+                  </div>
+                </div>
+              
+              </template>
+          
         </div>
     </main>
-    <footer class="footer">
 
+    <footer class="footer">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, veritatis dolore dolores harum officiis minima iure facere vel odio molestias quis, temporibus dolorum corrupti reiciendis debitis praesentium numquam beatae suscipit.
     </footer>
 </body>
 </html>

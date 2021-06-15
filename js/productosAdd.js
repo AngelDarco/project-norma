@@ -83,7 +83,6 @@ data.append('colores',colores);
           });
                     form.reset();
                     span.forEach(item =>{
-                      console.log("Eliminando ",span)
                       item.innerHTML = '';
                     });
 
