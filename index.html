@@ -15,7 +15,15 @@
     
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="css/style.css">
-    
+
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+		<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.slicebox.js"></script>
+    <script src="/js/slider.js"></script>
+
     <script src="/js/sweetalert2.all.min.js"></script>
     <script src="js/app.js" type='module'></script>
 
@@ -29,7 +37,7 @@
         <!-- Iconos Del Header -->
         <div class="cabezera__header">
             <div class="izquierda">
-                <ul>
+                <ul><a href=""><i class="fas fa-user"></i></a>
                     <a href="#redireccion" class="home"><i class="fas fa-home"></i></a>
                     <a href="#redireccion" class="cvacio"><i class="far fa-heart corazon"></i></a>
                     <a class="carro"><i class="fas fa-shopping-cart"></i></a>
@@ -48,13 +56,28 @@
                     <a href="#redireccion" class="filtro casa">Todo</a>
                 </ul>
             </div>
-                <i class="menu fa fa-bars" aria-hidden="true"></i>
             </div>
+            
+            <div class="disparador__menu">
+              <i class="menu fa fa-bars" aria-hidden="true"></i>
+            </div>
+
         </div>
 
 
         <!-- Slider -->
         <div class="contenedor__slider">
+          <div class="video__header">
+            <video autoplay loop>
+              <source src="/videos/cámara lenta de mujer asiática eligiendo ropa para probarse..mp4" type="video/mp4">
+             <!--  <source src="/videos/Mujer Feliz Comprando Con La Ayuda De Su Hija Adulta Vídeo S.mp4" type="video/mp4">
+              <source src="/videos/la mano de la mujer elige la ropa 2015169 - Clips de Video H.mp4" type="video mp4">
+ -->
+            </video>
+              <!-- <img src="/img/header.jpeg"> -->
+          </div>
+
+          <div class="centro__header">
         <!-- Mensaje Central --> 
         <div class="mensaje__slider">
             <h1 class="titulo">Boutique Norma</h1>
@@ -62,13 +85,72 @@
                 La Señora Norma saluda y da la bienvenida a todas y a todos los visitantes de nuestra Boutique.
                 Esperamos que su consulta o visita le ofrezca la información que precise de forma ágil y dinámica.
             </p>
-        </div>     
+        </div>   
               <!-- Slider -->
               <div class="slider">
-                <img src="/img/header.jpeg">
+                    <div class="container">
+
+                      <div class="wrapper">
+
+                        <ul id="sb-slider" class="sb-slider">
+                          <li>
+                            <a href="http://www.flickr.com/photos/strupler/2969141180" target="_blank"><img src="https://i.ytimg.com/vi/r9CfY_WI6XI/maxresdefault.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                              <h3>Creative Lifesaver</h3>
+                            </div>
+                          </li>
+                          <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968268187" target="_blank"><img src="https://i.pinimg.com/originals/e6/79/c8/e679c80e36ae982161e4f5e50e074738.jpg" alt="image2"/></a>
+                            <div class="sb-description">
+                              <h3>Honest Entertainer</h3>
+                            </div>
+                          </li>
+                          <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968114825" target="_blank"><img src="https://i.ytimg.com/vi/dBpTAg3_dZ8/maxresdefault.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                              <h3>Brave Astronaut</h3>
+                            </div>
+                          </li>
+                          <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968122059" target="_blank"><img src="https://www.fashionlady.in/wp-content/uploads/2015/05/How-to-Wear-T-Shirts-to-Work1.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                              <h3>Affectionate Decision Maker</h3>
+                            </div>
+                          </li>
+                          <li>
+                            <a href="http://www.flickr.com/photos/strupler/2969119944" target="_blank"><img src="https://www.maximmexico.com/wp-content/uploads/2020/01/marcas-tendencia.png" alt="image1"/></a>
+                            <div class="sb-description">
+                              <h3>Faithful Investor</h3>
+                            </div>
+                          </li>
+                          <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968126177" target="_blank"><img src="https://i.ytimg.com/vi/1710n4XDXZ0/maxresdefault.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                              <h3>Groundbreaking Artist</h3>
+                            </div>
+                          </li>
+                          <li>
+                            <a href="http://www.flickr.com/photos/strupler/2968945158" target="_blank"><img src="https://i.ytimg.com/vi/5L0d-MS2DEY/maxresdefault.jpg" alt="image1"/></a>
+                            <div class="sb-description">
+                              <h3>Selfless Philantropist</h3>
+                            </div>
+                          </li>
+                        </ul>
+
+                        <div id="shadow" class="shadow"></div>
+
+                      </div><!-- /wrapper -->
+
+                    </div>
               </div>
+                  
+            </div>
+            
+
         </div>
 
+<!--           <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-0.84,-5.42 C291.48,232.39 284.71,-2.45 508.74,35.03 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #08f;"></path></svg></div>
+ -->
         
         </div>
 
@@ -82,7 +164,8 @@
         </div>
 
             <!-- Imagenes de Muestra -->
-              <div class="img__main"></div>
+              <div class="img__main">
+              </div>
 
 
             <template class="template-card">
@@ -139,8 +222,7 @@
         </div>
     </main>
 
-    <footer class="footer">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, veritatis dolore dolores harum officiis minima iure facere vel odio molestias quis, temporibus dolorum corrupti reiciendis debitis praesentium numquam beatae suscipit.
+    <footer class="footer" id="footer">
     </footer>
 </body>
 </html>

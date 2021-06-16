@@ -1,4 +1,6 @@
 'use strict';
+import {stylos} from './css.js';
+
 const cajacard = document.querySelector('.img__main');
 const template = document.querySelector('.template-card').content;
 const fragment = new DocumentFragment();
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     botonMenu();
     cambioImagen();
     querys();
+    stylos();
 
 }); // Llave final del Main
 

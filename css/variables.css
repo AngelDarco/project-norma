@@ -4,47 +4,32 @@
     --color_fondos: #000C;
     --width: 100%;
 
-        /* Header */
-    --header_background: rgba(2, 2, 41, 0.800);
-    --header_height: 100px;
+        /* Cabezera */
+    --izquierda_content: 80%;
+    --derecha_content: 100%;
+    --iconos_size: 2rem;
+    --izquierda_iconsContent: 80%;
+
+        /* Header Saludo*/
+    --heder_width: 35%;
+    --header_height: 80%;
+    --saludoH1_margin: 3rem;
+    --fontH1_size: 3rem;
+    --texto_size: 1.3rem;
+    --padding_saludo: 0;
     --header_color: rgba(0, 255, 234, 0.918);
 
         /* Slider */
-    --slider_height: 100vh;
-    --slider_background: -webkit-linear-gradient(top, #fff2, #1162fff0);
-
-        /* Contenido Header */
-    --header_content_top: 8rem;
-    --header_texto_size: 1.5rem;
-    --header_texto_weight: 600;
-    --header_h1_margbotton: 16rem;
-    --header_h1_fontsize: 2.8rem;
+    --slider_width: 50%;        
+    --slider_height: 55%;
 
 
-        /* Iconos Header Derecha*/
-    --header_iconos_margin: 15px;
-    --header_iconos_size: 2rem;
-    --header_iconos_color: rgba(0, 255, 234, 0.918);
-        /* Iconos Header izquierda*/
-    --margin-iconoHome: 1rem;
-    --pocicion-iconosIz: space-around;
-
-
-    /* Menu del Header */    
-    --width_menuH: 12rem;
-    --heigth_menuH: 100vh;
-    --top_menu: 100px;
-    --right_menu: 0;
-    --background_menu: #FFF8;
-    --padding-menu: 100px;
 
         /* Body */
     --color_fondo_body: #000C;
     
         /* Imagenes Grid */
-    --grid_columnas: repeat(2, 1fr);
-    --marco_grid: 22rem;
-    --width_img: 90%;
+    --grid_columnas: repeat(4, 1fr);
     --row-gap:30px;  
     --column-gap:15px;
 

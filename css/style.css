@@ -1,4 +1,4 @@
-@import url(variables.css);
+ @import url(variables.css); 
 @import url(querys.css);
 
 
@@ -14,48 +14,47 @@
     height: 100vh;
     background-attachment: fixed;
 }    
-        /* Efecto Wave 
+        /* Efecto Wave */
 .wave{
     height: 100px;
     overflow: hidden;
     position:absolute;
+    left: 0;
     width: 100%;
-    bottom: 0;
-}*/
+    
+}
  
         /* Contenedor Cabezera */
 .cabezera__header{
-    background: var(--header_background);
+    background: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--header_height);
+    height: 70px;;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-top: 2px solid grey;
     border-bottom: 2px solid grey;
     color: var(--header_color);
-    z-index: 20;
+    z-index: 50;
     opacity: 1;
+    font-size: var(--iconos_size);
 }
 
 /* Contenedor Izquierda de la Cabezera */
 .izquierda{
-    border: 2px solid white;
-    width: 80%;
+    width: var(--izquierda_content);
     height: auto;
     display: flex;
     justify-content: flex-start;
 }
 .izquierda ul{
-    border: 2px solid red;
-    width: 80%;
+    width: var(--izquierda_iconsContent);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    font-size: 2rem;
 }
 .izquierda .carro{
     opacity: .4;
@@ -64,24 +63,18 @@
 
 /* Contenedor Derecha de la Cabezera */
 .derecha{  
-    width: 100%;
+    width: var(--derecha_content);
 }
 .derecha ul{
     list-style: none;
-    border: 2px solid yellow;
-    height: auto;
+    display: flex;
 }
 .derecha ul a{
     width: 100%;
     text-decoration: none;
     font-size: 1.5rem;
     padding-left: 2%;
-    border-left: 2px solid green;
 }
-
-
-
-
 
 
 
@@ -102,83 +95,70 @@
         transition: .5s ease-in-out;
     }
    
+        /* Contenedor Centro Header */
+.centro__header{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+}
 
-
-        /* Slider Header */
-    .header .contenedor__slider{
-
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        background-size: cover;
-        border: 5px solid green;
-    }
-    .header .contenedor__slider::after{
-        content: '';
-        position: absolute;
-        display: block;
-        width: var(--width);
-        height: var(--slider_height);
-        opacity: .65; 
-        background: var(--slider_background);
-    }
-
-    
-    /* Titulo y Saludo del Header */
-.header .mensaje__slider{
+        /* Video Header */
+.video__header{
     position: absolute;
     top: 0;
-    z-index: 10;
-    width: 80%;
+    left: 0;
+    z-index: -10;
+    width: 100%;
     height: 100vh;
+}
+.video__header video{
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+
+    /* Titulo y Saludo del Header */
+.header .mensaje__slider{
+    width: var(--heder_width);
+    height: var(--header_height);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    border: 2px solid red;
-    font-size: var(--header_texto_size);
-    font-weight: var(--header_texto_weight);
+    font-size: var(--texto_size);
+    font-weight: bold;
+    text-align: center;
+    margin-top: var(--padding_saludo);
+    padding: 1rem;
 }
 .header .mensaje__slider h1{
-    border: 2px solid yellow;
-    color: var(--color_texto);
+    color: black;
     text-shadow: 0 0 10px #F0FA;
-    font-size: var(--header_h1_fontsize);
-}
-.mensaje__slider p{
-    text-align: center;
-    margin-top: 5%;
+    font-size: var(--fontH1_size);
+    margin-bottom: var(--saludoH1_margin);
 }
 
 .slider{
-    width: 100%;
-    height: 100vh;
+    width: var(--slider_width);
+    height: var(--slider_height);
     background-size: cover;
-    
+    display: flex;
+    align-items: center;
 }
-.slider img{
-   display: block;
-   margin: 0 auto;
-}
-
-
-
-
-
 
 
     /* Contenedor Imagenes del Grid */
 .main{
     background: var(--color_fondo_body);
     width: 100%;
-    border: 2px solid red;
 }
     /* grid */
 .main .img__main {
-    border: 2px solid orangered;
     width: 94%;
     margin: 10% auto;
     display: grid;
@@ -273,9 +253,10 @@
 
 .footer{
     width: 100%;
-    height: 10vh;
+    height: 3rem;
     position: sticky;
     left: 0;
     bottom: 0;
-    border: 3px solid #FF00CC;
+    background: #272424c7;
+    border-top: 1px solid #FF00CC;
 }
