@@ -1,11 +1,11 @@
 <?php
-/* 
-$DB_Host = 'fdb27.freehostingeu.com';
+
+/* $DB_Host = 'fdb27.freehostingeu.com';
 $DB_Name = '3788800_darcobbdd';
 $DB_User = '3788800_darcobbdd';
 $DB_Pass = '922494eMe';
+ 
  */
-
 
 
 
@@ -13,7 +13,6 @@ $DB_Host = 'localhost';
 $DB_Name = 'norma';
 $DB_User = 'root';
 $DB_Pass = '';
-
 
 
 try {

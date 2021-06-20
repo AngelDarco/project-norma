@@ -440,16 +440,12 @@ button:focus+.design-container {
 	resize: none;
 }
 
-@media screen and (max-width: 1100px) {
-
-}
-
 
 @media screen and (max-width: 800px) {
   /* .flip-card-container */
 .flip-card-container {
-  width: 12.5rem;
-  height: 20rem;
+  width: 15rem;
+  height: 22rem;
   margin: auto;
   }
 /* li */
@@ -467,8 +463,8 @@ button:focus+.design-container {
 @media screen and (max-width: 450px) {
   /* .flip-card-container */
   .flip-card-container {
-    width: 10rem;
-    height: 17rem;
+    width: 12rem;
+    height: 20rem;
     margin: auto;
     }
 
@@ -479,14 +475,14 @@ button:focus+.design-container {
   }
   /* li */
   .card-front ul li {
-  --font_height: 1.1rem;
-  --font_siz: .9rem;
+  --font_height: 1.5rem;
+  --font_siz: 1rem;
 }
 
 /* Card */
 .for-span{
-  --span_margin: .4rem;
-  --span_size: .9rem;
+  --span_margin: .8rem;
+  --span_size: 1rem;
   }
 
 .color{
@@ -495,11 +491,11 @@ button:focus+.design-container {
 }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
     /* .flip-card-container */
     .flip-card-container {
-      width: 13rem;
-      height: 21rem;
+      width: 15rem;
+      height: 23rem;
       margin: auto;
       }
 }

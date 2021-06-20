@@ -1,31 +1,22 @@
-
-body,h1,h2,h3,p,td,quote,small,form,input,ul,li,ol,label{
-	margin:0px;
-	padding:0px;
-}
-
-body{
-	margin-top:20px;
-	font-family:Arial, Helvetica, sans-serif;
-	color:#51555C;
-	height:100%;
-	font-size:20px;
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
 }
 
 
 /* Form styles */
-
-input,select{
+.div-regForm input,select{
 	padding:3px;
 	color:#333333;
 	
 	border:1px solid #96A6C5;
 	margin-top:2px;
-	width:200px;
+	width:auto;
 	font-size:20px;
 }
 
-select{
+.div-regForm select{
 	width:auto;
 	padding:2px;
 }
@@ -34,17 +25,18 @@ select{
 	padding:3px;
 }
 
-label{
+.div-regForm label{
 	font-size:20px;
 	display:block;
 	text-align:right;
 }
 
-table{
-	width:100%;
+.div-regForm table{
+	width:60%;
+	height: 100%;
 }
 
-td{
+.div-regForm td{
 	font-size:25px;
 }
 
@@ -57,15 +49,12 @@ td{
 	padding:15px;
 	background: repeat-x #cbd4e4;
 	color:#203360;
-	
-	width:auto;
-	height: auto;
+
 }
 
 .form-title,
 .form-sub-title{
 	font-size:20px;
-	
 	font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
 	font-size:20px;
 	font-weight:bold;
@@ -108,69 +97,67 @@ td{
 	visibility:hidden;
 }
 
-/* .colores{
-	display:flex;
-	flex-wrap: wrap;
-	width: 100%;
-	height: auto;
-}
-.color{
-	width: 20px;
-	height: 18px;
-}
-
-.label{
-	margin-top: 2px;
-	margin-right: 10px;
-}
-
-.red{
-	background:red;
-}
-.green{
-	background:green;
-}
-.blue{
-	background:blue;
-}
-.white{
-	background:white;
-}
-.black{
-	background:black;
-}
-.grey{
-	background:grey;
-}
-.purple{
-	background:purple;
-}
-.orange{
-	background:orangered;
-}
-.pink{
-	background:#ff6781;
-}
-
-
-
-.div-descripcion{
-	width: auto;
-	height: auto;
-}
-
-#descripcion{
-	width: 100%;
-	height: 5rem;
-	padding: 10px;
-	resize: none;
-}
- */
- 
  body{
+	 --flex: row;
 	width:100%;
-	height: 100vh;
+	height: auto;
 	display: flex;
-	align-items: center;
-	justify-content: space-around;
+	flex-flow: var(--flex);
+	background: grey;
+}
+
+.div-regForm{
+	width: 50%;
+	height: 80%;
+	margin: 5% auto;
+}
+
+
+/* .flip-card-container */
+.flip-card-container {
+
+  width: 20rem;
+  height: 30rem;
+  margin: auto;
+ }
+
+
+/* figure, .img-bg */
+figure,
+.img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* img */
+figure img {
+	width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: 24px;
+}
+
+
+@media screen and (max-width:420px) {
+	
+	body{
+	  --flex: column;	
+	}
+	.div-regForm{
+		width: 100%;
+	}
+}
+
+@media screen and (max-height:420px) {
+	.div-regForm{
+		height: 100%;
+		border: 2px solid red;
+	}
+	.div-regForm table{
+		height: 100%;
+	}
 }

@@ -14,10 +14,7 @@ $imagen     = $_POST['imagen'];
 
     try {
 
-    if($nombre==""||$talla==""||$precio==""||$colores==""||$genero==0||$stock==""||$imagen=="")
-        echo json_encode('vacio');
-
-    else if($nombre!=""||$talla!=""||$precio!=""/* ||$colores!="" */||$genero!=0||$stock!=""||$imagen!=""){
+    if(isset($nombre)||isset($talla)|| isset($precio)||isset($colores)||isset($genero)||isset($stock)||isset($imagen)){
     $sql = "INSERT INTO productosnorma (nombre, talla, precio, colores, genero, descripcion, stock, imagen)
                     VALUES (:nombre, :talla, :precio, :colores, :genero, :descripcion,:stock, :imagen)";
     $result = $conexion->prepare($sql);
@@ -26,11 +23,15 @@ $imagen     = $_POST['imagen'];
     
     echo json_encode('agregado');
     $result->closeCursor();
+    $sql = null;
+    $conexion = null;
     
     }else echo json_encode('Lo sentimos Algo Salio mal al insertar tus datos');
     
             //code...
         } catch (Exception $th) {
+            $sql = null;
+            $conexion = null;
             echo 'Error: '. $th->getMessage();
         }
 

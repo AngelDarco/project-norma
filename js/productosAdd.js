@@ -73,6 +73,7 @@ data.append('colores',colores);
             showConfirmButton: false,
             timer: 1500
           });
+         
         }else if(data=="agregado"){
           Swal.fire({
             position: 'center',

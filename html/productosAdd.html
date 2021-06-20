@@ -8,7 +8,7 @@
     
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/productosAdd.css">
-
+    
     <script src="/js/sweetalert2.all.min.js"></script>
     <script src="/js/productosAdd.js"></script>
 </head>
@@ -71,7 +71,7 @@
 
 
     
-<div id="div-regForm">
+<div id="div-regForm" class="div-regForm">
 
     <div class="form-title">Registro</div>
     <div class="form-sub-title">Registro de Productos</div>
@@ -82,24 +82,24 @@
       <tbody>
       <tr>
         <td><label for="fname">Nombre Producto:</label></td>
-        <td><div class="input-container"><input name="nombre" id="nombre" type="text" /></div></td>
+        <td><div class="input-container"><input name="nombre" id="nombre" type="text" required /></div></td>
       </tr>
       <tr>
         <td><label for="lname">Tallas:</label></td>
-        <td><div class="input-container"><input name="talla" id="talla" type="text" /></div></td>
+        <td><div class="input-container"><input name="talla" id="talla" type="text" required /></div></td>
       </tr>
       <tr>
         <td><label for="lname">Precio:</label></td>
-        <td><div class="input-container"><input name="precio" id="precio" type="text" /></div></td>
+        <td><div class="input-container"><input name="precio" id="precio" type="number" required placeholder="Numero" /></div></td>
       </tr>
       <tr>
         <td><label for="lname">Stock:</label></td>
-        <td><div class="input-container"><input name="stock" id="stock" type="text" /></div></td>
+        <td><div class="input-container"><input name="stock" id="stock" type="number" required placeholder="Numero" /></div></td>
       </tr>
       <tr>
       <tr>
         <td><label for="lname">Imagen:</label></td>
-        <td><div class="input-container"><input name="imagen" id="imagen" type="text" /></div></td>
+        <td><div class="input-container"><input name="imagen" id="imagen" type="text" required /></div></td>
       </tr>
 
       <tr>
@@ -111,7 +111,6 @@
         <option value="Hombre">Hombre</option>
         <option value="Mujer">Mujer</option>
         <option value="Niño">Niño</option>
-        <option value="Niña">Niña</option>
         </select>
         </div>
         
@@ -123,7 +122,7 @@
         <td><label for="lname">Colores:</label></td>
 
         <td>
-            <div class="colores" id="color">
+            <div class="colores form-colores" id="color">
                 <input class="color" type="checkbox" id="colorRe" name="horns" value="red">
                 <label class="color label red"></label>
 
@@ -161,7 +160,6 @@
       <td><div class="input-container div-descripcion"><textarea name="descripcion" id="descripcion" ></textarea></div></td>
     </tr>
 
-
             <tr>
       <td>&nbsp;</td>
       <td><input type="submit" class="greenButton " value="Guardar" />
@@ -174,8 +172,6 @@
     </form>
 
     </div>
-
-
 
 </body>
 </html>

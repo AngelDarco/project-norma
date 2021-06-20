@@ -23,8 +23,6 @@
     --slider_width: 50%;        
     --slider_height: 55%;
 
-
-
         /* Body */
     --color_fondo_body: #000C;
     
@@ -38,11 +36,9 @@
     --corazon_color: #e5ff00be;
     --corazon_pulsado: 2.3rem;
     --corazon_pulsado_color: #FF0000;
-    --corazonY: 19rem;
+    --corazonY: 20rem;
     --corazonX:  1rem;
 
         /* Vista Previa */
-    --width_vistaP: 80%;
-    --height_vistaP: 80%;
-    
+    --object_fit: scale-down;
 }

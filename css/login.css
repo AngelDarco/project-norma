@@ -105,7 +105,9 @@ input[type="checkbox"] {
 }
 
 .p-container {
-  padding: 0 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .p-container:after {
@@ -114,14 +116,9 @@ input[type="checkbox"] {
   content: "";
 }
 
-.p-container span {
-  display: block;
-  float: left;
-  color: #0d93ff;
-  padding-top: 8px;
-}
 
-input[type="submit"] {
+input,a {
+  text-decoration: none;
   padding: 5px 20px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
@@ -133,7 +130,7 @@ input[type="submit"] {
   float: right;
   font-weight: bold;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 input[type="submit"]:hover {
