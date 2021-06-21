@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     mostrarControles();
-    //sliderCreate();
     fondoFiltro();
     botonMenu();
     cambioImagen();
@@ -50,35 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
     stylos();
 
 }); // Llave final del Main
-
-
-
-
-    /* database */
-/* function database() {
-  const imagenes = async () =>{
-    try {
-    const res =  await fetch('/php/productosRead.php');
-    const data = await res.json();
-    //extractorImagenes(data);
-                 await bucleMostrar(data);
-  } catch (error) {
-      console.log(error);
-    }
-  };imagenes();
- */
-
-/* 
- let array = [];
- const extractorImagenes = async data=>{
-    await
-       data.forEach(item=>{
-           array.push(item.imagen);
-     });
-     await bucleMostrar(array);
-     console.log(array);
- } *
-}/
 
 
     /* Local Storage */
@@ -195,8 +165,7 @@ function meGusta(){
             let code = nodoF1[2].innerHTML;
 
             let clase = e.classList[3];
-            console.log(clase);
-
+            
             (clase!=undefined) ? agregarFavoritos(code)
                                : eliminarFavoritos(code); 
             
@@ -278,8 +247,6 @@ function bucleMostrar(array){
       arrayRandom.splice(random,1);  
       }
   };  
-
-  console.log(mostrar)
 
   let i = 0;
     mostrar.forEach( item => {
@@ -474,19 +441,6 @@ fondo.addEventListener("click", () => {
      newNode.setAttribute('id',id2);
      newNode.setAttribute('class','vistaPrevia');
     mostrador.replaceChild(newNode,oldNode);
-};
-
-         // Lanzador de Imagenes en el Header 
-  function sliderCreate() {
-    let timeIni;
-    let contador = 0;
-    timeIni = setInterval(function () {
-      let miimg = imgsHeader[contador];
-      const construye = `<img  src="${miimg}" alt="" class="slider img1">`;
-      slider.innerHTML = construye;
-      contador++;
-      if (contador >= imgsHeader.length) contador = 0;
-    }, 3500);
 };
 
  function querys(){

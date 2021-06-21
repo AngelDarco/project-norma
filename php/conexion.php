@@ -21,7 +21,7 @@ $conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 $conexion->exec("SET CHARACTER SET utf8");    
 //echo 'Conexion Exitosa';
 } catch (Exception $e) {
-    echo'Lo Sentimos Hubo un Error al conectar a la Base de Datos '. $e->getMessage;
+    echo'Lo Sentimos Hubo un Error al conectar a la Base de Datos '. $e->getMessage();
 }
 
 ?>

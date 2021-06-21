@@ -9,7 +9,7 @@
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="/img/icono.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/icono.svg" type="image/x-icon">
     <script src="https://kit.fontawesome.com/1239704031.js" crossorigin="anonymous"></script>
     
     
@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/slicebox.css" />
-		<link rel="stylesheet" type="text/css" href="css/custom.css" />
+    
 		<script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.slicebox.js"></script>
@@ -26,6 +26,7 @@
 
     <script src="/js/sweetalert2.all.min.js"></script>
     <script src="js/app.js" type='module'></script>
+    <script src="/js/userData.js"></script>
 
 </head>
 
@@ -37,7 +38,12 @@
         <!-- Iconos Del Header -->
         <div class="cabezera__header">
             <div class="izquierda">
-                <ul><a href="/html/login.html"><i class="fas fa-user"></i></a>
+                <ul>
+                  <ul class="sesion">
+                      <a href="/html/login.html"><i class="fas fa-user"></i></a>
+                      <li href="" class="usuario"></li>
+                      <li href="" class="salir"><i class="fas fa-sign-out-alt"></i></li>
+                  </ul>
                     <a href="#redireccion" class="home"><i class="fas fa-home"></i></a>
                     <a href="#redireccion" class="cvacio"><i class="far fa-heart corazon"></i></a>
                     <a class="carro"><i class="fas fa-shopping-cart"></i></a>
@@ -69,8 +75,8 @@
         <!-- Slider -->
         <div class="contenedor__slider">
           <div class="video__header">
-            <video autoplay="true" loop="true" poster="/img/header.jpeg">
-              <source src="videos/1.webm" type="video/webm">
+            <video autoplay="true" loop="true" poster="/assets/img/header.jpeg">
+              <source src="/assets/videos/1.webm" type="video/webm">
               <!-- <source src="/videos/1.mp4" type="video/mp4">
               <source src="/videos/1.flv" type="video/flv">  -->
 

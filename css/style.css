@@ -56,6 +56,23 @@
     align-items: center;
     justify-content: space-around;
 }
+
+.usuario{
+    text-decoration: none;
+    width: auto;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    display: block;
+    padding: 0 10%;
+    text-shadow: 0 0 5px #FF00CC;
+}
+.izquierda ul .sesion{
+    width: auto;
+    padding: 0 5%;
+    list-style: none;
+    cursor: pointer;
+}
 .izquierda .carro{
     opacity: .4;
 }
@@ -254,6 +271,13 @@
     right: 0%;
 }
 
+
+
+
+
+
+
+    /* Footer */
 .footer{
     width: 100%;
     height: auto;

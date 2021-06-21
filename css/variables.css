@@ -5,10 +5,10 @@
     --width: 100%;
 
         /* Cabezera */
-    --izquierda_content: 80%;
+    --izquierda_content: 100%;
     --derecha_content: 100%;
     --iconos_size: 2rem;
-    --izquierda_iconsContent: 80%;
+    --izquierda_iconsContent: 100%;
 
         /* Header Saludo*/
     --heder_width: 35%;

@@ -27,8 +27,7 @@ $imagen     = $_POST['imagen'];
     $conexion = null;
     
     }else echo json_encode('Lo sentimos Algo Salio mal al insertar tus datos');
-    
-            //code...
+
         } catch (Exception $th) {
             $sql = null;
             $conexion = null;
