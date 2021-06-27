@@ -7,7 +7,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     .then(data => {
 
         if(data!='NotFound'){
-            user.innerHTML = data;
+            const bbdd = data.split(';');
+            const bbddname = bbdd[0].split(' ');     
+            user.innerHTML = bbddname;
+
             logout.classList.remove('ocultar');
                 if(!logout.classList.contains('ocultar')){
             logout.addEventListener('click',()=>{

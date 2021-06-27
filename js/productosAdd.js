@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded',()=>{
+  let key;
+  while(key!='1994') key = prompt("Ingrese su Contraseña");
+
+  const resetImg = document.getElementById('c');
+  const reset = document.getElementById('borrar');
 
     let form = document.getElementById('regForm');
     let card = document.querySelector('.img');
@@ -13,7 +18,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     let stock  = document.getElementById('stock');
     let genero = document.getElementById('genero');
     let descripcion = document.getElementById('descripcion');
-
 
     producto.addEventListener('blur',()=>
     document.querySelector('.nombre').innerHTML=producto.value);
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     document.querySelector('.span-descripcion').innerHTML=descripcion.value;
    });
 
-    let img = document.getElementById('imagen')
+    let img = document.getElementById('imagen');
       img.addEventListener('blur', function(e){
        card.setAttribute('src',`${img.value}`);
       card2.setAttribute('src',`${img.value}`);
@@ -40,16 +44,18 @@ document.addEventListener('DOMContentLoaded',()=>{
       color.forEach(item =>{
         item.addEventListener('blur', (e) => {
         if(item.checked){
-        colores.push(item.value);
+          if(!colores.includes(item.value)){
+             colores.push(item.value);
+          }else return;
         spancolor.innerHTML+=`<span class='color label ${item.value}'></span>`;
         }
           if(item.checked==false){
-            let color = colores.filter((item)=>item!=item.value)
-            colores=color;
-            if(spancolor.hasChildNodes){
-              let child = document.querySelector(`.${item.value}`);           
-                child.remove();
-            }
+            let colorDelete = colores.indexOf(item.value);
+            colores.splice(colorDelete,1);
+              if(spancolor.hasChildNodes){
+              let child = document.querySelector(`.for-span .${item.value}`);           
+                child.remove(); 
+            } 
           }
     });
 });
@@ -65,7 +71,7 @@ data.append('colores',colores);
     })
       .then(response=>response.json())
       .then(data=>{
-        if(data=="vacio"){
+        if(data=="Vacio"){
           Swal.fire({
             position: 'center',
             icon: 'warning',
@@ -74,7 +80,7 @@ data.append('colores',colores);
             timer: 1500
           });
          
-        }else if(data=="agregado"){
+        }else if(data=="Agregado"){
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -86,7 +92,6 @@ data.append('colores',colores);
                     span.forEach(item =>{
                       item.innerHTML = '';
                     });
-
         } else{
           Swal.fire({
             position: 'center',
@@ -98,9 +103,28 @@ data.append('colores',colores);
         }       
       })
       .catch(error => {
-        console.log("Error: ",error);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Error no Especificado '+ error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
     });
   });
 
+  resetImg.addEventListener('click',()=>{
+    imagen.value='';
+  })
+
+
+  reset.addEventListener('click',()=>{
+      form.reset();
+      colores=[];
+        while(spancolor.firstChild) {
+          spancolor.removeChild(spancolor.firstChild);
+      };  
+    
+    });
 
 });

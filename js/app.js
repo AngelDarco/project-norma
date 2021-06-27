@@ -1,5 +1,6 @@
 'use strict';
 import {stylos} from './css.js';
+import {carro,carroBbdd} from './carro.js';
 
 const cajacard = document.querySelector('.img__main');
 const template = document.querySelector('.template-card').content;
@@ -10,8 +11,8 @@ const fondo = document.querySelector(".fondo");
 const cabezera = document.querySelector(".cabezera__header");
 const izquierda = document.querySelector(".fa-backward");
 const derecha = document.querySelector(".fa-forward");
-const slider = document.querySelector(".slider__header");
 const filtros = document.querySelectorAll('.filtro');
+const carroContent = document.querySelector('.carro i');
 
 const home = document.querySelector('.home');
 const favoritos = document.querySelector('.corazon');
@@ -29,17 +30,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const data =  await res.json()
        
         await cockies(data);
+        await carro();
+        await carroBbdd();
         await bucleMostrar(data);
         await botonFavoritos(data);
         await botonHome(data);
+        await botonCarro(data);
         await filtroImagenes(data);
-        
 
     } catch (error) {
         console.log(error);
     }
 };datos();
-
 
     mostrarControles();
     fondoFiltro();
@@ -81,6 +83,8 @@ function botonMenu(){
     menuShow.classList.toggle('ocultar');
     menu.style.transition='1s';
     menuFondo.classList.toggle('ocultar');
+    if(carroContent.classList.contains('fa-shopping-cart')) 
+    carroContent.classList.replace('fa-shopping-cart','fa-cart-plus');
 });
 
 };
@@ -95,7 +99,9 @@ function botonFavoritos(datos){
         menuFondo.classList.add('ocultar');
         menuFondo.classList.add('ocultar')
         menuShow.classList.add('ocultar');
-      }
+      };
+      if(carroContent.classList.contains('fa-shopping-cart')) 
+      carroContent.classList.replace('fa-shopping-cart','fa-cart-plus');
       
       let data = parseInt(localStorage.getItem('id3'));
       let arrayFavoritos=[];
@@ -129,6 +135,8 @@ function botonHome(data){
   home.addEventListener('click',e => {
     if(favoritos.classList.contains('fas'))
       favoritos.classList.remove('fas');
+      if(carroContent.classList.contains('fa-shopping-cart')) 
+      carroContent.classList.replace('fa-shopping-cart','fa-cart-plus');
     bucleBorrar(); 
     bucleMostrar(data);
 
@@ -145,6 +153,42 @@ function botonHome(data){
     
  }); 
 };
+function botonCarro(data){
+
+  if(!menuShow.classList.contains('ocultar')){
+    menu.classList.remove('rotar');
+    menuShow.classList.add('ocultar');
+    menu.style.transition='1s';
+    menuFondo.classList.add('ocultar');
+    menuFondo.classList.add('ocultar')
+    menuShow.classList.add('ocultar');
+  };
+      carroContent.addEventListener('click',e =>{
+
+        if (carroContent.classList.contains('fa-cart-plus')) {
+              /* Dentro */
+          carroContent.classList.replace('fa-cart-plus','fa-shopping-cart');
+          let local = localStorage.getItem('carro');
+          let code = local.split(' ');
+          let array = [];
+
+            for( var i=0; i<data.length; ++i){
+             for( var z=0; z<code.length; ++z){  
+                if(data[i].codepro==code[z]){
+                array[z] = data[i];
+              }
+            }
+          }
+              bucleBorrar();
+              bucleMostrar(array);
+        }else{
+              /* Fuera */
+          carroContent.classList.replace('fa-shopping-cart','fa-cart-plus');
+              bucleBorrar();
+              bucleMostrar(data);
+        };
+  });
+};
 
       /* Favoritos */
 function meGusta(){
@@ -155,7 +199,6 @@ function meGusta(){
              e.classList.toggle('fas');
              e.classList.toggle('corazon__pulsado');
             /* ------------------------------- */
-
             let icono = e.parentNode;
             let nodos = icono.parentNode;
             let nodo2 = nodos.parentNode
@@ -228,8 +271,8 @@ let id = parseInt(data);
 
 
         /* Muestra Las Imagenes */
-function bucleMostrar(array){
-
+async function bucleMostrar(array){
+   await carroBbdd();
   let arrayRandom = array.filter(item=> item!=null);
   let mostrar=[];
   let llenarItems;
@@ -249,12 +292,12 @@ function bucleMostrar(array){
   };  
 
   let i = 0;
-    mostrar.forEach( item => {
-
+  await  mostrar.forEach( item => {
       const id = parseInt(localStorage.getItem('id3'));
       const corazon = template.querySelector('.card-back figure .coral');
-      corazon.classList.remove('fas','far','fa-heart','corazon__pulsado')
-
+      corazon.classList.remove('fas','far','fa-heart','corazon__pulsado');
+      const carro = template.querySelector('.card-back figure .carroAdd');
+      
     template.querySelector('.card-front figure .img').setAttribute('src',item.imagen); 
     template.querySelector('.card-front figure figcaption').innerHTML = item.codepro; 
     template.querySelector('.card-front ul li .nombre').innerHTML = item.nombre; 
@@ -271,6 +314,7 @@ function bucleMostrar(array){
     template.querySelector('.card-back figure .img2').setAttribute('src',item.imagen); 
     template.querySelector('.card-back figure .img2').setAttribute('id',i); 
 
+      /* Mostrar Corazon */
     if(!isNaN(id)){
     for(let x=1;x<=(id+1);x++){
      (item.codepro==localStorage.getItem(x))  
@@ -279,17 +323,31 @@ function bucleMostrar(array){
         }
     }else  corazon.classList.add('far','fa-heart');
 
+      /* Mostrar Carrito */
+   carro.classList.remove('fa','fa-cart-plus','fa-shopping-cart');
+   let data = localStorage.getItem('carro');
+   let data2 = data.split(' ');
+   data2.forEach(code =>{
+        if(code==item.codepro){
+          carro.classList.remove('fa','fa-cart-plus','fa-shopping-cart');
+          carro.classList.add('fa','fa-shopping-cart');
+        }else {
+          if(carro.classList.contains('fa-shopping-cart'))return;
+          carro.classList.add('fa',"fa-cart-plus");}
+      }) 
+
     const clone = template.cloneNode(true);
     fragment.appendChild(clone);
     i++;
 
     })
-      cajacard.appendChild(fragment);
-      eventoImagenes();
-      meGusta();
-    };
-
-    const color = (dato)=>{
+    await  cajacard.appendChild(fragment);
+    await  eventoImagenes();
+    await  meGusta();
+    await  carro();
+      
+};
+      const color = (dato)=>{
       let array = dato.split(',');
       let nodo='';
       let resultado = document.createElement('span');
@@ -301,7 +359,7 @@ function bucleMostrar(array){
         resultado.appendChild(nodo);
       }
      return resultado;
-    }
+    };
 
 
       /* Borra las imagenes Antes de Mostrarlas */

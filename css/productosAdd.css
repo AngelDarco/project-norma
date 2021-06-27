@@ -140,7 +140,10 @@ figure img {
   margin: 0;
   border-radius: 24px;
 }
-
+#c{
+	position: absolute;
+	width: 4%;	
+}
 
 @media screen and (max-width:420px) {
 	

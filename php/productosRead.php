@@ -36,6 +36,8 @@ if (!$sql) {
 $response = $datos;
 header('Content-Type: application/json');
 echo json_encode($response);
+$result->closeCursor();
+$sql = null;
 $conexion = null;
 
 } catch (Exception $th) {
