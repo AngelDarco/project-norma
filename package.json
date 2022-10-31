@@ -1,5 +1,5 @@
 {
-  "name": "Web",
+  "name": "tiendaropa",
   "version": "1.0.0",
   "type": "module",
   "description": "Creacion de Tienda de Ropa",
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/eme92/TiendaRopa/issues"
   },
-  "homepage": "https://github.com/eme92/TiendaRopa#readme"
+  "homepage": "https://github.com/eme92/TiendaRopa#readme",
+  "dependencies": {
+    "jest": "^29.1.2"
+  }
 }
