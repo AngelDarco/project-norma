@@ -55,7 +55,6 @@
     height: 100vh;
     display: flex;
     flex-flow: column;
-    background: #0008;
  }
  .menu__header ul a{
     height: 5rem;
