@@ -12,18 +12,17 @@ if(!empty($email)&&!empty($pass)){
     $result->bindParam(':email',$email);
     $result->bindParam(':pass',$pass);
     $result->execute();
-
    
     if($result->rowCount()!=0){
        // session_set_cookie_params(100000);
        
-        session_start();
+        // session_start();
         $userdata = $result->fetch(PDO::FETCH_ASSOC);
 
-       $_SESSION["usuario"] = $userdata["nombre"];
-       $_SESSION["id"] = $userdata["id"];
+    //    $_SESSION["usuario"] = $userdata["nombre"];
+    //    $_SESSION["id"] = $userdata["id"];
 
-        echo json_encode('true');
+        echo json_encode(['true',$_SESSION['usuario'],$_SESSION['id']]);
 
         $result->closeCursor();
         $sql = null;

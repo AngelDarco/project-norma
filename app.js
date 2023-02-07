@@ -1,7 +1,7 @@
 'use strict';
 import {stylos} from './css.js';
-import {carro,carroBbdd} from './carro.js';
-import logout from './logout.js';
+// import {carro,carroBbdd} from './carro.js';
+import log from './log.js';
 import botonMenu from './botonMenu.js';
 import mostrarCards from './mostrarCards.js';
 
@@ -22,21 +22,21 @@ const menuShow = document.querySelector(".menu__header");
 const menuFondo = document.querySelector('.fondo__header');
 
 document.addEventListener("DOMContentLoaded", function () {
-    logout();
-    let data = fetchData();
-    // botonMenu(menuShow, this.window);
+  log();
+    botonMenu(menuShow);
+    Promise.resolve(fetchData()).then(data =>{
+    mostrarCards(data);
     
-      console.log(data);
-      // mostrarCards(arrData);
-      // botonFavoritos(arrData);
-    
-
+    // botonFavoritos(arrData);
     // mostrarControles();
     // fondoFiltro();
     // botonMenu();
     // cambioImagen();
     // querys();
     stylos();
+
+  });
+
 
 }); // Llave final del Main
 

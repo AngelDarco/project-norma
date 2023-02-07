@@ -1,4 +1,4 @@
-const logout = ()=>{
+export default function logout(){
     document.querySelector('.salir').addEventListener('click', () => {
          fetch('./logout.php')
              .then(res => res.json())
@@ -15,4 +15,3 @@ const logout = ()=>{
              .catch(err => console.log(err))
      })
 }
-export default logout;
