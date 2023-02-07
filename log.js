@@ -15,7 +15,15 @@ export default function Log(){
         btnLogin.classList.add('hiden')
         btnLogout.classList.remove('hiden')
 
-        btnLogout.addEventListener('click',logout);
+        btnLogout.addEventListener('click', function(){
+            Promise.resolve(logout()).then(data =>{
+                if(data){
+                 localStorage.removeItem('session');
+                    btnLogin.classList.remove('hiden');
+                    btnLogout.classList.add('hiden');
+                }
+            })
+        });
     }
 
 }

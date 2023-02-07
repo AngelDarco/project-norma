@@ -1,17 +1,16 @@
-export default function logout(){
-    document.querySelector('.salir').addEventListener('click', () => {
-         fetch('./logout.php')
+export default async function logout(){
+        return await fetch('./logout.php')
              .then(res => res.json())
              .then(data => {
-                 console.log(data);
+                console.log(data)
                  Swal.fire({
                      position: 'center',
-                     icon: 'error',
-                     title: 'Debes Iniciar Sesion Primero',
+                     icon: 'success',
+                     title: 'session closed',
                      showConfirmButton: false,
                      timer: 1000
                  });
+                 return data;
              })
              .catch(err => console.log(err))
-     })
 }
