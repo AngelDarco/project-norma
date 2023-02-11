@@ -1,11 +1,6 @@
-export default function mostrarCards(array){
-  console.log(array)
-
-  if (array.length <= 0) return;
-    let arrRandom = [];
-    for(let i = 0; i < array.length; i++){
-      arrRandom.push(array[Math.floor(Math.random()*array.length)])
-    }
+export default function mostrarCards(arr){
+  if (!arr || arr.length <= 0) return;
+    const arrRandom = arr.sort((a,b)=> Math.random()-0.5)
     const options = {
       root: null,
       rootMargin: '0px',
@@ -13,30 +8,31 @@ export default function mostrarCards(array){
     }
     const obsvr = document.querySelector('.observer');
     let count;
-    arrRandom.length >= 3 ? count = 3 : count = arrRandom.length-1;
     const observer = new IntersectionObserver(entry =>{
       if(entry[0].isIntersecting){
-        let arr = [];
+        let data = [];
+        arrRandom.length >= 3 ? count = 3 : count = arrRandom.length;
         for(let i = 0; i < count; i++){
-          arr.push(arrRandom[i]);
+          data.push(arrRandom[0]);
           arrRandom.shift();
         }
-         createCards(arr);
+         console.log(arrRandom)
+         createCards(data);
+         count=0;
       }
-    }, options); 
+      if(arrRandom.length===0) observer.unobserve(obsvr)
+    }, options);
     observer.observe(obsvr)
   };
 
-  const createCards = (arr)=>{
+  export function createCards(arr){
     const template = document.querySelector('.template-card').content;
     const cajacard = document.querySelector('.img__main');
     const fragment = new DocumentFragment();
     
         let i = 0;
         arr.forEach( item => {
-          const id = parseInt(localStorage.getItem('id3'));
-          const corazon = template.querySelector('.card-back figure .coral');
-          corazon.classList.remove('fas','far','fa-heart','corazon__pulsado');
+          const corazon = template.querySelector('.card-back figure .heart');
           const carro = template.querySelector('.card-back figure .carroAdd');
           
         template.querySelector('.card-front figure .img').setAttribute('src',item.imagen); 
@@ -56,14 +52,16 @@ export default function mostrarCards(array){
         template.querySelector('.card-back figure .img2').setAttribute('id',i); 
       
           /* Mostrar Corazon */
-        if(!isNaN(id)){
-        for(let x=1;x<=(id+1);x++){
-         (item.codepro==localStorage.getItem(x))  
-         ? corazon.classList.add('fas','fa-heart','corazon__pulsado') 
-         : corazon.classList.add('far','fa-heart');
-            }
-        }else  corazon.classList.add('far','fa-heart');
+        // if(!isNaN(id)){
+        // for(let x=1;x<=(id+1);x++){
+        //  (item.codepro==localStorage.getItem(x))  
+        //  ? corazon.classList.add('fas','fa-heart','like') 
+        //  : corazon.classList.add('far','fa-heart');
+        //     }
+        // }else  corazon.classList.add('far','fa-heart');
       
+        corazon.classList.add('far','fa-heart');
+
           /* Mostrar Carrito */
        carro.classList.remove('fa','fa-cart-plus','fa-shopping-cart');
        let data = localStorage.getItem('carro');
