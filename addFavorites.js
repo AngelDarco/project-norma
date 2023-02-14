@@ -1,29 +1,24 @@
-export default function addFavorites() {
-  const observer = new MutationObserver(like);
-  observer.observe(document.querySelector('.img__main'),
-    { attributes: false, childList: true, subtree: false })
-  }
+import addDataBase from "./addDataBase.js";
 
-function like() {
-  document.querySelectorAll('.heart')
-  .forEach(e => {
-    e.addEventListener('click', add, true);
-  })
+export default function addFavorites() {
+  addDataBase(like,'.heart');
 }
 
-function add(z){
+// function add(z){
+function like(z) {
   const user = window.localStorage.getItem('session');
+  const likeUser = user+'Likes';
   const id = z.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1].childNodes[5].innerHTML;
 
   if (user) {
     // not like
     if(!z.target.classList.contains('like')) {
-      agregarFavoritos(id, user);      
+      agregarFavoritos(id, likeUser);      
       z.target.classList.replace('far', 'fas');
       z.target.classList.add('like');
     } else {
       // like
-      eliminarFavoritos(id,user)
+      eliminarFavoritos(id,likeUser)
       z.target.classList.replace('fas', 'far');
       z.target.classList.remove('like');
     }
