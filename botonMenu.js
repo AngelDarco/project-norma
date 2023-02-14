@@ -1,5 +1,5 @@
-export default function botonMenu(menuShow,window){
-// const menuShow = document.querySelector(".menu__header");
+export default function botonMenu(menuShow){
+const header = document.querySelector(".header");
 
     const observer = new ResizeObserver((e)=>{
       if(e[0].contentRect.width > 650){
@@ -16,6 +16,6 @@ export default function botonMenu(menuShow,window){
         carroContent.classList.replace('fa-shopping-cart','fa-cart-plus');
     });
     }
-    })
-    observer.observe(window);
-  };
+  })
+  observer.observe(header);
+};
