@@ -9,25 +9,26 @@
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="/assets/img/icono.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/img/icono.svg" type="image/x-icon">
+
+  
   <script src="https://kit.fontawesome.com/49ff7c4b47.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./css/fontawesome-free-6.2.0-web/css/all.css">
+  <!-- <link rel="stylesheet" href="./css/fontawesome-free-6.2.0-web/css/all.css"> -->
 
-  <link rel="stylesheet" href="/css/card.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/card.css">
+  <link rel="stylesheet" href="./css/style.css">
 
-  <link rel="stylesheet" type="text/css" href="css/demo.css" />
-  <link rel="stylesheet" type="text/css" href="css/slicebox.css" />
+  <link rel="stylesheet" type="text/css" href="./css/demo.css" />
+  <link rel="stylesheet" type="text/css" href="./css/slicebox.css" />
 
   <!-- <script type="text/javascript" src="js/modernizr.custom.46884.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   <script type="text/javascript" src="js/jquery.slicebox.js"></script>
   <script src="/js/slider.js"></script> -->
 
-  <script src="/js/sweetalert2.all.min.js"></script>
-  <script src="js/app.js" type='module'></script>
-  <!-- <script src="/js/userData.js"></script> -->
-
+  <script src="./js/sweetalert2.all.min.js"></script>
+  <script src="./app.js" type='module'></script>
+  
 </head>
 
 <body>
@@ -40,10 +41,10 @@
       <div class="izquierda">
         <ul>
           <li class="usuario"><a href="./html/login.html"><i class="fas fa-user"></i></a></li>
-          <li><a href="#redireccion" class="home"><i class="fas fa-home"></i></a></li>
-          <li><a href="#redireccion" class="cvacio"><i class="far fa-heart corazon"></i></a></li>
+          <li><a href="#redirection" class="home"><i class="fas fa-home"></i></a></li>
+          <li><a href="#redirection" class="cvacio"><i class="far fa-heart corazon"></i></a></li>
           <li><a class="carro"><i class="fas fa-cart-plus"></i></a></li>
-          <li href="" class="salir"><i class="fas fa-sign-out-alt"></i></li>
+          <li class="salir"><i class="fas fa-sign-out-alt"></i></li>
         </ul>
       </div>
 
@@ -53,10 +54,10 @@
       <div class="derecha">
         <div class="menu__header ocultar">
           <ul>
-            <li><a href="#redireccion" class="filtro damas">Damas</a></li>
-            <li><a href="#redireccion" class="filtro caballeros">Caballeros</a></li>
-            <li><a href="#redireccion" class="filtro ninos">Niños</a></li>
-            <li><a href="#redireccion" class="filtro casa">Todo</a></li>
+            <li><a href="#redirection" class="filtro damas">Damas</a></li>
+            <li><a href="#redirection" class="filtro caballeros">Caballeros</a></li>
+            <li><a href="#redirection" class="filtro ninos">Niños</a></li>
+            <li><a href="#redirection" class="filtro casa">Todo</a></li>
           </ul>
         </div>
       </div>
@@ -70,8 +71,8 @@
     <!-- Slider -->
     <div class="contenedor__slider">
       <div class="video__header">
-        <video autoplay="true" loop="true" poster="/assets/img/header.jpeg">
-          <source src="./assets/videos/logo.webm" type="video/webm">
+        <video autoplay="true" loop="true" preload="true" > <!--poster="./assets/img/header.jpeg" -->
+          <source preload="true" src="./assets/videos/logo.webm" type="video/webm">
           <!-- <source src="/videos/1.mp4" type="video/mp4">
               <source src="/videos/1.flv" type="video/flv">  -->
 
@@ -113,8 +114,9 @@
                   </div>
                 </li>
                 <li>
-                  <a target="_blank"><img src="https://i.ytimg.com/vi/dBpTAg3_dZ8/maxresdefault.jpg" alt="image1" /></a>
-                  <div class="sb-description">
+                  <a target="_blank"><img
+                    src="https://i.pinimg.com/originals/e6/79/c8/e679c80e36ae982161e4f5e50e074738.jpg"
+                    alt="image2" /></a>                  <div class="sb-description">
                     <h3>Brave Astronaut</h3>
                   </div>
                 </li>
@@ -128,15 +130,16 @@
                 </li>
                 <li>
                   <a target="_blank"><img
-                      src="https://www.maximmexico.com/wp-content/uploads/2020/01/marcas-tendencia.png"
-                      alt="image1" /></a>
+                    src="https://i.pinimg.com/originals/e6/79/c8/e679c80e36ae982161e4f5e50e074738.jpg"
+                    alt="image2" /></a>
                   <div class="sb-description">
                     <h3>Faithful Investor</h3>
                   </div>
                 </li>
                 <li>
-                  <a target="_blank"><img src="https://i.ytimg.com/vi/1710n4XDXZ0/maxresdefault.jpg" alt="image1" /></a>
-                  <div class="sb-description">
+                  <a target="_blank"><img
+                    src="https://i.pinimg.com/originals/e6/79/c8/e679c80e36ae982161e4f5e50e074738.jpg"
+                    alt="image2" /></a>                  <div class="sb-description">
                     <h3>Groundbreaking Artist</h3>
                   </div>
                 </li>
@@ -167,7 +170,7 @@
 
 
   <main>
-    <div class="main">
+    <div class="main" id="redirection">
       <div class="fondo ocultar"></div>
       <div class="marco ocultar">
         <i class="fas fa-backward"></i>
@@ -175,8 +178,8 @@
       </div>
 
       <!-- Imagenes de Muestra -->
-      <div class="img__main">
-      </div>
+      <div class="img__main"></div>
+      <div style="width: 100%; height: 200px; border: 1px solid red;" class="observer"></div>
 
 
       <template class="template-card">
@@ -206,8 +209,8 @@
               <figure>
                 <div class="img-bg"></div>
                 <img class="img2" src="" alt="Brohm Lake">
-                <i class="coral" aria-hidden="true"></i>
-                <i class="carroAdd" aria-hidden="true"></i>
+                <i class="heart" aria-hidden="true"></i>
+                <i class="car" aria-hidden="true"></i>
               </figure>
 
               <button class="btn-ver">Ver</button>
@@ -256,7 +259,7 @@
   </footer>
 </body>
 
-<!-- Default Statcounter code for Store http://boutiquejoselyn.eu5.net/ -->
+<!-- Default Statcounter code for Store http://boutiquejoselyn.eu5.net/
 <script type="text/javascript">
   var sc_project = 12550702;
   var sc_invisible = 1;
