@@ -18,7 +18,7 @@ const filtros = document.querySelectorAll('.filtro');
 const carroContent = document.querySelector('.carro i');
 
 const home = document.querySelector('.home');
-const favoritos = document.querySelector('.corazon');
+const btnFavorites = document.querySelector('.corazon');
 const menu = document.getElementById("menu");
 const menuShow = document.querySelector(".menu__header");
 const menuFondo = document.querySelector('.fondo__header');
@@ -34,80 +34,100 @@ document.addEventListener("DOMContentLoaded", function () {
   eventFavorites();
   eventCar();
   eventHome()
-  
-  
+
+
 }); // Llave final del Main
 
 
-function eventClassNames(node,event,className){
-  // console.log(className);
-  if(event==='add')node.classList.add(className);
-  if(event==='remove')node.classList.remove(className);
-  if(event==='toggle')node.classList.toggle(className);
-  // if(event==='replace')node.classList.replace(className[0],className[1]);
+function eventClassNames(node, event, className) {
+  if (event === 'add') node.classList.add(className);
+  if (event === 'remove') node.classList.remove(className);
+  if (event === 'toggle') node.classList.toggle(className);
+  if (event === 'replace') node.classList.replace(className[0], className[1]);
+}
+
+function removeEvents() {
+  function removeCar() {
+    if (!carroContent.classList.contains('like')) return;
+    eventClassNames(carroContent, 'replace', ['fa-shopping-cart', 'fa-cart-plus']);
+    eventClassNames(carroContent, 'toggle', 'like')
+  }
+  function removeLikes() {
+    const btnFavorites = document.querySelector('.corazon');
+    if (!btnFavorites.classList.contains('like')) return;
+    eventClassNames(btnFavorites, 'replace', ['fas', 'far']);
+    eventClassNames(btnFavorites, 'toggle', 'like');
+  }
+  function removeFilters() {
+    if (menuShow.classList.contains('ocultar')) return
+    eventClassNames(menu, 'remove', 'rotar')
+    eventClassNames(menuShow, 'add', 'ocultar')
+    menu.style.transition = '1s';
+  }
+  return { removeCar, removeLikes, removeFilters }
 }
 
 function eventFavorites() {
   /*  Mostrar Favoritos - Corazon Header  */
-  favoritos.addEventListener('click', () => {
-    eventClassNames(favoritos,'toggle','fas');
-    eventClassNames(favoritos,'toggle','like');
+  const { removeCar, removeFilters } = removeEvents();
 
-    if (!menuShow.classList.contains('ocultar')) {
-      menu.classList.remove('rotar');
-    eventClassNames(menu,'remove','rotar');
-    eventClassNames(menuShow,'add','ocultar');
-    menu.style.transition = '5s';
-    };
-    // if (carroContent.classList.contains('fa-shopping-cart'))
-    // eventClassNames(carroContent,'replace',['fa-shopping-cart','fa-cart-plus'])
-
+  btnFavorites.addEventListener('click', () => {
+    removeCar();
+    removeFilters();
+    eventClassNames(btnFavorites, 'replace', ['far', 'fas']);
+    eventClassNames(btnFavorites, 'toggle', 'like');
     bucleBorrar();
     mostrarCards(true);
+
+    // if (!menuShow.classList.contains('ocultar')) {
+    //   menu.classList.remove('rotar');
+    // eventClassNames(menu,'remove','rotar');
+    // eventClassNames(menuShow,'add','ocultar');
+    // menu.style.transition = '5s';
+    // };
   });
 
 };
 
+
 function eventHome() {
-  home.addEventListener('click', e => {
-    if (favoritos.classList.contains('fas'))
-      favoritos.classList.remove('fas');
+  const { removeCar, removeLikes, removeFilters } = removeEvents();
+  home.addEventListener('click', () => {
+    removeCar();
+    removeLikes();
+    removeFilters();
+    if (btnFavorites.classList.contains('fas'))
+      btnFavorites.classList.remove('fas');
     if (carroContent.classList.contains('fa-shopping-cart'))
       carroContent.classList.replace('fa-shopping-cart', 'fa-cart-plus');
-      
-      if (!menuShow.classList.contains('ocultar')) {
-        menu.classList.remove('rotar');
-        menuShow.classList.add('ocultar');
-        menu.style.transition = '1s';
-        menuShow.classList.add('ocultar');
-      };
-      
+
+    if (!menuShow.classList.contains('ocultar')) {
+      menu.classList.remove('rotar');
+      menuShow.classList.add('ocultar');
+      menu.style.transition = '1s';
+      menuShow.classList.add('ocultar');
+    };
+
     bucleBorrar();
     mostrarCards();
-
   });
 };
 
 function eventCar() {
-  if (!menuShow.classList.contains('ocultar')) {
-    eventClassNames(menu,'remove','rotar')
-    eventClassNames(menuShow,'add','ocultar')
-    menu.style.transition = '1s';
-  };
+  const { removeLikes, removeFilters } = removeEvents();
 
-  carroContent.addEventListener('click', e => {
+  carroContent.addEventListener('click', () => {
+    removeLikes();
+    removeFilters();
     // in the car
-    if(e.target.classList.contains('fa-cart-plus')) {
-      eventClassNames(e,'replace',['fa-cart-plus','fa-shopping-cart']);
-      bucleBorrar();
-      mostrarCards(false,true)
-    } else {
-    // out of car
-      eventClassNames(e,'replace',['fa-shopping-cart','fa-cart-plus']);
-      bucleBorrar();
-      mostrarCards();
-    }
+    eventClassNames(carroContent, 'replace', ['fa-cart-plus', 'fa-shopping-cart']);
+    eventClassNames(carroContent, 'toggle', 'like')
+
+    bucleBorrar();
+    mostrarCards(false, true)
+
   });
+
 };
 
 
@@ -142,8 +162,8 @@ function filtroImagenes(data) {
 
   filtros.forEach(e => {
     e.addEventListener('click', (e) => {
-      if (favoritos.classList.contains('fas'))
-        favoritos.classList.remove('fas');
+      if (btnFavorites.classList.contains('fas'))
+        btnFavorites.classList.remove('fas');
 
       if (e.target.classList.contains('damas')) {
         let womans = data.filter(item => item.genero == 'Mujer');
@@ -171,16 +191,16 @@ function filtroImagenes(data) {
 
 /* Detector Imagenes en el Grid */
 function eventoImagenes() {
-  if(window.document.querySelector('.img__main').hasChildNodes()){
-  const imagenes = document.querySelectorAll(".btn-ver");
-  console.log(imagenes)
-  imagenes.forEach(function (e) {
-    e.addEventListener("click", function () {
-      vistaPreviaImagenes(e);
+  if (window.document.querySelector('.img__main').hasChildNodes()) {
+    const imagenes = document.querySelectorAll(".btn-ver");
+    console.log(imagenes)
+    imagenes.forEach(function (e) {
+      e.addEventListener("click", function () {
+        vistaPreviaImagenes(e);
+      });
     });
-  });
-}else
-console.log('no nodes')
+  } else
+    console.log('no nodes')
 };
 
 
