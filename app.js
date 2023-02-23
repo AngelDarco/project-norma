@@ -6,6 +6,10 @@ import botonMenu from './botonMenu.js';
 import mostrarCards from './mostrarCards.js';
 import addFavorites from './addFavorites.js';
 import addCar from './addCar.js';
+import eventClassNames from "./eventClassNames.js";
+import removeEvents from './removeEvents.js';
+import itemsFilter from './itemsFilter.js';
+
 
 const cajacard = document.querySelector('.img__main');
 
@@ -14,7 +18,6 @@ const fondo = document.querySelector(".fondo");
 const cabezera = document.querySelector(".cabezera__header");
 const izquierda = document.querySelector(".fa-backward");
 const derecha = document.querySelector(".fa-forward");
-const filtros = document.querySelectorAll('.filtro');
 const carroContent = document.querySelector('.carro i');
 
 const home = document.querySelector('.home');
@@ -22,6 +25,7 @@ const btnFavorites = document.querySelector('.corazon');
 const menu = document.getElementById("menu");
 const menuShow = document.querySelector(".menu__header");
 const menuFondo = document.querySelector('.fondo__header');
+const { removeCar, removeLikes, removeFilters } = removeEvents();
 
 document.addEventListener("DOMContentLoaded", function () {
   log();
@@ -30,104 +34,46 @@ document.addEventListener("DOMContentLoaded", function () {
   mostrarCards();
   addFavorites();
   addCar();
-
+  itemsFilter();
   eventFavorites();
   eventCar();
   eventHome()
 
 
+
 }); // Llave final del Main
 
 
-function eventClassNames(node, event, className) {
-  if (event === 'add') node.classList.add(className);
-  if (event === 'remove') node.classList.remove(className);
-  if (event === 'toggle') node.classList.toggle(className);
-  if (event === 'replace') node.classList.replace(className[0], className[1]);
-}
-
-function removeEvents() {
-  function removeCar() {
-    if (!carroContent.classList.contains('like')) return;
-    eventClassNames(carroContent, 'replace', ['fa-shopping-cart', 'fa-cart-plus']);
-    eventClassNames(carroContent, 'toggle', 'like')
-  }
-  function removeLikes() {
-    const btnFavorites = document.querySelector('.corazon');
-    if (!btnFavorites.classList.contains('like')) return;
-    eventClassNames(btnFavorites, 'replace', ['fas', 'far']);
-    eventClassNames(btnFavorites, 'toggle', 'like');
-  }
-  function removeFilters() {
-    if (menuShow.classList.contains('ocultar')) return
-    eventClassNames(menu, 'remove', 'rotar')
-    eventClassNames(menuShow, 'add', 'ocultar')
-    menu.style.transition = '1s';
-  }
-  return { removeCar, removeLikes, removeFilters }
-}
-
-function eventFavorites() {
-  /*  Mostrar Favoritos - Corazon Header  */
-  const { removeCar, removeFilters } = removeEvents();
-
-  btnFavorites.addEventListener('click', () => {
-    removeCar();
-    removeFilters();
-    eventClassNames(btnFavorites, 'replace', ['far', 'fas']);
-    eventClassNames(btnFavorites, 'toggle', 'like');
-    bucleBorrar();
-    mostrarCards(true);
-
-    // if (!menuShow.classList.contains('ocultar')) {
-    //   menu.classList.remove('rotar');
-    // eventClassNames(menu,'remove','rotar');
-    // eventClassNames(menuShow,'add','ocultar');
-    // menu.style.transition = '5s';
-    // };
-  });
-
-};
-
-
+// event buttons header
+// show home
 function eventHome() {
-  const { removeCar, removeLikes, removeFilters } = removeEvents();
   home.addEventListener('click', () => {
     removeCar();
     removeLikes();
     removeFilters();
-    if (btnFavorites.classList.contains('fas'))
-      btnFavorites.classList.remove('fas');
-    if (carroContent.classList.contains('fa-shopping-cart'))
-      carroContent.classList.replace('fa-shopping-cart', 'fa-cart-plus');
-
-    if (!menuShow.classList.contains('ocultar')) {
-      menu.classList.remove('rotar');
-      menuShow.classList.add('ocultar');
-      menu.style.transition = '1s';
-      menuShow.classList.add('ocultar');
-    };
-
-    bucleBorrar();
     mostrarCards();
   });
 };
-
+/*  show likes  */
+function eventFavorites() {
+  btnFavorites.addEventListener('click', () => {
+    removeCar();
+    removeFilters();
+    eventClassNames(btnFavorites, 'replace', ['far', 'fas']);
+    eventClassNames(btnFavorites, 'add', 'like');
+    mostrarCards(true);
+  });
+};
+// show car
 function eventCar() {
-  const { removeLikes, removeFilters } = removeEvents();
-
   carroContent.addEventListener('click', () => {
     removeLikes();
     removeFilters();
     // in the car
     eventClassNames(carroContent, 'replace', ['fa-cart-plus', 'fa-shopping-cart']);
-    eventClassNames(carroContent, 'toggle', 'like')
-
-    bucleBorrar();
+    eventClassNames(carroContent, 'add', 'like')
     mostrarCards(false, true)
-
   });
-
 };
 
 
@@ -146,47 +92,6 @@ const color = (dato) => {
     resultado.appendChild(nodo);
   }
   return resultado;
-};
-
-
-/* Borra las imagenes Antes de Mostrarlas */
-function bucleBorrar() {
-  while (cajacard.firstChild) {
-    cajacard.removeChild(cajacard.firstChild);
-  }
-  // eventoImagenes()
-};
-
-/* Filtrado de Imagenes */
-function filtroImagenes(data) {
-
-  filtros.forEach(e => {
-    e.addEventListener('click', (e) => {
-      if (btnFavorites.classList.contains('fas'))
-        btnFavorites.classList.remove('fas');
-
-      if (e.target.classList.contains('damas')) {
-        let womans = data.filter(item => item.genero == 'Mujer');
-        bucleBorrar();
-        bucleMostrar(womans);
-
-      } else if (e.target.classList.contains('caballeros')) {
-        let mens = data.filter(item => item.genero == 'Hombre');
-        bucleBorrar();
-        bucleMostrar(mens);
-
-      } else if (e.target.classList.contains('ninos')) {
-        let kids = data.filter(item => item.genero == 'Niño');
-        bucleBorrar();
-        bucleMostrar(kids);
-
-      } else if (e.target.classList.contains('casa')) {
-        bucleBorrar();
-        bucleMostrar(data);
-
-      }
-    });
-  });
 };
 
 /* Detector Imagenes en el Grid */
