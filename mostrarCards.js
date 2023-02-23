@@ -1,5 +1,6 @@
-async function mostrarCards(like = false, car = false) {
+const container = document.querySelector('.img__main');
 
+async function mostrarCards(like = false, car = false) {
   const responseData = await Promise.resolve(fetchData()).then(data => data);
 
   if (!responseData || responseData.length <= 0)
@@ -38,18 +39,22 @@ async function mostrarCards(like = false, car = false) {
       console.log('no car items found');
   } else {
     loadObserver(arr, like, car);
-
   }
 }
 
+function bucleBorrar() {
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+};
 
 const loadObserver = (arrLoaded, like, car) => {
+  bucleBorrar();
   const options = {
     root: null,
     rootMargin: '0px',
     threshold: 1
   }
-  const container = document.querySelector('.img__main');
 
   let count = 3;
   if (arrLoaded.length < 3) count = arrLoaded.length;
@@ -66,6 +71,7 @@ const loadObserver = (arrLoaded, like, car) => {
     const observer = new IntersectionObserver(entries => {
       let data = [];
       entries.forEach(entry => {
+        if(arrLoaded.length === 0) return
         if (entry.isIntersecting) {
           for (let i = 0; i < count; i++) {
             data.push(arrLoaded[0]);
@@ -78,18 +84,17 @@ const loadObserver = (arrLoaded, like, car) => {
       })
     }, options);
     observer.observe(container.lastElementChild);
-
   }
 }
 
 const card = (arr, like, car) => {
   if (arr.length === 0) return
   const template = document.querySelector('.template-card').content;
-  const cajacard = document.querySelector('.img__main');
   const fragment = new DocumentFragment();
 
   let i = 0;
   arr.forEach(item => {
+    if(!item) return
     const corazon = template.querySelector('.card-back figure .heart');
     const carro = template.querySelector('.card-back figure .car');
 
@@ -110,16 +115,16 @@ const card = (arr, like, car) => {
     template.querySelector('.card-back figure .img2').setAttribute('id', i);
 
     /* Mostrar Corazon */
-    // if(like)
-    // corazon.classList.add('fas','fa-heart','like') 
-    // else
+    if(like)
+    corazon.classList.add('fas','fa-heart','like') 
+    else
     corazon.classList.add('far', 'fa-heart');
 
     /* Mostrar Carrito */
-    // if(car)
-    // carro.classList.add('fas','fa-cart-plus')
-    // else
+    if(car)
     carro.classList.add('fas', 'fa-shopping-cart')
+    else
+    carro.classList.add('fas','fa-cart-plus')
 
     //  carro.classList.remove('fa','fa-cart-plus','fa-shopping-cart');
     //  let data = localStorage.getItem('carro');
@@ -138,13 +143,11 @@ const card = (arr, like, car) => {
     i++;
   });
 
-  cajacard.appendChild(fragment);
+  container.appendChild(fragment);
   //  eventoImagenes();
   //  meGusta();
   // await  carro();
 }
-
-
 
 async function fetchData() {
   return await fetch('./productosRead.php')
@@ -153,3 +156,4 @@ async function fetchData() {
 }
 
 export default mostrarCards;
+export { loadObserver, fetchData };
