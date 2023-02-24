@@ -2,6 +2,12 @@ import eventClassNames from "./eventClassNames.js";
 
 const container = document.querySelector('.img__main');
 
+function dataLocalStorage() {
+  const user = window.localStorage.getItem('session');
+  const likeData = JSON.parse(window.localStorage.getItem(user + 'Likes'));
+  const carData = JSON.parse(window.localStorage.getItem(user + 'Car'));
+  return { user, likeData, carData }
+}
 
 async function mostrarCards(like = false, car = false) {
   const responseData = await Promise.resolve(fetchData()).then(data => data);
@@ -10,9 +16,7 @@ async function mostrarCards(like = false, car = false) {
     return;
   const arr = responseData.sort((a, b) => Math.random() - 0.5);
 
-const user = window.localStorage.getItem('session');
-const likeData = JSON.parse(window.localStorage.getItem(user + 'Likes'));
-const carData = JSON.parse(window.localStorage.getItem(user + 'Car'));
+  const { likeData, carData } = dataLocalStorage();
 
   if (like) {
     if (likeData) {
@@ -113,43 +117,43 @@ const card = (arr, likeData, carData) => {
     template.querySelector('.card-back figure .img2').setAttribute('id', i);
 
 
-    
+
     /* Mostrar like */
-    if (likeData.data.includes(item.codepro)){
-      eventClassNames(corazon,'remove','far');
-      eventClassNames(corazon,'remove','fa-heart');
+    if (likeData.data.includes(item.codepro)) {
+      eventClassNames(corazon, 'remove', 'far');
+      eventClassNames(corazon, 'remove', 'fa-heart');
 
-      eventClassNames(corazon,'add','fas');
-      eventClassNames(corazon,'add','fa-heart');
-      eventClassNames(corazon,'add','like');
+      eventClassNames(corazon, 'add', 'fas');
+      eventClassNames(corazon, 'add', 'fa-heart');
+      eventClassNames(corazon, 'add', 'like');
 
-  }else{
-    eventClassNames(corazon,'remove','fas');
-    eventClassNames(corazon,'remove','fa-heart');
-    eventClassNames(corazon,'remove','like');
+    } else {
+      eventClassNames(corazon, 'remove', 'fas');
+      eventClassNames(corazon, 'remove', 'fa-heart');
+      eventClassNames(corazon, 'remove', 'like');
 
-    eventClassNames(corazon,'add','far');
-    eventClassNames(corazon,'add','fa-heart');
-  }
-      
-    /* Mostrar Car*/
-      if (carData.data.includes(item.codepro)){
-      eventClassNames(carro,'remove','fas')
-      eventClassNames(carro,'remove','fa-cart-plus')
-
-      eventClassNames(carro,'add','fas')
-      eventClassNames(carro,'add','fa-shopping-cart')
-      eventClassNames(carro,'add','like')
-
-    }else{
-      eventClassNames(carro,'remove','fas')
-      eventClassNames(carro,'remove','fa-shopping-cart')
-      eventClassNames(carro,'remove','like')
-
-      eventClassNames(carro,'add','fas')
-      eventClassNames(carro,'add','fa-cart-plus')
+      eventClassNames(corazon, 'add', 'far');
+      eventClassNames(corazon, 'add', 'fa-heart');
     }
-      
+
+    /* Mostrar Car*/
+    if (carData.data.includes(item.codepro)) {
+      eventClassNames(carro, 'remove', 'fas')
+      eventClassNames(carro, 'remove', 'fa-cart-plus')
+
+      eventClassNames(carro, 'add', 'fas')
+      eventClassNames(carro, 'add', 'fa-shopping-cart')
+      eventClassNames(carro, 'add', 'like')
+
+    } else {
+      eventClassNames(carro, 'remove', 'fas')
+      eventClassNames(carro, 'remove', 'fa-shopping-cart')
+      eventClassNames(carro, 'remove', 'like')
+
+      eventClassNames(carro, 'add', 'fas')
+      eventClassNames(carro, 'add', 'fa-cart-plus')
+    }
+
     const clone = template.cloneNode(true);
     fragment.appendChild(clone);
     i++;
@@ -164,4 +168,4 @@ async function fetchData() {
 }
 
 export default mostrarCards;
-export { loadObserver, fetchData };
+export { loadObserver, fetchData, dataLocalStorage };
