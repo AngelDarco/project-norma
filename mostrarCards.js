@@ -1,4 +1,7 @@
+import eventClassNames from "./eventClassNames.js";
+
 const container = document.querySelector('.img__main');
+
 
 async function mostrarCards(like = false, car = false) {
   const responseData = await Promise.resolve(fetchData()).then(data => data);
@@ -6,40 +9,35 @@ async function mostrarCards(like = false, car = false) {
   if (!responseData || responseData.length <= 0)
     return;
   const arr = responseData.sort((a, b) => Math.random() - 0.5);
-  const user = window.localStorage.getItem('session');
 
+const user = window.localStorage.getItem('session');
+const likeData = JSON.parse(window.localStorage.getItem(user + 'Likes'));
+const carData = JSON.parse(window.localStorage.getItem(user + 'Car'));
 
   if (like) {
-    const database = JSON.parse(window.localStorage.getItem(user + 'Likes'));
-    let dataLike = [];
-    if (database) {
-      for (let i = 0; i < database.data.length; i++) {
-        for (let ii = 0; ii < arr.length; ii++) {
-          if (database.data[i] === arr[ii].codepro)
-            dataLike.push(arr[ii]);
-        }
-      }
-      loadObserver(dataLike, like, car);
-
+    if (likeData) {
+      loadObserver(filter(likeData, arr), likeData, carData);
     } else
       console.log('No favorite items found');
   } else if (car) {
-    const database = JSON.parse(window.localStorage.getItem(user + 'Car'));
-    let dataCar = [];
-    if (database) {
-      for (let i = 0; i < database.data.length; i++) {
-        for (let ii = 0; ii < arr.length; ii++) {
-          if (database.data[i] === arr[ii].codepro)
-            dataCar.push(arr[ii]);
-        }
-      }
-      loadObserver(dataCar, like, car);
-
+    if (carData) {
+      loadObserver(filter(carData, arr), likeData, carData);
     } else
       console.log('no car items found');
   } else {
-    loadObserver(arr, like, car);
+    loadObserver(arr, likeData, carData);
   }
+}
+
+function filter(database, arr) {
+  let data = [];
+  for (let i = 0; i < database.data.length; i++) {
+    for (let ii = 0; ii < arr.length; ii++) {
+      if (database.data[i] === arr[ii].codepro)
+        data.push(arr[ii]);
+    }
+  }
+  return data;
 }
 
 function bucleBorrar() {
@@ -48,7 +46,7 @@ function bucleBorrar() {
   }
 };
 
-const loadObserver = (arrLoaded, like, car) => {
+const loadObserver = (arrLoaded, likeData, carData) => {
   bucleBorrar();
   const options = {
     root: null,
@@ -64,20 +62,20 @@ const loadObserver = (arrLoaded, like, car) => {
       data.push(arrLoaded[0])
       arrLoaded.shift();
     }
-    card(data, like, car);
+    card(data, likeData, carData);
   })()
 
-  if (container.hasChildNodes && arrLoaded.length !==0) {
+  if (container.hasChildNodes && arrLoaded.length !== 0) {
     const observer = new IntersectionObserver(entries => {
       let data = [];
       entries.forEach(entry => {
-        if(arrLoaded.length === 0) return
+        if (arrLoaded.length === 0) return
         if (entry.isIntersecting) {
           for (let i = 0; i < count; i++) {
             data.push(arrLoaded[0]);
             arrLoaded.shift();
           }
-          card(data, like, car);
+          card(data, likeData, carData);
           observer.unobserve(entry.target);
           observer.observe(container.lastElementChild);
         }
@@ -87,16 +85,16 @@ const loadObserver = (arrLoaded, like, car) => {
   }
 }
 
-const card = (arr, like, car) => {
+const card = (arr, likeData, carData) => {
   if (arr.length === 0) return
   const template = document.querySelector('.template-card').content;
+  const corazon = template.querySelector('.card-back figure .heart');
+  const carro = template.querySelector('.card-back figure .car');
   const fragment = new DocumentFragment();
-
   let i = 0;
+
   arr.forEach(item => {
-    if(!item) return
-    const corazon = template.querySelector('.card-back figure .heart');
-    const carro = template.querySelector('.card-back figure .car');
+    if (!item) return
 
     template.querySelector('.card-front figure .img').setAttribute('src', item.imagen);
     template.querySelector('.card-front figure figcaption').innerHTML = item.codepro;
@@ -114,39 +112,49 @@ const card = (arr, like, car) => {
     template.querySelector('.card-back figure .img2').setAttribute('src', item.imagen);
     template.querySelector('.card-back figure .img2').setAttribute('id', i);
 
-    /* Mostrar Corazon */
-    if(like)
-    corazon.classList.add('fas','fa-heart','like') 
-    else
-    corazon.classList.add('far', 'fa-heart');
 
-    /* Mostrar Carrito */
-    if(car)
-    carro.classList.add('fas', 'fa-shopping-cart')
-    else
-    carro.classList.add('fas','fa-cart-plus')
+    
+    /* Mostrar like */
+    if (likeData.data.includes(item.codepro)){
+      eventClassNames(corazon,'remove','far');
+      eventClassNames(corazon,'remove','fa-heart');
 
-    //  carro.classList.remove('fa','fa-cart-plus','fa-shopping-cart');
-    //  let data = localStorage.getItem('carro');
-    //  let data2 = data.split(' ');
-    //  data2.forEach(code =>{
-    //       if(code==item.codepro){
-    //         carro.classList.remove('fa','fa-cart-plus','fa-shopping-cart');
-    //         carro.classList.add('fa','fa-shopping-cart');
-    //       }else {
-    //         if(carro.classList.contains('fa-shopping-cart'))return;
-    //         carro.classList.add('fa',"fa-cart-plus");}
-    //     }) 
+      eventClassNames(corazon,'add','fas');
+      eventClassNames(corazon,'add','fa-heart');
+      eventClassNames(corazon,'add','like');
 
+  }else{
+    eventClassNames(corazon,'remove','fas');
+    eventClassNames(corazon,'remove','fa-heart');
+    eventClassNames(corazon,'remove','like');
+
+    eventClassNames(corazon,'add','far');
+    eventClassNames(corazon,'add','fa-heart');
+  }
+      
+    /* Mostrar Car*/
+      if (carData.data.includes(item.codepro)){
+      eventClassNames(carro,'remove','fas')
+      eventClassNames(carro,'remove','fa-cart-plus')
+
+      eventClassNames(carro,'add','fas')
+      eventClassNames(carro,'add','fa-shopping-cart')
+      eventClassNames(carro,'add','like')
+
+    }else{
+      eventClassNames(carro,'remove','fas')
+      eventClassNames(carro,'remove','fa-shopping-cart')
+      eventClassNames(carro,'remove','like')
+
+      eventClassNames(carro,'add','fas')
+      eventClassNames(carro,'add','fa-cart-plus')
+    }
+      
     const clone = template.cloneNode(true);
     fragment.appendChild(clone);
     i++;
   });
-
   container.appendChild(fragment);
-  //  eventoImagenes();
-  //  meGusta();
-  // await  carro();
 }
 
 async function fetchData() {
