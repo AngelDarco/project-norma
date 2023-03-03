@@ -5,7 +5,7 @@
   "description": "Creacion de Tienda de Ropa",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch --verbose"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,11 @@
     "url": "https://github.com/eme92/TiendaRopa/issues"
   },
   "homepage": "https://github.com/eme92/TiendaRopa#readme",
-  "dependencies": {
-    "jest": "^29.1.2"
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "jest": "^29.3.1",
+    "prettier": "2.8.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
