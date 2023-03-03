@@ -1,5 +1,4 @@
 <?php
-
 require 'conexion.php';
     $email = $_POST['email'];
     $pass = $_POST['pass'];
