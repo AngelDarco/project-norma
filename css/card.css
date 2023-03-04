@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url("https://fonts.googleapis.com/css?family=Lato");
 
 /* .flip-card-container */
 .flip-card-container {
@@ -12,9 +12,7 @@
   width: 17rem;
   height: 25rem;
   margin: auto;
- 
 
- 
   perspective: 1000px;
 }
 
@@ -25,7 +23,7 @@
 
   position: relative;
   transform-style: preserve-3d;
-  transition: .6s .1s;
+  transition: 0.6s 0.1s;
 }
 
 /* hover and focus-within states */
@@ -107,12 +105,12 @@ figcaption {
   right: 12px;
 
   color: var(--white-1);
-  background: hsla(var(--hue), 25%, 10%, .5);
+  background: hsla(var(--hue), 25%, 10%, 0.5);
 }
 
 /* .img-bg */
 .img-bg {
-  background: hsla(var(--hue), 25%, 10%, .5);
+  background: hsla(var(--hue), 25%, 10%, 0.5);
 }
 
 .card-front .img-bg {
@@ -133,12 +131,12 @@ figcaption {
   border-left-color: transparent;
   border-right-color: transparent;
 
-  transition: .1s;
+  transition: 0.1s;
 }
 
- .card-back .img-bg {
+.card-back .img-bg {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-} 
+}
 
 /* hover state */
 .flip-card-container:hover .card-front .img-bg::before {
@@ -151,7 +149,6 @@ figcaption {
 .card-front ul {
   --width_text: 70%;
   --height_text: 100%;
-
 
   padding-top: 0;
   margin: 0 auto;
@@ -166,8 +163,7 @@ figcaption {
   align-items: center;
   flex-direction: column;
 
-  text-shadow: 0 0 4px #000,
-               0 0 8px #000;
+  text-shadow: 0 0 4px #000, 0 0 8px #000;
 }
 
 /* li */
@@ -201,7 +197,7 @@ figcaption {
   height: 2px;
 
   background: currentColor;
-  opacity: .2;
+  opacity: 0.2;
 }
 
 /* button */
@@ -216,12 +212,10 @@ figcaption {
   border: 2px solid var(--grey);
   border-radius: 1000px;
   background: transparent;
-  transition: .3s;
+  transition: 0.3s;
 
-  box-shadow: 0 0 4px #F0F9,
-              0 0 8px #F0F9;
-  text-shadow:0 0 4px #0F09,
-              0 0 8px #0F09;
+  box-shadow: 0 0 4px #f0f9, 0 0 8px #f0f9;
+  text-shadow: 0 0 4px #0f09, 0 0 8px #0f09;
 
   cursor: pointer;
 }
@@ -229,7 +223,7 @@ figcaption {
 .card-back button:hover,
 button:focus {
   color: var(--primary);
-  background: hsla(var(--hue), 25%, 10%, .2);
+  background: hsla(var(--hue), 25%, 10%, 0.2);
   border-color: currentColor;
 }
 
@@ -240,7 +234,7 @@ button:focus {
 /* .design-container */
 .design-container {
   --tr: 90;
-  --op: .5;
+  --op: 0.5;
 
   width: 100%;
   height: 100%;
@@ -261,7 +255,7 @@ button:focus {
   position: absolute;
 
   opacity: var(--op);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .design--1,
@@ -275,7 +269,7 @@ button:focus {
 .design--1,
 .design--2 {
   top: 0;
-  transform: translateY(calc((var(--tr) - (var(--tr) * 2)) * 1%))
+  transform: translateY(calc((var(--tr) - (var(--tr) * 2)) * 1%));
 }
 
 .design--1 {
@@ -289,7 +283,7 @@ button:focus {
 .design--3,
 .design--4 {
   bottom: 0;
-  transform: translateY(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%))
+  transform: translateY(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
 }
 
 .design--3 {
@@ -325,7 +319,7 @@ button:focus {
 .design--7,
 .design--8 {
   right: 0;
-  transform: translateX(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%))
+  transform: translateX(calc((var(--tr) + (var(--tr) - var(--tr))) * 1%));
 }
 
 .design--7 {
@@ -337,138 +331,138 @@ button:focus {
 }
 
 /* states */
-.card-back button:hover+.design-container,
-button:active+.design-container,
-button:focus+.design-container {
+.card-back button:hover + .design-container,
+button:active + .design-container,
+button:focus + .design-container {
   --tr: 20;
-  --op: .7;
+  --op: 0.7;
 }
 
 .abs-site-link {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  color: hsla(0, 0%, 100%, .6);
+  color: hsla(0, 0%, 100%, 0.6);
   font-size: 16px;
-  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
 }
-
 
 /* Card */
-.for-span{
-  --span_margin: .4rem;
+.for-span {
+  --span_margin: 0.4rem;
   --span_size: 1rem;
-	margin: var(--span_margin);
-	font-size: var(--span_size);
-	color: black;
-	text-shadow: 0 0 4px #fff,
-               0 0 8px #fff;
+  margin: var(--span_margin);
+  font-size: var(--span_size);
+  color: black;
+  text-shadow: 0 0 4px #fff, 0 0 8px #fff;
+}
+.container_colors{
+  width: 100%;
+  height: 20px;
+  border: 1px solid red;
 }
 
-.li-color{
-	display: flex;
-	width: 100%;
-	height: auto;
-	margin: 1rem 0;
+.li-color {
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
 }
 
-.li-descripcion{
-	display: flex;
-	flex-flow: row wrap;
-	width: 100%;
-	height: auto;
-} 
-
-
-.colores{
-	display:flex;
-	flex-wrap: wrap;
-	width: 100%;
-	height: auto;
-}
-.color{
-  --color_width: 20px;
-  --color_height: 18px;
-
-	width: var(--color_width);
-	height: var(--color_height);
+.li-descripcion {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  height: auto;
 }
 
-.label{
-	margin-top: 2px;
-	margin-right: 10px;
+.colores {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 10px;
+  width: auto;
+  height: auto;
+}
+.color {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 2px;
+  margin-top: 10px;
+  text-align: center;
 }
 
-.red{
-	background:red;
+.red {
+  background: red;
 }
-.green{
-	background:green;
+.green {
+  background: green;
 }
-.blue{
-	background:blue;
+.blue {
+  background: blue;
 }
-.white{
-	background:white;
+.white {
+  background: white;
 }
-.black{
-	background:black;
+.black {
+  background: black;
 }
-.grey{
-	background:grey;
+.grey {
+  background: grey;
 }
-.purple{
-	background:purple;
+.purple {
+  background: purple;
 }
-.orange{
-	background:orangered;
+.orange {
+  background: orangered;
 }
-.pink{
-	background:#ff6781;
+.pink {
+  background: #ff6781;
 }
-
-
-.div-descripcion{
-	width: auto;
-	height: auto;
+.yellow{
+  background: yellow;
 }
 
-#descripcion{
-	width: 100%;
-	height: 5rem;
-	padding: 10px;
-	resize: none;
+.div-descripcion {
+  width: auto;
+  height: auto;
+}
+
+#descripcion {
+  width: 100%;
+  height: 5rem;
+  padding: 10px;
+  resize: none;
 }
 
 .shadow {
-	width: 100%;
-	height: 168px;
-	position: relative;
-	margin-top: -110px;
-	background: transparent url(/assets/img/shadow.png) no-repeat bottom center;
-	background-size: 100% 100%; /* stretches it */
-	z-index: -1;
-	display: none;
+  width: 100%;
+  height: 168px;
+  position: relative;
+  margin-top: -110px;
+  background: transparent url(/assets/img/shadow.png) no-repeat bottom center;
+  background-size: 100% 100%; /* stretches it */
+  z-index: -1;
+  display: none;
 }
-
-
 
 @media screen and (max-width: 800px) {
   /* .flip-card-container */
-.flip-card-container {
-  width: 15rem;
-  height: 22rem;
-  margin: auto;
+  .flip-card-container {
+    width: 15rem;
+    height: 22rem;
+    margin: auto;
   }
-/* li */
-.card-front ul li {
-  --font_height: 1.4rem;
-  --font_siz: 1rem;
-}
-/* ul */
-.card-front ul {
-  --width_text: 85%;
-  --height_text: 100%;
+  /* li */
+  .card-front ul li {
+    --font_height: 1.4rem;
+    --font_siz: 1rem;
+  }
+  /* ul */
+  .card-front ul {
+    --width_text: 85%;
+    --height_text: 100%;
   }
 }
 
@@ -478,36 +472,36 @@ button:focus+.design-container {
     width: 12rem;
     height: 20rem;
     margin: auto;
-    }
+  }
 
   /* ul */
   .card-front ul {
-  --width_text: 90%;
-  --height_text: 100%;
+    --width_text: 90%;
+    --height_text: 100%;
   }
   /* li */
   .card-front ul li {
-  --font_height: 1.5rem;
-  --font_siz: 1rem;
-}
-
-/* Card */
-.for-span{
-  --span_margin: .8rem;
-  --span_size: 1rem;
+    --font_height: 1.5rem;
+    --font_siz: 1rem;
   }
 
-.color{
-  --color_width: 15px;
-  --color_height: 12px;
-}
+  /* Card */
+  .for-span {
+    --span_margin: 0.8rem;
+    --span_size: 1rem;
+  }
+
+  .color {
+    --color_width: 15px;
+    --color_height: 12px;
+  }
 }
 
 @media screen and (max-width: 400px) {
-    /* .flip-card-container */
-    .flip-card-container {
-      width: 15rem;
-      height: 23rem;
-      margin: auto;
-      }
+  /* .flip-card-container */
+  .flip-card-container {
+    width: 15rem;
+    height: 23rem;
+    margin: auto;
+  }
 }
