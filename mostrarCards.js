@@ -1,33 +1,76 @@
 import eventClassNames from "./eventClassNames.js";
 
-const container = document.querySelector('.img__main');
+const container = document.querySelector(".img__main");
 
 function dataLocalStorage() {
-  const user = window.localStorage.getItem('session');
-  const likeData = JSON.parse(window.localStorage.getItem(user + 'Likes'));
-  const carData = JSON.parse(window.localStorage.getItem(user + 'Car'));
-  return { user, likeData, carData }
+  const user = window.localStorage.getItem("session");
+  const likeData = JSON.parse(window.localStorage.getItem(user + "Likes"));
+  const carData = JSON.parse(window.localStorage.getItem(user + "Car"));
+  return { user, likeData, carData };
 }
 
 async function mostrarCards(like = false, car = false) {
-  const responseData = await Promise.resolve(fetchData()).then(data => data);
+  const responseData = await Promise.resolve(fetchData()).then((data) => data);
 
-  if (!responseData || responseData.length <= 0)
-    return;
+  if (!responseData || responseData.length <= 0) return;
+  //eslint-disable-next-line
   const arr = responseData.sort((a, b) => Math.random() - 0.5);
+  const { user, likeData, carData } = dataLocalStorage();
 
-  const { likeData, carData } = dataLocalStorage();
+  if(like && !user){
+//eslint-disable-next-line
+Swal.fire({
+  position: "top-end",
+  icon: "warning",
+  title: "you must be loged watch your favorite items",
+  showConfirmButton: false,
+  timer: 1500
+});
+  return;
+}
 
-  if (like) {
+if(car && !user){
+//eslint-disable-next-line
+Swal.fire({
+  position: "top-end",
+  icon: "warning",
+  title: "You must be loged to watch the items in your car",
+  showConfirmButton: false,
+  timer: 1500
+});
+  return;
+}
+
+  if (like && user) {
     if (likeData) {
       loadObserver(filter(likeData, arr), likeData, carData);
-    } else
-      console.log('No favorite items found');
-  } else if (car) {
+    } else {
+      // eslint-disable-next-line no-undef
+      Swal.fire({
+        title: "No favorite items found",
+        showClass: {
+          popup: "animate__animated animate__fadeInDown"
+        },
+        hideClass: {
+          popup: "animate__animated animate__fadeOutUp"
+        }
+      });
+    }
+  } else if (car && user) {
     if (carData) {
       loadObserver(filter(carData, arr), likeData, carData);
     } else
-      console.log('no car items found');
+      // eslint-disable-next-line no-undef
+    Swal.fire({
+      title: "No items found in the car",
+      showClass: {
+        popup: "animate__animated animate__fadeInDown"
+      },
+      hideClass: {
+        popup: "animate__animated animate__fadeOutUp"
+      }
+    });
+
   } else {
     loadObserver(arr, likeData, carData);
   }
@@ -37,8 +80,7 @@ function filter(database, arr) {
   let data = [];
   for (let i = 0; i < database.data.length; i++) {
     for (let ii = 0; ii < arr.length; ii++) {
-      if (database.data[i] === arr[ii].codepro)
-        data.push(arr[ii]);
+      if (database.data[i] === arr[ii].codepro) data.push(arr[ii]);
     }
   }
   return data;
@@ -48,32 +90,32 @@ function bucleBorrar() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
-};
+}
 
 const loadObserver = (arrLoaded, likeData, carData) => {
   bucleBorrar();
   const options = {
     root: null,
-    rootMargin: '0px',
-    threshold: 1
-  }
+    rootMargin: "0px",
+    threshold: 1,
+  };
 
-  let count = 3;
-  if (arrLoaded.length < 3) count = arrLoaded.length;
+  let count = 6;
+  if (arrLoaded.length < count) count = arrLoaded.length;
   (() => {
     let data = [];
     for (let i = 0; i < count; i++) {
-      data.push(arrLoaded[0])
+      data.push(arrLoaded[0]);
       arrLoaded.shift();
     }
     card(data, likeData, carData);
-  })()
+  })();
 
   if (container.hasChildNodes && arrLoaded.length !== 0) {
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       let data = [];
-      entries.forEach(entry => {
-        if (arrLoaded.length === 0) return
+      entries.forEach((entry) => {
+        if (arrLoaded.length === 0) return;
         if (entry.isIntersecting) {
           for (let i = 0; i < count; i++) {
             data.push(arrLoaded[0]);
@@ -83,89 +125,98 @@ const loadObserver = (arrLoaded, likeData, carData) => {
           observer.unobserve(entry.target);
           observer.observe(container.lastElementChild);
         }
-      })
+      });
     }, options);
     observer.observe(container.lastElementChild);
   }
-}
+};
 
 const card = (arr, likeData, carData) => {
-  if (arr.length === 0) return
-  const template = document.querySelector('.template-card').content;
-  const corazon = template.querySelector('.card-back figure .heart');
-  const carro = template.querySelector('.card-back figure .car');
+  if (arr.length === 0) return;
+  const template = document.querySelector(".template-card").content;
+  const corazon = template.querySelector(".card-back figure .heart");
+  const carro = template.querySelector(".card-back figure .car");
   const fragment = new DocumentFragment();
   let i = 0;
 
-  arr.forEach(item => {
-    if (!item) return
+  arr.forEach((item) => {
+    if (!item) return;
+    template
+      .querySelector(".card-front figure .img")
+      .setAttribute("src", item.imagen);
+    template.querySelector(".card-front figure figcaption").innerHTML =
+      item.codepro;
+    template.querySelector(".card-front ul li .nombre").innerHTML = item.nombre;
+    template.querySelector(".card-front ul li .talla").innerHTML = item.talla;
+    template.querySelector(".card-front ul li .precio").innerHTML = item.precio;
+    template.querySelector(".card-front ul li .stock").innerHTML = item.stock;
+    template.querySelector(".card-front ul li .genero").innerHTML = item.genero;
 
-    template.querySelector('.card-front figure .img').setAttribute('src', item.imagen);
-    template.querySelector('.card-front figure figcaption').innerHTML = item.codepro;
-    template.querySelector('.card-front ul li .nombre').innerHTML = item.nombre;
-    template.querySelector('.card-front ul li .talla').innerHTML = item.talla;
-    template.querySelector('.card-front ul li .precio').innerHTML = item.precio;
-    template.querySelector('.card-front ul li .stock').innerHTML = item.stock;
-    template.querySelector('.card-front ul li .genero').innerHTML = item.genero;
-
-    // let nuevo = color(mostrar[i].colores);
-    // let nodo = template.querySelector('.card-front ul .li-color ').children[0];
-    // template.querySelector('.card-front ul .li-color ').replaceChild(nuevo,nodo);
-
-    template.querySelector('.card-front ul li .span-descripcion').innerHTML = item.descripcion;
-    template.querySelector('.card-back figure .img2').setAttribute('src', item.imagen);
-    template.querySelector('.card-back figure .img2').setAttribute('id', i);
-
-
+    template.querySelector(".card-front ul li .span-descripcion").innerHTML =
+      item.descripcion;
+    template
+      .querySelector(".card-back figure .img2")
+      .setAttribute("src", item.imagen);
+    template.querySelector(".card-back figure .img2").setAttribute("id", i);
 
     /* Mostrar like */
-    if (likeData.data.includes(item.codepro)) {
-      eventClassNames(corazon, 'remove', 'far');
-      eventClassNames(corazon, 'remove', 'fa-heart');
+    if (likeData?.data.includes(item.codepro)) {
+      eventClassNames(corazon, "remove", "far");
+      eventClassNames(corazon, "remove", "fa-heart");
 
-      eventClassNames(corazon, 'add', 'fas');
-      eventClassNames(corazon, 'add', 'fa-heart');
-      eventClassNames(corazon, 'add', 'like');
-
+      eventClassNames(corazon, "add", "fas");
+      eventClassNames(corazon, "add", "fa-heart");
+      eventClassNames(corazon, "add", "like");
     } else {
-      eventClassNames(corazon, 'remove', 'fas');
-      eventClassNames(corazon, 'remove', 'fa-heart');
-      eventClassNames(corazon, 'remove', 'like');
+      eventClassNames(corazon, "remove", "fas");
+      eventClassNames(corazon, "remove", "fa-heart");
+      eventClassNames(corazon, "remove", "like");
 
-      eventClassNames(corazon, 'add', 'far');
-      eventClassNames(corazon, 'add', 'fa-heart');
+      eventClassNames(corazon, "add", "far");
+      eventClassNames(corazon, "add", "fa-heart");
     }
 
     /* Mostrar Car*/
-    if (carData.data.includes(item.codepro)) {
-      eventClassNames(carro, 'remove', 'fas')
-      eventClassNames(carro, 'remove', 'fa-cart-plus')
+    if (carData?.data.includes(item.codepro)) {
+      eventClassNames(carro, "remove", "fas");
+      eventClassNames(carro, "remove", "fa-cart-plus");
 
-      eventClassNames(carro, 'add', 'fas')
-      eventClassNames(carro, 'add', 'fa-shopping-cart')
-      eventClassNames(carro, 'add', 'like')
-
+      eventClassNames(carro, "add", "fas");
+      eventClassNames(carro, "add", "fa-shopping-cart");
+      eventClassNames(carro, "add", "like");
     } else {
-      eventClassNames(carro, 'remove', 'fas')
-      eventClassNames(carro, 'remove', 'fa-shopping-cart')
-      eventClassNames(carro, 'remove', 'like')
+      eventClassNames(carro, "remove", "fas");
+      eventClassNames(carro, "remove", "fa-shopping-cart");
+      eventClassNames(carro, "remove", "like");
 
-      eventClassNames(carro, 'add', 'fas')
-      eventClassNames(carro, 'add', 'fa-cart-plus')
+      eventClassNames(carro, "add", "fas");
+      eventClassNames(carro, "add", "fa-cart-plus");
     }
+
+    // adding item colors
+    template.querySelector(".card-front ul .li-color").innerHTML = addColors(item);
 
     const clone = template.cloneNode(true);
     fragment.appendChild(clone);
     i++;
   });
   container.appendChild(fragment);
-}
+};
 
 async function fetchData() {
-  return await fetch('./productosRead.php')
-    .then(data => data.json())
-    .then(data => data);
+  return await fetch("./productosRead.php")
+    .then((data) => data.json())
+    .then((data) => data);
 }
+
+const addColors = (dato) => {
+  let div = "<span class='for-span colores'>Colores: </span>";
+  const colors = dato?.colores.split(",");
+  for (let i = 0; i < colors.length; i++) {
+      div += `<span class="color label ${colors[i]}"></span>`;
+  }
+  return div;
+};
 
 export default mostrarCards;
 export { loadObserver, fetchData, dataLocalStorage };
