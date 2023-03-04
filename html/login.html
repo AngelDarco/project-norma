@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/login.css">
-    <script src="/js/sweetalert2.all.min.js"></script>
-    <script src="/js/login.js"></script>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/img/icono.svg"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/login.css" />
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <script type="module" src="../login.js" defer></script>
   </head>
-<body>
-    
-
-
-<form method="post" id="formulario">
-    <h1>Ingresar</h1>
-    <div class="inset">
-    <p>
-      <label for="email">Correo Ó Usuario</label>
-      <input type="text" name="email" id="email" placeholder="Email ó Usuario" required>
-    </p>
-    <p>
-      <label for="password">Contraseña</label>
-      <input type="password" name="pass" id="password" placeholder="Contraseña" required>
-    </p>
-    <p>
-      <input type="checkbox" name="remember" id="remember">
-      <label for="remember">Guardar sesion por 14 days</label>
-    </p>
-    </div>
-    <p class="p-container">
-      <a href="/html/registro.html">Crear Cuenta</a>
-      <input type="submit" name="go" id="go" value="Ingresar">
-    </p>
-  </form>
-
-
-</body>
+  <body>
+    <form method="post" id="formulario">
+      <h1>Ingresar</h1>
+      <div class="inset">
+        <p>
+          <label for="email">Correo Ó Usuario</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Email ó Usuario"
+            required
+          />
+        </p>
+        <p>
+          <label for="password">Contraseña</label>
+          <input
+            type="password"
+            name="pass"
+            id="password"
+            placeholder="Contraseña"
+            required
+          />
+        </p>
+        <p>
+          <input type="checkbox" name="remember" id="remember" />
+          <label for="remember">Guardar sesion por 14 days</label>
+        </p>
+      </div>
+      <p class="p-container">
+        <a href="./registro.html">Crear Cuenta</a>
+        <input type="submit" name="go" id="go" value="Ingresar" />
+      </p>
+    </form>
+  </body>
 </html>
-

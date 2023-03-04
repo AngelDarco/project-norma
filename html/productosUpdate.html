@@ -1,190 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <link rel="stylesheet" href="/css/card.css">
-    <link rel="stylesheet" href="/css/productosAdd.css">
-    
-    <script src="/js/sweetalert2.all.min.js"></script>
-    <script src="/js/productosUpdate.js"></script>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Items</title>
+    <link
+    rel="shortcut icon"
+    href="../assets/img/icono.svg"
+    type="image/x-icon"
+  />
+    <link rel="stylesheet" href="../css/card.css" />
+    <link rel="stylesheet" href="../css/productosAdd.css" />
 
+    <script src="../js/sweetalert2.all.min.js"></script>
+    <script src="../js/productosUpdate.js"></script>
+  </head>
+  <body>
+    <!-- flip-card-container -->
+    <div class="flip-card-container" style="--hue: 350">
+      <div class="flip-card">
+        <div class="card-front">
+          <figure>
+            <div class="img-bg"></div>
+            <img class="img" src="" alt="Brohm Lake" />
+            <figcaption>Nuevo</figcaption>
+          </figure>
 
- 
-<!-- flip-card-container -->
-<div class="flip-card-container" style="--hue: 350">
-  <div class="flip-card">
+          <ul>
+            <li>Producto: <span class="for-span nombre"></span></li>
+            <li>Tallas: <span class="for-span talla"></span></li>
+            <li>Precio: $/<span class="for-span precio"></span></li>
+            <li>Stock: <span class="for-span stock"></span>/uni</li>
+            <li>Para: <span class="for-span genero"></span></li>
+            <li class="li-color">
+              Colores: <span class="for-span colores"></span>
+            </li>
+            <li class="li-descripcion">
+              Descripcion:<span class="for-span span-descripcion"></span>
+            </li>
+          </ul>
+        </div>
 
-    <div class="card-front">
-      <figure>
-        <div class="img-bg"></div>
-        <img class="img" src="" alt="Brohm Lake">
-        <figcaption>Nuevo</figcaption>
-      </figure>
+        <div class="card-back">
+          <!-- only if the image is necessary -->
+          <figure>
+            <div class="img-bg"></div>
+            <img class="img2" src="" alt="Brohm Lake" />
+          </figure>
 
-      <ul>
-        <li>Producto: <span class="for-span nombre"></span></li>
-        <li>Tallas:   <span class="for-span talla"></span></li>
-        <li>Precio: $/<span class="for-span precio"></span></li>
-        <li>Stock:    <span class="for-span stock"></span>/uni</li>
-        <li>Para:     <span class="for-span genero"></span></li>
-        <li class="li-color">Colores:  <span class="for-span colores"></span></li>
-        <li class="li-descripcion">Descripcion:<span class="for-span span-descripcion"></span></li>
+          <button>Ver</button>
 
-      </ul>
-    </div>
-
-    <div class="card-back">
-      <!-- only if the image is necessary -->
-      <figure>
-        <div class="img-bg"></div>
-        <img class="img2" src="" alt="Brohm Lake">
-      </figure>
-
-      <button>Ver</button>
-
-      <!-- can add svg here and remove these eight spans -->
-      <div class="design-container">
-        <span class="design design--1"></span>
-        <span class="design design--2"></span>
-        <span class="design design--3"></span>
-        <span class="design design--4"></span>
-        <span class="design design--5"></span>
-        <span class="design design--6"></span>
-        <span class="design design--7"></span>
-        <span class="design design--8"></span>
-        <span class="design design--9"></span>
+          <!-- can add svg here and remove these eight spans -->
+          <div class="design-container">
+            <span class="design design--1"></span>
+            <span class="design design--2"></span>
+            <span class="design design--3"></span>
+            <span class="design design--4"></span>
+            <span class="design design--5"></span>
+            <span class="design design--6"></span>
+            <span class="design design--7"></span>
+            <span class="design design--8"></span>
+            <span class="design design--9"></span>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- /flip-card-container -->
 
-  </div>
-</div>
-<!-- /flip-card-container -->
+    <div id="div-regForm" class="div-regForm">
+      <div class="form-title">Actualizar</div>
+      <div class="form-sub-title">Actualizacion de Productos</div>
 
-
-
-
-    
-<div id="div-regForm" class="div-regForm">
-
-    <div class="form-title">Actualizar</div>
-    <div class="form-sub-title">Actualizacion de Productos</div>
-    
-
-    <form id="regForm"  method="POST">
-    <table>
-      <tbody>
-        <tr>
-            <td><label for="codepro">Codigo:</label></td>
-            <td><div class="input-container"><input  id="codepro" type="number" placeholder="Codigo Producto" required />
-                <input type="button" class="greenButton" value="buscar" id="buscar"> </div></td>
-        </tr>
-          
-      <tr>
-        <td><label for="fname">Nombre Producto:</label></td>
-        <td><div class="input-container"><input name="nombre" id="nombre" type="text" disabled required /></div></td>
-      </tr>
-      <tr>
-        <td><label for="lname">Tallas:</label></td>
-        <td><div class="input-container"><input name="talla" id="talla" type="text" disabled required /></div></td>
-      </tr>
-      <tr>
-        <td><label for="lname">Precio:</label></td>
-        <td><div class="input-container"><input name="precio" id="precio" type="number" disabled required placeholder="Numero" /></div></td>
-      </tr>
-      <tr>
-        <td><label for="lname">Stock:</label></td>
-        <td><div class="input-container"><input name="stock" id="stock" type="number" disabled required placeholder="Numero" /></div></td>
-      </tr>
-      <tr>
-      <tr>
-        <td><label for="lname">Imagen:</label></td>
-        <td><div class="input-container"><input name="imagen" id="imagen" type="text" disabled required /><input type="button" value="C" id="c"></div></td>
-      </tr>
-
-      <tr>
-        <td><label for="sex-select">Genero:</label></td>
-        <td>
-        <div class="input-container">
-        <select name="genero" id="genero" disabled>
-        <option value="0">Seleccionar:</option>
-        <option value="Hombre">Hombre</option>
-        <option value="Mujer">Mujer</option>
-        <option value="Niño">Niño</option>
-        <option value="Unisex">Unisex</option>
-        </select>
-        </div>
-        
-        </td>
-      </tr>
-
-
-      <tr>
-        <td><label for="lname">Colores:</label></td>
-
-        <td>
-            <div class="colores form-colores" id="color" >
-                <input class="color" type="checkbox" id="red" name="horns" value="red">
-                <label class="color label red"></label>
-
-                <input class="color" type="checkbox" id="green" name="horns" value="green">
-                <label class="color label green"></label>
-
-                <input class="color" type="checkbox" id="blue" name="horns" value="blue">
-                <label class="color label blue"></label>
-
-                <input class="color" type="checkbox" id="white" name="horns" value="white">
-                <label class="color label white"></label>
-
-                <input class="color" type="checkbox" id="black" name="horns" value="black">
-                <label class="color label black"></label>
-
-                <input class="color" type="checkbox" id="grey" name="horns" value="grey">
-                <label class="color label grey"></label>
-
-                <input class="color" type="checkbox" id="purple" name="horns" value="purple">
-                <label class="color label purple"></label>
-
-                <input class="color" type="checkbox" id="orange" name="horns" value="orange">
-                <label class="color label orange"></label>
-
-                <input class="color" type="checkbox" id="pink" name="horns" value="pink">
-                <label class="color label pink"></label>
-
-            </div>
-        </td>
-    </tr>
-
-
-    <tr>
-      <td><label for="pass">Descripcion:</label></td>
-      <td><div class="input-container div-descripcion"><textarea name="descripcion" id="descripcion" disabled ></textarea></div></td>
-    </tr>
+      <form id="regForm" method="POST">
+        <table>
+          <tbody>
+            <tr>
+              <td><label for="codepro">Codigo:</label></td>
+              <td>
+                <div class="input-container">
+                  <input
+                    id="codepro"
+                    type="number"
+                    placeholder="Codigo Producto"
+                    required
+                  />
+                  <input
+                    type="button"
+                    class="greenButton"
+                    value="buscar"
+                    id="buscar"
+                  />
+                </div>
+              </td>
+            </tr>
 
             <tr>
-      <td>&nbsp;</td>
-      <td><input type="submit" value="Actualizar" id="actualizar" disabled/>
-    </td>
-      </tr>
+              <td><label for="fname">Nombre Producto:</label></td>
+              <td>
+                <div class="input-container">
+                  <input
+                    name="nombre"
+                    id="nombre"
+                    type="text"
+                    disabled
+                    required
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="lname">Tallas:</label></td>
+              <td>
+                <div class="input-container">
+                  <input
+                    name="talla"
+                    id="talla"
+                    type="text"
+                    disabled
+                    required
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="lname">Precio:</label></td>
+              <td>
+                <div class="input-container">
+                  <input
+                    name="precio"
+                    id="precio"
+                    type="number"
+                    disabled
+                    required
+                    placeholder="Numero"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="lname">Stock:</label></td>
+              <td>
+                <div class="input-container">
+                  <input
+                    name="stock"
+                    id="stock"
+                    type="number"
+                    disabled
+                    required
+                    placeholder="Numero"
+                  />
+                </div>
+              </td>
+            </tr>
+            <tr></tr>
+            <tr>
+              <td><label for="lname">Imagen:</label></td>
+              <td>
+                <div class="input-container">
+                  <input
+                    name="imagen"
+                    id="imagen"
+                    type="text"
+                    disabled
+                    required
+                  /><input type="button" value="C" id="c" />
+                </div>
+              </td>
+            </tr>
 
-    <tr>
-        <td>&nbsp;</td>
-        <td><input type="reset" class="greenButton " value="Borrar" id="borrar"/>
-      </td>
-    </tr>
-      
-      </tbody>
-    </table>
-    
-    </form>
+            <tr>
+              <td><label for="sex-select">Genero:</label></td>
+              <td>
+                <div class="input-container">
+                  <select name="genero" id="genero" disabled>
+                    <option value="0">Seleccionar:</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="Niño">Niño</option>
+                    <option value="Unisex">Unisex</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
 
+            <tr>
+              <td><label for="lname">Colores:</label></td>
+
+              <td>
+                <div class="colores form-colores" id="color">
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="red"
+                    name="horns"
+                    value="red"
+                  />
+                  <label class="color label red"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="green"
+                    name="horns"
+                    value="green"
+                  />
+                  <label class="color label green"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="blue"
+                    name="horns"
+                    value="blue"
+                  />
+                  <label class="color label blue"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="white"
+                    name="horns"
+                    value="white"
+                  />
+                  <label class="color label white"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="black"
+                    name="horns"
+                    value="black"
+                  />
+                  <label class="color label black"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="grey"
+                    name="horns"
+                    value="grey"
+                  />
+                  <label class="color label grey"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="purple"
+                    name="horns"
+                    value="purple"
+                  />
+                  <label class="color label purple"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="orange"
+                    name="horns"
+                    value="orange"
+                  />
+                  <label class="color label orange"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="pink"
+                    name="horns"
+                    value="pink"
+                  />
+                  <label class="color label pink"></label>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td><label for="pass">Descripcion:</label></td>
+              <td>
+                <div class="input-container div-descripcion">
+                  <textarea
+                    name="descripcion"
+                    id="descripcion"
+                    disabled
+                  ></textarea>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+                <input
+                  type="submit"
+                  value="Actualizar"
+                  id="actualizar"
+                  disabled
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td>&nbsp;</td>
+              <td>
+                <input
+                  type="reset"
+                  class="greenButton"
+                  value="Borrar"
+                  id="borrar"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
-
-</body>
+  </body>
 </html>
