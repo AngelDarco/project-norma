@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update Items</title>
     <link
-    rel="shortcut icon"
-    href="../assets/img/icono.svg"
-    type="image/x-icon"
-  />
+      rel="shortcut icon"
+      href="../assets/img/icono.svg"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="../css/card.css" />
     <link rel="stylesheet" href="../css/productosAdd.css" />
 
     <script src="../js/sweetalert2.all.min.js"></script>
-    <script src="../productosUpdate.js"></script>
+    <script type="module" defer src="../productosUpdate.js"></script>
   </head>
   <body>
     <!-- flip-card-container -->
@@ -23,21 +23,21 @@
         <div class="card-front">
           <figure>
             <div class="img-bg"></div>
-            <img class="img" src="" alt="Brohm Lake" />
-            <figcaption>Nuevo</figcaption>
+            <img class="imgFront" alt="Brohm Lake" />
+            <figcaption class="cardCode">Nuevo</figcaption>
           </figure>
 
           <ul>
-            <li>Producto: <span class="for-span nombre"></span></li>
-            <li>Tallas: <span class="for-span talla"></span></li>
-            <li>Precio: $/<span class="for-span precio"></span></li>
-            <li>Stock: <span class="for-span stock"></span>/uni</li>
-            <li>Para: <span class="for-span genero"></span></li>
+            <li>Producto: <span class="for-span nombreCard"></span></li>
+            <li>Tallas: <span class="for-span tallaCard"></span></li>
+            <li>Precio: $/<span class="for-span precioCard"></span></li>
+            <li>Stock: <span class="for-span stockCard"></span>/uni</li>
+            <li>Para: <span class="for-span generoCard"></span></li>
             <li class="li-color">
-              Colores: <span class="for-span colores"></span>
+              Colores: <span class="for-span cardColores"></span>
             </li>
             <li class="li-descripcion">
-              Descripcion:<span class="for-span span-descripcion"></span>
+              Descripcion:<span class="for-span descripcionCard"></span>
             </li>
           </ul>
         </div>
@@ -46,7 +46,7 @@
           <!-- only if the image is necessary -->
           <figure>
             <div class="img-bg"></div>
-            <img class="img2" src="" alt="Brohm Lake" />
+            <img class="imgBack" src="" alt="Brohm Lake" />
           </figure>
 
           <button>Ver</button>
@@ -72,15 +72,15 @@
       <div class="form-title">Actualizar</div>
       <div class="form-sub-title">Actualizacion de Productos</div>
 
-      <form id="regForm" method="POST">
+      <form id="regForm" method="POST" enctype="multipart/form-data">
         <table>
           <tbody>
             <tr>
-              <td><label for="codepro">Codigo:</label></td>
+              <td><label for="code">Codigo:</label></td>
               <td>
                 <div class="input-container">
                   <input
-                    id="codepro"
+                    id="code"
                     type="number"
                     placeholder="Codigo Producto"
                     required
@@ -100,8 +100,8 @@
               <td>
                 <div class="input-container">
                   <input
-                    name="nombre"
-                    id="nombre"
+                    name="fname"
+                    id="producto"
                     type="text"
                     disabled
                     required
@@ -110,25 +110,24 @@
               </td>
             </tr>
             <tr>
-              <td><label for="lname">Tallas:</label></td>
+              <td><label for="ltalla">Tallas:</label></td>
               <td>
                 <div class="input-container">
                   <input
-                    name="talla"
+                    name="ltalla"
                     id="talla"
                     type="text"
                     disabled
-                    required
                   />
                 </div>
               </td>
             </tr>
             <tr>
-              <td><label for="lname">Precio:</label></td>
+              <td><label for="lprecio">Precio:</label></td>
               <td>
                 <div class="input-container">
                   <input
-                    name="precio"
+                    name="lprecio"
                     id="precio"
                     type="number"
                     disabled
@@ -139,11 +138,11 @@
               </td>
             </tr>
             <tr>
-              <td><label for="lname">Stock:</label></td>
+              <td><label for="lstock">Stock:</label></td>
               <td>
                 <div class="input-container">
                   <input
-                    name="stock"
+                    name="lstock"
                     id="stock"
                     type="number"
                     disabled
@@ -155,16 +154,16 @@
             </tr>
             <tr></tr>
             <tr>
-              <td><label for="lname">Imagen:</label></td>
+              <td><label for="imagen">Imagen:</label></td>
               <td>
                 <div class="input-container">
                   <input
+                    type="file"
                     name="imagen"
-                    id="imagen"
-                    type="text"
+                    id="imagenFile"
+                    value="upload"
                     disabled
-                    required
-                  /><input type="button" value="C" id="c" />
+                  />
                 </div>
               </td>
             </tr>
@@ -188,7 +187,7 @@
               <td><label for="lname">Colores:</label></td>
 
               <td>
-                <div class="colores form-colores" id="color">
+                <div class="form-colores" id="color">
                   <input
                     class="color"
                     type="checkbox"
@@ -197,6 +196,15 @@
                     value="red"
                   />
                   <label class="color label red"></label>
+
+                  <input
+                    class="color"
+                    type="checkbox"
+                    id="yellow"
+                    name="horns"
+                    value="yellow"
+                  />
+                  <label class="color label yellow"></label>
 
                   <input
                     class="color"
@@ -279,7 +287,7 @@
                 <div class="input-container div-descripcion">
                   <textarea
                     name="descripcion"
-                    id="descripcion"
+                    id="descripcionForm"
                     disabled
                   ></textarea>
                 </div>
@@ -305,7 +313,7 @@
                   type="reset"
                   class="greenButton"
                   value="Borrar"
-                  id="borrar"
+                  id="resetForm"
                 />
               </td>
             </tr>
