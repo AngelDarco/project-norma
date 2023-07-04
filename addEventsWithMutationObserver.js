@@ -1,14 +1,19 @@
-export default function addEventsWithMutationObserver(funct, className) {
-  const observer = new MutationObserver(call);
-  observer.observe(document.querySelector(".img__main"), {
-    attributes: false,
-    childList: true,
-    subtree: false,
-  });
-
+export default function addEventsWithMutationObserver(funct, className, container) {
   function call() {
     document.querySelectorAll(className).forEach((e) => {
-      e.addEventListener("click", funct, true);
+      e.addEventListener('click', funct, true);
     });
+  }
+
+  const observer = new MutationObserver(call);
+  if (container) {
+    observer.observe(
+      container,
+      {
+        attributes: false,
+        childList: true,
+        subtree: false,
+      },
+    );
   }
 }
