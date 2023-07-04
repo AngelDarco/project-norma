@@ -3,13 +3,29 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: "eslint:recommended",
+  extends: 'airbnb-base',
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: [ '.eslintrc.{js,cjs}' ],
+      parserOptions: {
+        sourceType: 'script',
+      },
+    },
+  ],
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   rules: {
-    semi: ["error", "always"],
-    quotes: ["error", "double"],
+    'array-bracket-spacing': [ 'error', 'always' ],
+    'object-curly-spacing': [ 'error', 'always' ],
+    'arrow-spacing': [ 'error', { before: true, after: true } ],
+    'no-plusplus': [ 'error', {
+      allowForLoopAfterthoughts: true,
+    } ],
+    'import/extensions': [ 'error', 'always' ],
   },
 };
