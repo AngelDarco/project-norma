@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import addEventsWithMutationObserver from './addEventsWithMutationObserver.js';
 
 export default function addCar() {

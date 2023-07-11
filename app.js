@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
 /* eslint-disable import/extensions */
 import log from './log.js';
@@ -14,8 +16,6 @@ const carroContent = document.querySelector('.carro');
 const home = document.querySelector('.home');
 const btnFavorites = document.querySelector('.corazon');
 const menuShow = document.querySelector('.menu__header');
-
-// const [ carroContent, home, btnFavorites, menuShow ] = document.querySelectorAll('.carro, .home, .corazon, .menu__header');
 
 const { removeCar, removeLikes, removeFilters } = removeEvents();
 
@@ -64,7 +64,7 @@ function eventFavorites(arr, user) {
       });
     }
 
-    const { likeData } = dataLocalStorage();
+    const likeData = true;
     removeCar();
     removeFilters();
     eventClassNames(btnFavorites, 'replace', [ 'far', 'fas' ]);
@@ -86,7 +86,8 @@ function eventCar(arr, user) {
       });
     }
 
-    const { carData } = dataLocalStorage();
+    const carData = true;
+    const likeData = false;
 
     removeLikes();
     removeFilters();
@@ -96,6 +97,6 @@ function eventCar(arr, user) {
       'fa-shopping-cart',
     ]);
     eventClassNames(carroContent, 'add', 'like');
-    mostrarCards(arr, user, false, carData);
+    mostrarCards(arr, user, likeData, carData);
   });
 }
