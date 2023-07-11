@@ -27,5 +27,6 @@ module.exports = {
       allowForLoopAfterthoughts: true,
     } ],
     'import/extensions': [ 'error', 'always' ],
+    'no-use-before-define': 'off',
   },
 };
