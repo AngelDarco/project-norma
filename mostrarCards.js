@@ -1,109 +1,127 @@
-import eventClassNames from "./eventClassNames.js";
+/* eslint-disable no-unreachable */
+/* eslint-disable consistent-return */
+/* eslint-disable no-undef */
+/* eslint-disable no-use-before-define */
+import eventClassNames from './eventClassNames.js';
 
-const container = document.querySelector(".img__main");
+const container = document.querySelector('.img__main');
 
+/**
+ * Retrieves user data from local storage.
+ *
+ * @return {Object} An object containing user data.
+ */
 function dataLocalStorage() {
-  const user = window.localStorage.getItem("session");
-  const likeData = JSON.parse(window.localStorage.getItem(user + "Likes"));
-  const carData = JSON.parse(window.localStorage.getItem(user + "Car"));
+  const user = window.localStorage.getItem('session');
+  const likeData = JSON.parse(window.localStorage.getItem(`${user}Likes`));
+  const carData = JSON.parse(window.localStorage.getItem(`${user}Car`));
   return { user, likeData, carData };
 }
 
-async function mostrarCards(like = false, car = false) {
-  const responseData = await Promise.resolve(fetchData()).then((data) => data);
+/**
+ * Shows cards based on the given array and user information.
+ *
+ * @param {Array} arr - The array containing the cards to be shown.
+ * @param {string} user - The user information.
+ * @param {boolean} [likeData=false] - Flag indicating whether to include like data.
+ * @param {boolean} [carData=false] - Flag indicating whether to include car data.
+ */
+async function mostrarCards(arr, user, likeData, carData) {
+  if (!arr || arr.length <= 0) return;
 
-  if (!responseData || responseData.length <= 0) return;
-  //eslint-disable-next-line
-  const arr = responseData.sort((a, b) => Math.random() - 0.5);
-  const { user, likeData, carData } = dataLocalStorage();
-
-  if(like && !user){
-//eslint-disable-next-line
-Swal.fire({
-  position: "top-end",
-  icon: "warning",
-  title: "you must be loged watch your favorite items",
-  showConfirmButton: false,
-  timer: 1500
-});
-  return;
-}
-
-if(car && !user){
-//eslint-disable-next-line
-Swal.fire({
-  position: "top-end",
-  icon: "warning",
-  title: "You must be loged to watch the items in your car",
-  showConfirmButton: false,
-  timer: 1500
-});
-  return;
-}
-
-  if (like && user) {
+  if (user) {
     if (likeData) {
-      loadObserver(filter(likeData, arr), likeData, carData);
-    } else {
-      // eslint-disable-next-line no-undef
-      Swal.fire({
-        title: "No favorite items found",
+      const { likeData: like } = dataLocalStorage();
+      if (like?.data?.length > 0) {
+        const likeDataFiltered = filter(like, arr);
+        loadObserver(likeDataFiltered);
+        window.scrollTo({ bottom: 0, behavior: 'smooth' });
+        return;
+      }
+      bucleBorrar();
+      return Swal.fire({
+        title: 'No favorite items found',
         showClass: {
-          popup: "animate__animated animate__fadeInDown"
+          popup: 'animate__animated animate__fadeInDown',
         },
         hideClass: {
-          popup: "animate__animated animate__fadeOutUp"
-        }
+          popup: 'animate__animated animate__fadeOutUp',
+        },
       });
-    }
-  } else if (car && user) {
-    if (carData) {
-      loadObserver(filter(carData, arr), likeData, carData);
-    } else
-      // eslint-disable-next-line no-undef
-    Swal.fire({
-      title: "No items found in the car",
-      showClass: {
-        popup: "animate__animated animate__fadeInDown"
-      },
-      hideClass: {
-        popup: "animate__animated animate__fadeOutUp"
+    } if (carData) {
+      const { carData: car } = dataLocalStorage();
+      if (car?.data?.length > 0) {
+        const carDataFiltered = filter(car, arr);
+        loadObserver(carDataFiltered);
+        window.scrollTo({ bottom: 0, behavior: 'smooth' });
+        return;
       }
-    });
-
-  } else {
-    loadObserver(arr, likeData, carData);
-  }
+      bucleBorrar();
+      return Swal.fire({
+        title: 'No items found',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown',
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp',
+        },
+      });
+    } loadObserver(arr);
+  } loadObserver(arr);
 }
 
+/**
+ * Filters an array based on a condition and returns the filtered array.
+ *
+ * @param {object} database - The database object.
+ * @param {array} arr - The array to filter.
+ * @return {array} - The filtered array.
+ */
 function filter(database, arr) {
-  let data = [];
+  const datos = [];
   for (let i = 0; i < database.data.length; i++) {
     for (let ii = 0; ii < arr.length; ii++) {
-      if (database.data[i] === arr[ii].codepro) data.push(arr[ii]);
+      if (database.data[i] === arr[ii].codepro.toString()) datos.push(arr[ii]);
     }
   }
-  return data;
+  return datos;
 }
 
+/**
+ * Deletes all child nodes of the container element.
+ *
+ * @param {Element} container - The container element.
+ * @return {void} This function does not return anything.
+ */
 function bucleBorrar() {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
 }
 
-const loadObserver = (arrLoaded, likeData, carData) => {
+/**
+ * Loads the observer with the given array of loaded items, like data, and car data.
+ *
+ * @param {Array} arrLoaded - The array of loaded items.
+ * @param {type} likeData - The like data.
+ * @param {type} carData - The car data.
+ * @return {type} The return value.
+ */
+const loadObserver = (arr) => {
+  const arrLoaded = [ ...arr ];
   bucleBorrar();
   const options = {
     root: null,
-    rootMargin: "0px",
+    rootMargin: '0px',
     threshold: 1,
   };
+
+  const { likeData, carData } = dataLocalStorage();
 
   let count = 6;
   if (arrLoaded.length < count) count = arrLoaded.length;
   (() => {
-    let data = [];
+    const data = [];
     for (let i = 0; i < count; i++) {
       data.push(arrLoaded[0]);
       arrLoaded.shift();
@@ -113,7 +131,7 @@ const loadObserver = (arrLoaded, likeData, carData) => {
 
   if (container.hasChildNodes && arrLoaded.length !== 0) {
     const observer = new IntersectionObserver((entries) => {
-      let data = [];
+      const data = [];
       entries.forEach((entry) => {
         if (arrLoaded.length === 0) return;
         if (entry.isIntersecting) {
@@ -131,89 +149,95 @@ const loadObserver = (arrLoaded, likeData, carData) => {
   }
 };
 
+/**
+ * Generates a card for each item in the provided array and appends it to the container element.
+ *
+ * @param {Array} arr - The array of items to generate cards for.
+ * @param {Object} likeData - The data related to likes.
+ * @param {Object} carData - The data related to cars.
+ */
 const card = (arr, likeData, carData) => {
   if (arr.length === 0) return;
-  const template = document.querySelector(".template-card").content;
-  const corazon = template.querySelector(".card-back figure .heart");
-  const carro = template.querySelector(".card-back figure .car");
+  const template = document.querySelector('.template-card').content;
+  const corazon = template.querySelector('.card-back figure .heart');
+  const carro = template.querySelector('.card-back figure .car');
   const fragment = new DocumentFragment();
   let i = 0;
 
   arr.forEach((item) => {
     if (!item) return;
-    template
-      .querySelector(".card-front figure .img")
-      .setAttribute("src", item.imagen);
-    template.querySelector(".card-front figure figcaption").innerHTML =
-      item.codepro;
-    template.querySelector(".card-front ul li .nombre").innerHTML = item.nombre;
-    template.querySelector(".card-front ul li .talla").innerHTML = item.talla;
-    template.querySelector(".card-front ul li .precio").innerHTML = item.precio;
-    template.querySelector(".card-front ul li .stock").innerHTML = item.stock;
-    template.querySelector(".card-front ul li .genero").innerHTML = item.genero;
 
-    template.querySelector(".card-front ul li .span-descripcion").innerHTML =
-      item.descripcion;
     template
-      .querySelector(".card-back figure .img2")
-      .setAttribute("src", item.imagen);
-    template.querySelector(".card-back figure .img2").setAttribute("id", i);
+      .querySelector('.img')
+      .setAttribute('src', item.imagen);
+    template.querySelector('figcaption').innerHTML = item.codepro;
+    template.querySelector('.nombre').innerHTML = item.nombre;
+    template.querySelector('.talla').innerHTML = item.talla;
+    template.querySelector('.precio').innerHTML = item.precio;
+    template.querySelector('.stock').innerHTML = item.stock;
+    template.querySelector('.genero').innerHTML = item.genero;
+    template.querySelector('.span-descripcion').innerHTML = item.descripcion;
+    template
+      .querySelector('.card-back figure .img2')
+      .setAttribute('src', item.imagen);
+    template.querySelector('.card-back figure .img2').setAttribute('id', i);
 
     /* Mostrar like */
-    if (likeData?.data.includes(item.codepro)) {
-      eventClassNames(corazon, "remove", "far");
-      eventClassNames(corazon, "remove", "fa-heart");
+    if (likeData && likeData?.data.includes(item.codepro.toString())) {
+      eventClassNames(corazon, 'remove', 'far');
+      eventClassNames(corazon, 'remove', 'fa-heart');
 
-      eventClassNames(corazon, "add", "fas");
-      eventClassNames(corazon, "add", "fa-heart");
-      eventClassNames(corazon, "add", "like");
+      eventClassNames(corazon, 'add', 'fas');
+      eventClassNames(corazon, 'add', 'fa-heart');
+      eventClassNames(corazon, 'add', 'like');
     } else {
-      eventClassNames(corazon, "remove", "fas");
-      eventClassNames(corazon, "remove", "fa-heart");
-      eventClassNames(corazon, "remove", "like");
+      eventClassNames(corazon, 'remove', 'fas');
+      eventClassNames(corazon, 'remove', 'fa-heart');
+      eventClassNames(corazon, 'remove', 'like');
 
-      eventClassNames(corazon, "add", "far");
-      eventClassNames(corazon, "add", "fa-heart");
+      eventClassNames(corazon, 'add', 'far');
+      eventClassNames(corazon, 'add', 'fa-heart');
     }
 
-    /* Mostrar Car*/
-    if (carData?.data.includes(item.codepro)) {
-      eventClassNames(carro, "remove", "fas");
-      eventClassNames(carro, "remove", "fa-cart-plus");
+    /* Mostrar Car */
+    if (carData && carData?.data.includes(item.codepro.toString())) {
+      eventClassNames(carro, 'remove', 'fas');
+      eventClassNames(carro, 'remove', 'fa-cart-plus');
 
-      eventClassNames(carro, "add", "fas");
-      eventClassNames(carro, "add", "fa-shopping-cart");
-      eventClassNames(carro, "add", "like");
+      eventClassNames(carro, 'add', 'fas');
+      eventClassNames(carro, 'add', 'fa-shopping-cart');
+      eventClassNames(carro, 'add', 'like');
     } else {
-      eventClassNames(carro, "remove", "fas");
-      eventClassNames(carro, "remove", "fa-shopping-cart");
-      eventClassNames(carro, "remove", "like");
+      eventClassNames(carro, 'remove', 'fas');
+      eventClassNames(carro, 'remove', 'fa-shopping-cart');
+      eventClassNames(carro, 'remove', 'like');
 
-      eventClassNames(carro, "add", "fas");
-      eventClassNames(carro, "add", "fa-cart-plus");
+      eventClassNames(carro, 'add', 'fas');
+      eventClassNames(carro, 'add', 'fa-cart-plus');
     }
 
     // adding item colors
-    template.querySelector(".card-front ul .li-color").innerHTML = addColors(item);
+    template.querySelector('.card-front ul .li-color').innerHTML = addColors(item);
 
     const clone = template.cloneNode(true);
     fragment.appendChild(clone);
-    i++;
+    i += 1;
   });
   container.appendChild(fragment);
 };
 
 async function fetchData() {
-  return await fetch("./productosRead.php")
+  return fetch('./productosRead.php')
     .then((data) => data.json())
-    .then((data) => data);
+    .then((data) => data)
+    .catch((error) => error);
 }
 
 const addColors = (dato) => {
   let div = "<span class='for-span colores'>Colores: </span>";
-  const colors = dato?.colores.split(",");
+  const colors = dato?.colores.split(',');
   for (let i = 0; i < colors.length; i++) {
-      div += `<span class="color label ${colors[i]}"></span>`;
+    div += `<span class="color label ${colors[i]}"></span>`;
   }
   return div;
 };
