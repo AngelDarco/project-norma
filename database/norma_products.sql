@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 29, 2023 at 09:30 AM
+-- Generation Time: Jul 13, 2023 at 09:35 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -18,16 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `norma`
+-- Database: `darcodb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `productosnorma`
+-- Table structure for table `norma_products`
 --
 
-CREATE TABLE `productosnorma` (
+CREATE TABLE `norma_products` (
   `id` int(11) NOT NULL,
   `codepro` double DEFAULT NULL,
   `nombre` varchar(100) DEFAULT NULL,
@@ -41,10 +41,10 @@ CREATE TABLE `productosnorma` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- Dumping data for table `productosnorma`
+-- Dumping data for table `norma_products`
 --
 
-INSERT INTO `productosnorma` (`id`, `codepro`, `nombre`, `talla`, `precio`, `colores`, `genero`, `descripcion`, `stock`, `imagen`) VALUES
+INSERT INTO `norma_products` (`id`, `codepro`, `nombre`, `talla`, `precio`, `colores`, `genero`, `descripcion`, `stock`, `imagen`) VALUES
 (1, 50, 'polo', 's', 20, 'red,yellow,green', 'Hombre', 'polo para hombre', '3', 'imgs/46-Tmw9pyS.jpg'),
 (2, 51, 'Conjunto', 'M', 0, 'orange,green,blue,yellow,white,pink,grey', 'Niño', 'Conjunto de algodón para niños', '6', 'imgs/47 - N9ZYDiC.jpg'),
 (3, 52, 'Conjunto', 'm', 30, 'red', 'Niño', 'Conjunto de algodón en caja para bebes', '3', 'imgs/48 - cGcs2dI.jpg'),
@@ -196,42 +196,14 @@ INSERT INTO `productosnorma` (`id`, `codepro`, `nombre`, `talla`, `precio`, `col
 (149, 190, 'Blusa', '', 0, 'purple,grey,black,green,blue,red,white,pink,yellow,orange', 'Mujer', 'Blusa de algodón para damas', '6', 'imgs/148 - wcs6Nys.jpg'),
 (150, 191, 'Pantalon', '', 0, 'purple,grey,black,green,blue,red,white,yellow,orange', 'Hombre', 'Pantalon de algodón para hombre', '6', 'imgs/81 - A9ynWPc.jpg');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `usuariosnorma`
---
-
-CREATE TABLE `usuariosnorma` (
-  `id` int(11) NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `lastname` varchar(20) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `usuariosnorma`
---
-
-INSERT INTO `usuariosnorma` (`id`, `name`, `lastname`, `email`, `password`) VALUES
-(1, 'Angel', 'GPEME', 'angel@gmail.com', '12345'),
-(2, 'Angel', 'GPEME', 'usuariom9224@gmail.com', '12345');
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `productosnorma`
+-- Indexes for table `norma_products`
 --
-ALTER TABLE `productosnorma`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `usuariosnorma`
---
-ALTER TABLE `usuariosnorma`
+ALTER TABLE `norma_products`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -239,16 +211,10 @@ ALTER TABLE `usuariosnorma`
 --
 
 --
--- AUTO_INCREMENT for table `productosnorma`
+-- AUTO_INCREMENT for table `norma_products`
 --
-ALTER TABLE `productosnorma`
+ALTER TABLE `norma_products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
-
---
--- AUTO_INCREMENT for table `usuariosnorma`
---
-ALTER TABLE `usuariosnorma`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
