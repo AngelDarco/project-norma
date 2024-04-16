@@ -24,9 +24,11 @@
 
   body {
     .about {
-      flex-direction: column;
-      .card {
-        width: 300px;
+      .cards-container {
+        flex-direction: column;
+        .card {
+          width: 300px;
+        }
       }
     }
   }

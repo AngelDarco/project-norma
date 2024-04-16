@@ -12,6 +12,8 @@ import removeEvents from "./js/removeEvents.js";
 import itemsFilter from "./js/itemsFilter.js";
 import previousView from "./js/previousView.js";
 
+import slider from "./js/slider.js";
+
 const carroContent = document.querySelector(".carro");
 const home = document.querySelector(".home");
 const btnFavorites = document.querySelector(".corazon");
@@ -22,6 +24,20 @@ const { removeCar, removeLikes, removeFilters } = removeEvents();
 document.addEventListener("DOMContentLoaded", async () => {
   log();
   botonMenu(menuShow);
+
+  // Slider
+  const container = document.querySelector(".slider");
+  const body = document.querySelector(".main");
+  slider(
+    container,
+    [
+      "./assets/img/slider1.jpg",
+      "./assets/img/slider2.jpg",
+      "./assets/img/slider3.jpg",
+      "./assets/img/slider4.jpg",
+    ],
+    body
+  );
 
   const { user } = dataLocalStorage();
   const arr = await fetchData();
