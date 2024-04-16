@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       "./assets/img/slider2.jpg",
       "./assets/img/slider3.jpg",
       "./assets/img/slider4.jpg",
+      "./assets/img/slider.jpg",
     ],
     body
   );
