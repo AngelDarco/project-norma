@@ -5,7 +5,7 @@ function login() {
       e.preventDefault();
 
       const data = new FormData(form);
-      fetch("../login.php", {
+      fetch("../php/login.php", {
         method: "POST",
         body: data,
       })

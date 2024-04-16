@@ -1,20 +1,20 @@
 /* eslint-disable no-undef */
 // eslint-disable-next-line import/extensions
-import updateFunctions from './updateFunctions.js';
+import updateFunctions from "./updateFunctions.js";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Card values to display //Class
   const cardValues = [
-    'nombreCard',
-    'tallaCard',
-    'precioCard',
-    'stockCard',
-    'generoCard',
-    'descripcionCard',
-    'imgFront',
-    'imgBack',
-    'cardColores',
-    'cardCode',
+    "nombreCard",
+    "tallaCard",
+    "precioCard",
+    "stockCard",
+    "generoCard",
+    "descripcionCard",
+    "imgFront",
+    "imgBack",
+    "cardColores",
+    "cardCode",
   ];
 
   const [
@@ -32,17 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Form values and actions buttons //ID
   const formValues = [
-    'producto',
-    'talla',
-    'precio',
-    'stock',
-    'genero',
-    'descripcionForm',
-    'buscar',
-    'code',
-    'resetForm',
-    'imagenFile',
-    'regForm',
+    "producto",
+    "talla",
+    "precio",
+    "stock",
+    "genero",
+    "descripcionForm",
+    "buscar",
+    "code",
+    "resetForm",
+    "imagenFile",
+    "regForm",
   ];
 
   const [
@@ -60,7 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
   ] = formValues.map((item) => document.querySelector(`#${item}`));
 
   const {
-    resetear, converter, updateValues, formButtonsAvalibyle, watchcolors, updateColors,
+    resetear,
+    converter,
+    updateValues,
+    formButtonsAvalibyle,
+    watchcolors,
+    updateColors,
   } = updateFunctions({
     cardColores,
     code,
@@ -78,25 +83,25 @@ document.addEventListener('DOMContentLoaded', () => {
   formButtonsAvalibyle(true);
   watchcolors();
 
-  imagenFile.addEventListener('change', async (e) => {
+  imagenFile.addEventListener("change", async (e) => {
     const blobImg = await converter(e.target.files[0]);
-    imgFront.setAttribute('src', `${blobImg}`);
-    imgBack.setAttribute('src', `${blobImg}`);
+    imgFront.setAttribute("src", `${blobImg}`);
+    imgBack.setAttribute("src", `${blobImg}`);
   });
 
   /* search product in the database */
-  buscar.addEventListener('click', async () => {
+  buscar.addEventListener("click", async () => {
     const datos = new FormData();
-    datos.append('code', code.value);
-    datos.append('accion', 'search');
+    datos.append("code", code.value);
+    datos.append("accion", "search");
 
-    await fetch('../productosUpdate.php', {
-      method: 'POST',
+    await fetch("../php/productosUpdate.php", {
+      method: "POST",
       body: datos,
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data !== 'NotFound' && data !== 'Vacio') {
+        if (data !== "NotFound" && data !== "Vacio") {
           resetear(regForm);
           updateValues(data, {
             nombreCard,
@@ -111,28 +116,30 @@ document.addEventListener('DOMContentLoaded', () => {
             cardCode,
           });
           formButtonsAvalibyle(false);
-        } else if (data === 'NotFound') {
+        } else if (data === "NotFound") {
           Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Producto no Encontrado',
+            position: "center",
+            icon: "warning",
+            title: "Producto no Encontrado",
             showConfirmButton: false,
             timer: 1500,
           });
-          if (regForm) { formButtonsAvalibyle(true); }
-        } else if (data === 'Vacio') {
+          if (regForm) {
+            formButtonsAvalibyle(true);
+          }
+        } else if (data === "Vacio") {
           Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Debes llenar la casilla Primero',
+            position: "center",
+            icon: "warning",
+            title: "Debes llenar la casilla Primero",
             showConfirmButton: false,
             timer: 1500,
           });
         } else {
           Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Error no especificado',
+            position: "center",
+            icon: "error",
+            title: "Error no especificado",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -140,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch((err) => {
         Swal.fire({
-          position: 'center',
-          icon: 'error',
+          position: "center",
+          icon: "error",
           title: `Error En la BBDD ${err}`,
           showConfirmButton: false,
           timer: 1500,
@@ -150,49 +157,49 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* update values in the database */
-  regForm.addEventListener('submit', (e) => {
+  regForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const colors = updateColors();
     const formData = new FormData(regForm);
-    formData.append('colores', colors);
-    formData.append('code', code.value);
-    formData.append('accion', 'update');
+    formData.append("colores", colors);
+    formData.append("code", code.value);
+    formData.append("accion", "update");
 
-    fetch('../productosUpdate.php', {
-      method: 'POST',
+    fetch("../php/productosUpdate.php", {
+      method: "POST",
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data === 'Vacio') {
+        if (data === "Vacio") {
           Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Por Favor Rellena Todos los Campos',
+            position: "center",
+            icon: "warning",
+            title: "Por Favor Rellena Todos los Campos",
             showConfirmButton: false,
             timer: 1500,
           });
-        } else if (data === 'Actualizado') {
+        } else if (data === "Actualizado") {
           Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Producto Actualizado Satisfactoriamente',
+            position: "center",
+            icon: "success",
+            title: "Producto Actualizado Satisfactoriamente",
             showConfirmButton: false,
             timer: 1500,
           });
-        } else if (data === 'NoActualizado') {
+        } else if (data === "NoActualizado") {
           Swal.fire({
-            position: 'center',
-            icon: 'info',
-            title: 'Nada Actualizado',
+            position: "center",
+            icon: "info",
+            title: "Nada Actualizado",
             showConfirmButton: false,
             timer: 1500,
           });
         } else {
           Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Lo Sentimos Hubo un Error en el Servidor',
+            position: "center",
+            icon: "error",
+            title: "Lo Sentimos Hubo un Error en el Servidor",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -200,8 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .catch((error) => {
         Swal.fire({
-          position: 'center',
-          icon: 'error',
+          position: "center",
+          icon: "error",
           title: `Error no Especificado ${error.message}`,
           showConfirmButton: false,
           timer: 1500,
@@ -210,5 +217,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // resetForm values
-  resetForm.addEventListener('click', () => resetear(regForm));
+  resetForm.addEventListener("click", () => resetear(regForm));
 });

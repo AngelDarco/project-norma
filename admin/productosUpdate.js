@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     datos.append("code", code.value);
     datos.append("accion", "search");
 
-    fetch("/php/productosUpdate.php", {
+    fetch("../php/productosUpdate.php", {
       method: "POST",
       body: datos,
     })
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
     data.append("code", code.value);
     data.append("accion", "update");
 
-    fetch("/php/productosUpdate.php", {
+    fetch("../php/productosUpdate.php", {
       method: "POST",
       body: data,
     })

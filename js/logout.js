@@ -1,5 +1,5 @@
 export default async function logout() {
-  return await fetch("./logout.php")
+  return await fetch("../php/logout.php")
     .then((res) => res.json())
     .then((data) => {
       console.log(data);

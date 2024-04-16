@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let data = new FormData(form);
     e.preventDefault();
     data.append("colores", colores);
-    fetch("/php/productosAdd.php", {
+    fetch("../php/productosAdd.php", {
       method: "POST",
       body: data,
     })

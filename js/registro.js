@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let data = new FormData(form);
     e.preventDefault();
 
-    fetch("../registro.php", {
+    fetch("../php/registro.php", {
       method: "POST",
       body: data,
     })

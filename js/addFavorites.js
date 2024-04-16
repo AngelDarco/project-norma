@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import addEventsWithMutationObserver from './addEventsWithMutationObserver.js';
+import addEventsWithMutationObserver from "./addEventsWithMutationObserver.js";
 
 /* Mostrar Favoritos */
 function agregarFavoritos(id, user) {
@@ -15,9 +15,9 @@ function agregarFavoritos(id, user) {
   }
 
   Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Guardado',
+    position: "center",
+    icon: "success",
+    title: "Guardado",
     showConfirmButton: false,
     timer: 500,
   });
@@ -32,47 +32,47 @@ function eliminarFavoritos(id, user) {
   window.localStorage.setItem(user, JSON.stringify(datadislikes));
 
   Swal.fire({
-    position: 'center',
-    icon: 'warning',
-    title: 'Borrado',
+    position: "center",
+    icon: "warning",
+    title: "Borrado",
     showConfirmButton: false,
     timer: 500,
   });
 }
 // function add(z){
 function like(z) {
-  console.log('like');
-  const user = window.localStorage.getItem('session');
+  const user = window.localStorage.getItem("session");
   const localStorageName = `${user}Likes`;
-  const id = z.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1]
-    .childNodes[5].innerHTML;
+  const id =
+    z.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1]
+      .childNodes[5].innerHTML;
 
   if (user) {
     // not like
-    if (!z.target.classList.contains('like')) {
+    if (!z.target.classList.contains("like")) {
       agregarFavoritos(id, localStorageName);
-      z.target.classList.replace('far', 'fas');
-      z.target.classList.add('like');
+      z.target.classList.replace("far", "fas");
+      z.target.classList.add("like");
     } else {
       // like
       eliminarFavoritos(id, localStorageName);
-      z.target.classList.replace('fas', 'far');
-      z.target.classList.remove('like');
+      z.target.classList.replace("fas", "far");
+      z.target.classList.remove("like");
     }
   } else {
     Swal.fire({
-      position: 'center',
-      icon: 'warning',
-      title: 'You must be loged first',
+      position: "center",
+      icon: "warning",
+      title: "You must be loged first",
       showConfirmButton: false,
       timer: 500,
     });
   }
 }
 export default function addFavorites() {
-  const container = document.querySelector('.img__main');
-  addEventsWithMutationObserver(like, '.heart', container);
+  const container = document.querySelector(".img__main");
+  addEventsWithMutationObserver(like, ".heart", container);
   // adding a node to trigger the event observer
-  const node = document.createElement('div');
+  const node = document.createElement("div");
   container.appendChild(node);
 }

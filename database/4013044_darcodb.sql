@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jul 13, 2023 at 09:35 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: fdb1034.awardspace.net
+-- Generation Time: Apr 15, 2024 at 03:58 PM
+-- Server version: 8.0.32
+-- PHP Version: 8.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,17 +18,17 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `darcodb`
+-- Database: `4013044_darcodb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `norma_products`
+-- Table structure for table `productosnorma`
 --
 
-CREATE TABLE `norma_products` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `productosnorma` (
+  `id` int NOT NULL,
   `codepro` double DEFAULT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `talla` varchar(100) DEFAULT NULL,
@@ -38,13 +38,13 @@ CREATE TABLE `norma_products` (
   `descripcion` varchar(100) DEFAULT NULL,
   `stock` varchar(100) DEFAULT NULL,
   `imagen` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `norma_products`
+-- Dumping data for table `productosnorma`
 --
 
-INSERT INTO `norma_products` (`id`, `codepro`, `nombre`, `talla`, `precio`, `colores`, `genero`, `descripcion`, `stock`, `imagen`) VALUES
+INSERT INTO `productosnorma` (`id`, `codepro`, `nombre`, `talla`, `precio`, `colores`, `genero`, `descripcion`, `stock`, `imagen`) VALUES
 (1, 50, 'polo', 's', 20, 'red,yellow,green', 'Hombre', 'polo para hombre', '3', 'imgs/46-Tmw9pyS.jpg'),
 (2, 51, 'Conjunto', 'M', 0, 'orange,green,blue,yellow,white,pink,grey', 'Niño', 'Conjunto de algodón para niños', '6', 'imgs/47 - N9ZYDiC.jpg'),
 (3, 52, 'Conjunto', 'm', 30, 'red', 'Niño', 'Conjunto de algodón en caja para bebes', '3', 'imgs/48 - cGcs2dI.jpg'),
@@ -196,14 +196,42 @@ INSERT INTO `norma_products` (`id`, `codepro`, `nombre`, `talla`, `precio`, `col
 (149, 190, 'Blusa', '', 0, 'purple,grey,black,green,blue,red,white,pink,yellow,orange', 'Mujer', 'Blusa de algodón para damas', '6', 'imgs/148 - wcs6Nys.jpg'),
 (150, 191, 'Pantalon', '', 0, 'purple,grey,black,green,blue,red,white,yellow,orange', 'Hombre', 'Pantalon de algodón para hombre', '6', 'imgs/81 - A9ynWPc.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registrosnorma`
+--
+
+CREATE TABLE `registrosnorma` (
+  `id` int NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `lastname` varchar(20) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `registrosnorma`
+--
+
+INSERT INTO `registrosnorma` (`id`, `name`, `lastname`, `email`, `password`) VALUES
+(1, 'Angel', 'GPEME', 'angel@gmail.com', '12345'),
+(2, 'Angel', 'GPEME', 'usuariom9224@gmail.com', '12345');
+
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `norma_products`
+-- Indexes for table `productosnorma`
 --
-ALTER TABLE `norma_products`
+ALTER TABLE `productosnorma`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `registrosnorma`
+--
+ALTER TABLE `registrosnorma`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -211,10 +239,16 @@ ALTER TABLE `norma_products`
 --
 
 --
--- AUTO_INCREMENT for table `norma_products`
+-- AUTO_INCREMENT for table `productosnorma`
 --
-ALTER TABLE `norma_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+ALTER TABLE `productosnorma`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+
+--
+-- AUTO_INCREMENT for table `registrosnorma`
+--
+ALTER TABLE `registrosnorma`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

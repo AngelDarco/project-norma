@@ -1,25 +1,25 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-use-before-define */
 /* eslint-disable no-undef */
-/* eslint-disable import/extensions */
-import log from './log.js';
-import botonMenu from './botonMenu.js';
-import mostrarCards, { dataLocalStorage, fetchData } from './mostrarCards.js';
-import addFavorites from './addFavorites.js';
-import addCar from './addCar.js';
-import eventClassNames from './eventClassNames.js';
-import removeEvents from './removeEvents.js';
-import itemsFilter from './itemsFilter.js';
-import previousView from './previousView.js';
+import log from "./js/log.js";
+import botonMenu from "./js/botonMenu.js";
+import mostrarCards, {
+  dataLocalStorage,
+  fetchData,
+} from "./js/mostrarCards.js";
+import addFavorites from "./js/addFavorites.js";
+import addCar from "./js/addCar.js";
+import eventClassNames from "./js/eventClassNames.js";
+import removeEvents from "./js/removeEvents.js";
+import itemsFilter from "./js/itemsFilter.js";
+import previousView from "./js/previousView.js";
 
-const carroContent = document.querySelector('.carro');
-const home = document.querySelector('.home');
-const btnFavorites = document.querySelector('.corazon');
-const menuShow = document.querySelector('.menu__header');
+const carroContent = document.querySelector(".carro");
+const home = document.querySelector(".home");
+const btnFavorites = document.querySelector(".corazon");
+const menuShow = document.querySelector(".menu__header");
 
 const { removeCar, removeLikes, removeFilters } = removeEvents();
 
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener("DOMContentLoaded", async () => {
   log();
   botonMenu(menuShow);
 
@@ -43,60 +43,63 @@ document.addEventListener('DOMContentLoaded', async () => {
 // event buttons header
 // show homeS
 function eventHome(responseData) {
-  home.addEventListener('click', () => {
-    removeCar();
-    removeLikes();
-    removeFilters();
-    mostrarCards(responseData);
-  });
+  if (home)
+    home.addEventListener("click", () => {
+      removeCar();
+      removeLikes();
+      removeFilters();
+      mostrarCards(responseData);
+    });
 }
 /*  show likes  */
 function eventFavorites(arr, user) {
-  btnFavorites.addEventListener('click', () => {
-    // return if there is no user
-    if (!user) {
-      return Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'you must be loged to watch your favorite items',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
+  if (btnFavorites)
+    btnFavorites.addEventListener("click", () => {
+      // return if there is no user
+      if (!user) {
+        return Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "you must be loged to watch your favorite items",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
 
-    const likeData = true;
-    removeCar();
-    removeFilters();
-    eventClassNames(btnFavorites, 'replace', [ 'far', 'fas' ]);
-    eventClassNames(btnFavorites, 'add', 'like');
-    mostrarCards(arr, user, likeData);
-  });
+      const likeData = true;
+      removeCar();
+      removeFilters();
+      eventClassNames(btnFavorites, "replace", ["far", "fas"]);
+      eventClassNames(btnFavorites, "add", "like");
+      mostrarCards(arr, user, likeData);
+    });
 }
 // show car
 function eventCar(arr, user) {
-  carroContent.addEventListener('click', () => {
-    // return if there is no user
-    if (!user) {
-      return Swal.fire({
-        position: 'center',
-        icon: 'warning',
-        title: 'you must be loged to watch your favorite items',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
+  if (carroContent)
+    carroContent.addEventListener("click", () => {
+      // return if there is no user
+      if (!user) {
+        return Swal.fire({
+          position: "center",
+          icon: "warning",
+          title: "you must be loged to watch your favorite items",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
 
-    const carData = true;
-    const likeData = false;
+      const carData = true;
+      const likeData = false;
 
-    removeLikes();
-    removeFilters();
-    // in the car
-    eventClassNames(carroContent, 'replace', [
-      'fa-cart-plus',
-      'fa-shopping-cart',
-    ]);
-    eventClassNames(carroContent, 'add', 'like');
-    mostrarCards(arr, user, likeData, carData);
-  });
+      removeLikes();
+      removeFilters();
+      // in the car
+      eventClassNames(carroContent, "replace", [
+        "fa-cart-plus",
+        "fa-shopping-cart",
+      ]);
+      eventClassNames(carroContent, "add", "like");
+      mostrarCards(arr, user, likeData, carData);
+    });
 }
