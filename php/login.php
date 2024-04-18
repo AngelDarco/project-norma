@@ -6,10 +6,10 @@ require 'conexion.php';
 
 if(!empty($email)&&!empty($pass)){
    try{
-    $sql = "SELECT * FROM usuariosnorma WHERE email=:email AND pass=:pass";
+    $sql = "SELECT * FROM registrosnorma WHERE email=:email AND password=:password";
     $result = $conexion->prepare($sql);
     $result->bindParam(':email',$email);
-    $result->bindParam(':pass',$pass);
+    $result->bindParam(':password',$pass);
     $result->execute();
    
     if($result->rowCount()!=0){

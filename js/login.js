@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function login() {
   const form = document.getElementById("formulario");
   if (form)
@@ -35,6 +36,14 @@ function login() {
               position: "center",
               icon: "error",
               title: "Llena todos los campos",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          } else {
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "Error no Especificado",
               showConfirmButton: false,
               timer: 1500,
             });
