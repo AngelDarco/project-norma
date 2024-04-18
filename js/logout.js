@@ -1,8 +1,8 @@
+/* eslint-disable no-undef */
 export default async function logout() {
   return await fetch("../php/logout.php")
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       Swal.fire({
         position: "center",
         icon: "success",
@@ -12,5 +12,14 @@ export default async function logout() {
       });
       return data;
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.error(err);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error no especificado",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+    });
 }
