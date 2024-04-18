@@ -37,7 +37,9 @@
       <div class="izquierda">
         <ul>
           <li class="usuario">
-            <a href="./html/login.html"><i class="fas fa-user"></i></a>
+            <a href="./html/login.html"
+              ><i class="fas fa-user"></i><span id="user-name">login</span></a
+            >
           </li>
           <li>
             <a class="home"><i class="fas fa-home"></i>home</a>
@@ -54,12 +56,10 @@
       <div class="derecha">
         <div class="menu__header ocultar">
           <ul>
-            <li><a href="#redirection" class="filtro damas">Damas</a></li>
-            <li>
-              <a href="#redirection" class="filtro caballeros">Caballeros</a>
-            </li>
-            <li><a href="#redirection" class="filtro ninos">Niños</a></li>
-            <li><a href="#redirection" class="filtro casa">Todo</a></li>
+            <li class="filtro damas">Damas</li>
+            <li class="filtro caballeros">Caballeros</li>
+            <li class="filtro ninos">Niños</li>
+            <li class="filtro casa">Todo</li>
           </ul>
         </div>
       </div>
@@ -91,7 +91,7 @@
         damas, caballeros y niños, con una gran variedad de precios y estilos.
       </p>
 
-      <div class="cards-container">
+      <div class="cards-about">
         <div class="card">
           <a href="./html/login.html"><i class="fas fa-user"></i></a>
           <h1>Ingresar</h1>
@@ -118,7 +118,7 @@
     <section class="clients">
       <h1>Nuestros clientes</h1>
       <p>Comentarios de algunos de nuestros clientes</p>
-      <div class="cards-container">
+      <div class="cards-clients">
         <div class="card">
           <img
             loading="lazy"
@@ -270,9 +270,10 @@
     <div class="ocultar preview-marco">
       <img src="" class="preview-img ocultar" alt="preview-img" />
     </div>
+
     <section class="cards" id="redirection">
       <!-- Imagenes de Muestra -->
-      <div class="img__main"></div>
+      <div class="cards-container"></div>
 
       <template class="template-card">
         <div class="flip-card-container" style="--hue: 350">

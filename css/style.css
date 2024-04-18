@@ -254,7 +254,7 @@ main {
     padding: 1rem;
   }
 
-  .cards-container {
+  .cards-about {
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -320,7 +320,7 @@ main {
     margin-bottom: 2rem;
   }
 
-  .cards-container {
+  .cards-clients {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -411,7 +411,7 @@ main {
 .cards {
   width: 100%;
 
-  .img__main {
+  .cards-container {
     width: 100%;
     height: auto;
     padding: 50px;
