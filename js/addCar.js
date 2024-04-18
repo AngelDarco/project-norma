@@ -1,39 +1,32 @@
 /* eslint-disable no-undef */
-import addEventsWithMutationObserver from './addEventsWithMutationObserver.js';
+import addEventsWithMutationObserver from "./addEventsWithMutationObserver.js";
 
-export default function addCar() {
-  const container = document.querySelector('.img__main');
-  addEventsWithMutationObserver(buy, '.car', container);
-  // adding a node to trigger the event observer
-  const node = document.createElement('div');
-  container.appendChild(node);
-}
-
-// function add(z){
-function buy(z) {
-  const user = window.localStorage.getItem('session');
+// function add(item){
+function buy(item) {
+  const user = window.localStorage.getItem("session");
   const carUser = `${user}Car`;
-  const id = z.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1]
-    .childNodes[5].innerHTML;
 
+  const card = this.closest(".flip-card");
+  const cardId = card.querySelector("figcaption").innerHTML;
+
+  //  add car
   if (user) {
-    //  add car
-    if (!z.target.classList.contains('addCar')) {
-      agregarCar(id, carUser);
-      z.target.classList.replace('fa-cart-plus', 'fa-shopping-cart');
-      z.target.classList.add('addCar');
-      z.target.classList.add('like');
+    if (item && !item.target.classList.contains("fa-shopping-cart")) {
+      item.target.classList.replace("fa-cart-plus", "fa-shopping-cart");
+      item.target.classList.add("addCar");
+      item.target.classList.add("like");
+      agregarCar(cardId, carUser);
     } else {
-      eliminarCar(id, carUser);
-      z.target.classList.replace('fa-shopping-cart', 'fa-cart-plus');
-      z.target.classList.remove('addCar');
-      z.target.classList.remove('like');
+      item.target.classList.replace("fa-shopping-cart", "fa-cart-plus");
+      item.target.classList.remove("addCar");
+      item.target.classList.remove("like");
+      eliminarCar(cardId, carUser);
     }
   } else {
     Swal.fire({
-      position: 'center',
-      icon: 'warning',
-      title: 'You must be loged first',
+      position: "center",
+      icon: "warning",
+      title: "You must be loged first",
       showConfirmButton: false,
       timer: 500,
     });
@@ -41,40 +34,49 @@ function buy(z) {
 }
 
 /* Mostrar Favoritos */
-function agregarCar(id, user) {
-  const data = JSON.parse(window.localStorage.getItem(user));
-  const carData = { data: [] };
+function agregarCar(cardId, user) {
+  const storage = JSON.parse(window.localStorage.getItem(user));
 
-  if (!data) {
-    carData.data.push(id);
+  if (storage && storage.data.includes(cardId)) return;
+
+  if (!storage) {
+    const carData = { data: [] };
+    carData.data.push(cardId);
     window.localStorage.setItem(user, JSON.stringify(carData));
   } else {
-    carData.data.push(...data.data, id);
-    window.localStorage.setItem(user, JSON.stringify(carData));
+    storage.data.push(cardId);
+    window.localStorage.setItem(user, JSON.stringify(storage));
   }
 
   Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Guardado',
+    position: "center",
+    icon: "success",
+    title: "Guardado",
     showConfirmButton: false,
     timer: 500,
   });
 }
 
 /* Eliminar Favoritos */
-function eliminarCar(id, user) {
+function eliminarCar(cardId, user) {
   const data = JSON.parse(window.localStorage.getItem(user));
   const datadislikes = { data: [] };
-  const res = data.data.filter((itm) => itm != id);
-  datadislikes.data = res;
+  datadislikes.data = data.data.filter((itm) => itm != cardId);
   window.localStorage.setItem(user, JSON.stringify(datadislikes));
 
   Swal.fire({
-    position: 'center',
-    icon: 'warning',
-    title: 'Borrado',
+    position: "center",
+    icon: "warning",
+    title: "Borrado",
     showConfirmButton: false,
     timer: 500,
   });
+}
+
+export default function addCar() {
+  const container = document.querySelector(".cards-container");
+  addEventsWithMutationObserver(buy, ".car", container);
+  // adding a node to trigger the event observer
+  const node = document.createElement("div");
+  container.appendChild(node);
 }
