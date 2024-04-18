@@ -49,24 +49,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   addCar();
   itemsFilter();
 
-  eventFavorites(responseData, user);
-  eventCar(responseData, user);
-  eventHome(responseData);
+  const containerCards = document.getElementById("redirection");
+  eventFavorites(responseData, user, containerCards);
+  eventCar(responseData, user, containerCards);
+  eventHome(responseData, containerCards);
 }); // Llave final del Main
 
 // event buttons header
-// show homeS
-function eventHome(responseData) {
+// show home
+function eventHome(responseData, containerCards) {
   if (home)
     home.addEventListener("click", () => {
       removeCar();
       removeLikes();
       removeFilters();
       mostrarCards(responseData);
+      containerCards.scrollIntoView({
+        behavior: "smooth",
+      });
     });
 }
 /*  show likes  */
-function eventFavorites(arr, user) {
+function eventFavorites(arr, user, containerCards) {
   if (btnFavorites)
     btnFavorites.addEventListener("click", () => {
       // return if there is no user
@@ -86,10 +90,13 @@ function eventFavorites(arr, user) {
       eventClassNames(btnFavorites, "replace", ["far", "fas"]);
       eventClassNames(btnFavorites, "add", "like");
       mostrarCards(arr, user, likeData);
+      containerCards.scrollIntoView({
+        behavior: "smooth",
+      });
     });
 }
 // show car
-function eventCar(arr, user) {
+function eventCar(arr, user, containerCards) {
   if (carroContent)
     carroContent.addEventListener("click", () => {
       // return if there is no user
@@ -115,5 +122,8 @@ function eventCar(arr, user) {
       ]);
       eventClassNames(carroContent, "add", "like");
       mostrarCards(arr, user, likeData, carData);
+      containerCards.scrollIntoView({
+        behavior: "smooth",
+      });
     });
 }
