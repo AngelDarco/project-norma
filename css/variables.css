@@ -2,7 +2,6 @@
   --header-height: 5rem;
 
   --color_texto: #000;
-  /* --color_fondos: #000C; */
   --width: 100%;
 
   /* Cabezera */
@@ -30,7 +29,4 @@
   --corazon_pulsado_color: #ff0000;
   --corazonY: 20rem;
   --corazonX: 1rem;
-
-  /* Vista Previa */
-  --object_fit: scale-down;
 }

@@ -50,37 +50,48 @@
     /* Imagenes Grid */
     --grid_columnas: repeat(2, 1fr);
   }
-  .menu__header {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 50%;
-    height: 100vh;
-  }
-  .menu__header ul {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-flow: column;
-  }
-  .menu__header ul a {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-  }
 
-  .disparador__menu {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  body {
+    header {
+      .derecha {
+        .menu__header {
+          position: absolute;
+          top: var(--header-height);
+          right: 0;
+          width: 50%;
+          height: calc(100vh - var(--header-height));
+          background-color: #00000091;
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            padding: 3rem 1rem;
+
+            li {
+              height: 15%;
+              a {
+                height: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+              }
+              &:hover {
+                background-color: #ffffff91;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .disparador__menu {
+      width: 30%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 
