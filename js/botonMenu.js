@@ -1,10 +1,10 @@
 export default function botonMenu(menuShow) {
-  const header = document.querySelector(".header");
+  const viewport = document.querySelector("html");
   const menu = document.getElementById("menu");
-  if (menuShow instanceof HTMLElement) return;
   const observer = new ResizeObserver((e) => {
     if (e[0].contentRect.width > 650) {
       menuShow.classList.remove("ocultar");
+      menuShow.classList.add("responsive");
       menu.classList.add("ocultar");
     } else {
       menuShow.classList.add("ocultar");
@@ -13,7 +13,7 @@ export default function botonMenu(menuShow) {
   });
 
   observer.disconnect();
-  observer.observe(header);
+  if (viewport) observer.observe(viewport);
 
   menu.addEventListener("click", () => {
     menu.classList.toggle("rotar");
