@@ -2,7 +2,7 @@
 import eventClassNames from "./eventClassNames.js";
 import previousView from "./previousView.js";
 
-const container = document.querySelector(".img__main");
+const container = document.querySelector(".cards-container");
 
 /**
  * Retrieves user data from local storage.
