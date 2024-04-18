@@ -1,4 +1,5 @@
 export default function eventClassNames(node, event, className) {
+  if (!node || !className || !event) return;
   switch (event) {
     case "add":
       node.classList.add(className);
