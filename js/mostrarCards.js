@@ -220,10 +220,6 @@ const card = (arr, likeData, carData) => {
       eventClassNames(carro, "add", "fa-cart-plus");
     }
 
-    // adding item colors
-    template.querySelector(".card-front ul .li-color").innerHTML =
-      addColors(item);
-
     const clone = template.cloneNode(true);
     fragment.appendChild(clone);
     i += 1;
@@ -244,15 +240,6 @@ async function fetchData() {
     throw new Error(error);
   }
 }
-
-const addColors = (dato) => {
-  let div = "<span class='for-span colores'>Colores: </span>";
-  const colors = dato?.colores.split(",");
-  for (let i = 0; i < colors.length; i++) {
-    div += `<span class="color label ${colors[i]}"></span>`;
-  }
-  return div;
-};
 
 export default mostrarCards;
 export { loadObserver, fetchData, dataLocalStorage };

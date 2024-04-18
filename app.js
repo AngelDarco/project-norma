@@ -47,30 +47,32 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   addFavorites();
   addCar();
-  itemsFilter();
 
-  const containerCards = document.getElementById("redirection");
-  eventFavorites(responseData, user, containerCards);
-  eventCar(responseData, user, containerCards);
-  eventHome(responseData, containerCards);
+  const cardsContainer = document.getElementById("redirection");
+  // header buttons events
+  itemsFilter(cardsContainer);
+
+  eventHome(responseData, cardsContainer);
+  eventFavorites(responseData, user, cardsContainer);
+  eventCar(responseData, user, cardsContainer);
 }); // Llave final del Main
 
 // event buttons header
 // show home
-function eventHome(responseData, containerCards) {
+function eventHome(responseData, cardsContainer) {
   if (home)
     home.addEventListener("click", () => {
       removeCar();
       removeLikes();
       removeFilters();
       mostrarCards(responseData);
-      containerCards.scrollIntoView({
+      cardsContainer.scrollIntoView({
         behavior: "smooth",
       });
     });
 }
 /*  show likes  */
-function eventFavorites(arr, user, containerCards) {
+function eventFavorites(arr, user, cardsContainer) {
   if (btnFavorites)
     btnFavorites.addEventListener("click", () => {
       // return if there is no user
@@ -90,13 +92,13 @@ function eventFavorites(arr, user, containerCards) {
       eventClassNames(btnFavorites, "replace", ["far", "fas"]);
       eventClassNames(btnFavorites, "add", "like");
       mostrarCards(arr, user, likeData);
-      containerCards.scrollIntoView({
+      cardsContainer.scrollIntoView({
         behavior: "smooth",
       });
     });
 }
 // show car
-function eventCar(arr, user, containerCards) {
+function eventCar(arr, user, cardsContainer) {
   if (carroContent)
     carroContent.addEventListener("click", () => {
       // return if there is no user
@@ -122,7 +124,7 @@ function eventCar(arr, user, containerCards) {
       ]);
       eventClassNames(carroContent, "add", "like");
       mostrarCards(arr, user, likeData, carData);
-      containerCards.scrollIntoView({
+      cardsContainer.scrollIntoView({
         behavior: "smooth",
       });
     });
