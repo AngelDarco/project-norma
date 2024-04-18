@@ -20,9 +20,10 @@ export default function removeEvents() {
     eventClassNames(btnFavorites, "remove", "like");
   }
   function removeFilters() {
-    if (menuShow && menuShow.classList.contains("ocultar")) return;
-    eventClassNames(menu, "remove", "rotar");
-    eventClassNames(menuShow, "add", "ocultar");
+    if (window.innerWidth < 650) {
+      eventClassNames(menu, "remove", "rotar");
+      eventClassNames(menuShow, "add", "ocultar");
+    }
     if (menu) menu.style.transition = "1s";
   }
   return { removeCar, removeLikes, removeFilters };
