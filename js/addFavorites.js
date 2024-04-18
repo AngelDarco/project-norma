@@ -70,7 +70,7 @@ function like(z) {
   }
 }
 export default function addFavorites() {
-  const container = document.querySelector(".img__main");
+  const container = document.querySelector(".cards-container");
   addEventsWithMutationObserver(like, ".heart", container);
   // adding a node to trigger the event observer
   const node = document.createElement("div");
