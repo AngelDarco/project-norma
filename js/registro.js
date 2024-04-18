@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 document.addEventListener("DOMContentLoaded", () => {
   let form = document.getElementById("formulario");
 
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             confirmButtonText: "Iniciar Sesion",
           }).then((result) => {
             if (result.isConfirmed) {
-              window.location = "./html/login.html";
+              window.location = "../html/login.html";
             }
           });
           form.reset();
@@ -43,7 +44,14 @@ document.addEventListener("DOMContentLoaded", () => {
             showConfirmButton: false,
             timer: 1500,
           });
-        }
+        } else
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error no especificado",
+            showConfirmButton: false,
+            timer: 1500,
+          });
       })
       .catch((err) => {
         Swal.fire({
