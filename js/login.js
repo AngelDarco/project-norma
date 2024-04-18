@@ -22,12 +22,15 @@ function login() {
             });
             form.reset();
             localStorage.setItem("session", data[1] + "@", data[2]);
-            window.location = "../index.html";
+            console.log(data);
+            setTimeout(() => {
+              window.location = "../index.html";
+            }, 1000);
           } else if (data == "false") {
             Swal.fire({
               position: "center",
               icon: "warning",
-              title: "Usuario no Registrado",
+              title: "wrong credentials or no registred yet",
               showConfirmButton: false,
               timer: 1500,
             });
