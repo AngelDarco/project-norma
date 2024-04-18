@@ -10,7 +10,6 @@ import addCar from "./js/addCar.js";
 import eventClassNames from "./js/eventClassNames.js";
 import removeEvents from "./js/removeEvents.js";
 import itemsFilter from "./js/itemsFilter.js";
-import previousView from "./js/previousView.js";
 
 import slider from "./js/slider.js";
 
@@ -53,8 +52,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   eventFavorites(responseData, user);
   eventCar(responseData, user);
   eventHome(responseData);
-
-  previousView();
 }); // Llave final del Main
 
 // event buttons header

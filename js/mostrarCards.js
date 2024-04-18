@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import eventClassNames from "./eventClassNames.js";
+import previousView from "./previousView.js";
 
 const container = document.querySelector(".img__main");
 
@@ -228,6 +229,7 @@ const card = (arr, likeData, carData) => {
     i += 1;
   });
   container.appendChild(fragment);
+  previousView();
 };
 
 async function fetchData() {
