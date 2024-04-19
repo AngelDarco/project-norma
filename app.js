@@ -16,6 +16,7 @@ import slider from "./js/slider.js";
 const carroContent = document.querySelector(".carro");
 const home = document.querySelector(".home");
 const btnFavorites = document.querySelector(".corazon");
+const likesContainer = document.querySelector(".likes");
 const menuShow = document.querySelector(".menu__header");
 
 const { removeCar, removeLikes, removeFilters } = removeEvents();
@@ -25,7 +26,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   botonMenu(menuShow);
 
   // change header styles with observer
-  headerObserver();
+  const header = document.querySelector("header");
+  headerObserver(header);
 
   // Slider
   const container = document.querySelector(".slider");
@@ -58,6 +60,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   eventHome(responseData, cardsContainer);
   eventFavorites(responseData, user, cardsContainer);
   eventCar(responseData, user, cardsContainer);
+
+  document.addEventListener("load", () => {
+    if (window.scrollY > 50) header.classList.add("headerSticky");
+  });
 }); // Llave final del Main
 
 // event buttons header
@@ -76,8 +82,8 @@ function eventHome(responseData, cardsContainer) {
 }
 /*  show likes  */
 function eventFavorites(arr, user, cardsContainer) {
-  if (btnFavorites)
-    btnFavorites.addEventListener("click", () => {
+  if (likesContainer)
+    likesContainer.addEventListener("click", () => {
       // return if there is no user
       if (!user) {
         return Swal.fire({
@@ -133,8 +139,7 @@ function eventCar(arr, user, cardsContainer) {
     });
 }
 
-function headerObserver() {
-  const header = document.querySelector("header");
+function headerObserver(header) {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
