@@ -12,8 +12,9 @@
   width: 17rem;
   height: 25rem;
   margin: auto;
-
   perspective: 1000px;
+
+  animation: fade 2s ease-in-out;
 }
 
 /* .flip-card */
@@ -357,7 +358,7 @@ button:focus + .design-container {
   color: black;
   text-shadow: 0 0 4px #fff, 0 0 8px #fff;
 }
-.container_colors{
+.container_colors {
   width: 100%;
   height: 20px;
   border: 1px solid red;
@@ -421,7 +422,7 @@ button:focus + .design-container {
 .pink {
   background: #ff6781;
 }
-.yellow{
+.yellow {
   background: yellow;
 }
 
@@ -504,5 +505,14 @@ button:focus + .design-container {
     width: 15rem;
     height: 23rem;
     margin: auto;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

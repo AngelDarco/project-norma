@@ -173,6 +173,10 @@ const card = (arr, likeData, carData) => {
   arr.forEach((item) => {
     if (!item) return;
 
+    template
+      .querySelector(".flip-card-container")
+      .setAttribute("style", `--hue:${Math.floor(Math.random() * 100)}`);
+
     template.querySelector(".img").setAttribute("src", item.imagen);
     template.querySelector("figcaption").innerHTML = item.codepro;
     template.querySelector(".nombre").innerHTML = item.nombre;
