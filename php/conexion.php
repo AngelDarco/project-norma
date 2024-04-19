@@ -1,9 +1,4 @@
 <?php
-// $DB_Host = 'fdb1034.awardspace.net';
-// $DB_Name = '4013044_darcodb';
-// $DB_User = '4013044_darcodb';
-// $DB_Pass = '12346789eme';
- 
 $DB_Host = 'localhost';
 $DB_Name = 'darcodb';
 $DB_User = 'root';
