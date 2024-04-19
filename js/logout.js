@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 export default async function logout() {
-  return await fetch("../php/logout.php")
+  return await fetch("./php/logout.php")
     .then((res) => res.json())
     .then((data) => {
       Swal.fire({
