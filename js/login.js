@@ -22,7 +22,6 @@ function login() {
             });
             form.reset();
             localStorage.setItem("session", data[1] + "@", data[2]);
-            console.log(data);
             setTimeout(() => {
               window.location = "../index.html";
             }, 1000);

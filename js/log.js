@@ -11,7 +11,7 @@ export default function Log() {
 
     btnLogin.addEventListener(
       "click",
-      () => (window.location.href = "./html/login.html")
+      () => (window.location.href = "../html/login.html")
     );
   } else {
     //Session Opened

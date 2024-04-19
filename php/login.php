@@ -18,7 +18,7 @@ if(!empty($email)&&!empty($pass)){
         session_start();
         $userdata = $result->fetch(PDO::FETCH_ASSOC);
 
-       $_SESSION["usuario"] = $userdata["nombre"];
+       $_SESSION["usuario"] = $userdata["name"];
        $_SESSION["id"] = $userdata["id"];
 
         echo json_encode(['true',$_SESSION['usuario'],$_SESSION['id']]);
