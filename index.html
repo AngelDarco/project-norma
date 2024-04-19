@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    
-    <meta name="description" content="Discover the latest fashion trends and shop for stylish clothing at XYZ Clothing Store. Find a wide range of apparel for men, women, and kids. Explore our collection of dresses, tops, pants, and accessories. Enjoy free shipping on orders over $50.">
-    
-    <title>Boutique Joselyn</title>
+
+    <meta
+      name="description"
+      content="Discover the latest fashion trends and shop for stylish clothing at XYZ Clothing Store. Find a wide range of apparel for men, women, and kids. Explore our collection of dresses, tops, pants, and accessories. Enjoy free shipping on orders over $50."
+    />
+
+    <title>Boutique Norma</title>
 
     <link
       rel="shortcut icon"
@@ -20,159 +22,335 @@
       src="https://kit.fontawesome.com/49ff7c4b47.js"
       crossorigin="anonymous"
     ></script>
- 
+
     <link rel="stylesheet" href="./css/card.css" />
     <link rel="stylesheet" href="./css/style.css" />
 
     <script src="./js/sweetalert2.all.min.js"></script>
-    <script src="./app.js" type="module"></script>
 
+    <script src="./app.js" type="module"></script>
   </head>
 
   <body>
-    <div class="header">
+    <header>
       <!-- Iconos Del Header -->
-      <div class="cabezera__header">
-        <div class="izquierda">
+      <div class="izquierda">
+        <ul>
+          <li class="usuario">
+            <a href="./html/login.html"
+              ><i class="fas fa-user"></i><span id="user-name">login</span></a
+            >
+          </li>
+          <li class="home">
+            <a><i class="fas fa-home"></i>home</a>
+          </li>
+          <li class="cvacio likes">
+            <a><i class="far fa-heart corazon"></i>likes</a>
+          </li>
+          <li class="carro">
+            <a><i class="fas fa-cart-plus"></i>car</a>
+          </li>
+          <li class="salir">
+            <a>
+              <i class="fas fa-sign-out-alt"></i>
+              logout
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="derecha">
+        <div class="menu__header ocultar">
           <ul>
-            <li class="usuario">
-              <a href="./html/login.html"><i class="fas fa-user"></i></a>
-            </li>
-            <li>
-              <a class="home"
-                ><i class="fas fa-home"></i
-              ></a>
-            </li>
-            <li>
-              <a class="cvacio"
-                ><i class="far fa-heart corazon"></i
-              ></a>
-            </li>
-            <li>
-              <a><i class="fas fa-cart-plus carro"></i></a>
-            </li>
-            <li class="salir"><i class="fas fa-sign-out-alt"></i></li>
+            <li class="filtro damas">Damas</li>
+            <li class="filtro caballeros">Caballeros</li>
+            <li class="filtro ninos">Niños</li>
+            <li class="filtro casa">Todo</li>
           </ul>
         </div>
-        <div class="derecha">
-          <div class="menu__header ocultar">
-            <ul>
-              <li><a href="#redirection" class="filtro damas">Damas</a></li>
-              <li>
-                <a href="#redirection" class="filtro caballeros">Caballeros</a>
-              </li>
-              <li><a href="#redirection" class="filtro ninos">Niños</a></li>
-              <li><a href="#redirection" class="filtro casa">Todo</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="disparador__menu">
-          <i id="menu" class="fa fa-bars" aria-hidden="true"></i>
-        </div>
       </div>
 
-      <!-- Slider -->
-      <div class="contenedor__slider">
-        <img src="./assets/img/header.jpeg" alt="">
-
-        <div class="centro__header">
-          <!-- Mensaje Central -->
-          <div class="mensaje__slider">
-            <h1 class="titulo">Boutique Norma</h1>
-            <p class="saludo">
-              Mrs. Norma greets and welcomes each and every one of the
-              visitors to our Boutique. We hope that your inquiry or visit
-              offer you the information you need in an agile and dynamic way.
-            </p>
-          </div>
-
+      <div class="disparador__menu">
+        <i id="menu" class="fa fa-bars" aria-hidden="true"></i>
       </div>
+    </header>
 
-    </div>
+    <main class="main">
+      <div class="message">
+        <h1 class="titulo">Boutique Norma</h1>
+        <p class="saludo">
+          La señora Norma saluda y da la bienvenida a todos y cada uno de los
+          visitantes a nuestra Boutique. Esperamos que su consulta o visita le
+          ofrezca la información que necesita de forma ágil y dinámica.
+        </p>
+      </div>
+      <div class="slider">
+        <img src="./assets/img/slider.jpg" alt="slider-images" />
+      </div>
+    </main>
 
-    <main>
-      <div class="main" id="redirection">
-        <div class="fondo ocultar"></div>
-        <div class="marco ocultar"></div>
+    <section class="about">
+      <h1>Norma Store</h1>
+      <p>
+        Somos una tienda de ropa que se dedica a la venta de ropa y calzado de
+        todos los estilos y tamanos, contamos con una gran variedad de ropa para
+        damas, caballeros y niños, con una gran variedad de precios y estilos.
+      </p>
 
-        <!-- Imagenes de Muestra -->
-        <div class="img__main"></div>
+      <div class="cards-about">
+        <div class="card">
+          <a href="./html/login.html"><i class="fas fa-user"></i></a>
+          <h1>Ingresar</h1>
+          <p>Iniciar Sesion para comprar, guardar y ver favoritos</p>
+        </div>
+        <div class="card">
+          <a><i class="far fa-heart corazon"></i></a>
+          <h1>Likes</h1>
+          <p>
+            Guarda tus productos favoritos, dando click en el icono de corazon
+          </p>
+        </div>
+        <div class="card">
+          <a><i class="fas fa-cart-plus carro"></i></a>
+          <h1>Carrito de Compras</h1>
+          <p>
+            Agrega productos a tu carrito de compras, verifica, elimina o agrega
+            más, antes de comprar
+          </p>
+        </div>
+      </div>
+    </section>
 
-        <template class="template-card">
-          <div class="flip-card-container" style="--hue: 350">
-            <div class="flip-card">
-              <div class="card-front">
-                <figure>
-                  <div class="img-bg"></div>
-                  <img class="img" src="" alt="Brohm Lake" />
-                  <figcaption></figcaption>
-                </figure>
+    <section class="clients">
+      <h1>Nuestros clientes</h1>
+      <p>Comentarios de algunos de nuestros clientes</p>
+      <div class="cards-clients">
+        <div class="card">
+          <img
+            loading="lazy"
+            decoding="async"
+            width="454"
+            height="406"
+            src="https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T1.png"
+            class="attachment-large size-large wp-image-1324"
+            alt=""
+            srcset="
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T1.png         454w,
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T1-300x268.png 300w
+            "
+            sizes="(max-width: 454px) 100vw, 454px"
+          />
 
-                <ul>
-                  <li>Producto: <span class="for-span nombre"></span></li>
-                  <li>Tallas: <span class="for-span talla"></span></li>
-                  <li>Precio: S/<span class="for-span precio"></span></li>
-                  <li>Stock: <span class="for-span stock"></span>/uni</li>
-                  <li>Para: <span class="for-span genero"></span></li>
-                  <li class="li-color"></li>
-                  <li class="li-descripcion">
-                    Descripcion:<span class="for-span span-descripcion"></span>
-                  </li>
-                </ul>
-              </div>
+          <div class="message">
+            <h4>Mike Washoski</h4>
 
-              <div class="card-back">
-                <figure>
-                  <div class="img-bg"></div>
-                  <img class="img2" src="" alt="Brohm Lake" />
-                  <i class="heart" aria-hidden="true"></i>
-                  <i class="car" aria-hidden="true"></i>
-                </figure>
+            <h6>Designer</h6>
 
-                <button class="btn-ver">Ver</button>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
 
-                <div class="design-container">
-                  <span class="design design--1"></span>
-                  <span class="design design--2"></span>
-                  <span class="design design--3"></span>
-                  <span class="design design--4"></span>
-                  <span class="design design--5"></span>
-                  <span class="design design--6"></span>
-                  <span class="design design--7"></span>
-                  <span class="design design--8"></span>
-                  <span class="design design--9"></span>
+            <div class="social-icons">
+              <div class="icons-container">
+                <div class="social-icons">
+                  <i class="fab fa-facebook"></i>
+                </div>
+                <div class="social-icons">
+                  <i class="fab fa-twitter"></i>
+                </div>
+                <div class="social-icons">
+                  <i class="fab fa-instagram"></i>
                 </div>
               </div>
             </div>
           </div>
-        </template>
+        </div>
+
+        <div class="card">
+          <img
+            loading="lazy"
+            decoding="async"
+            width="545"
+            height="487"
+            src="https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T2.png"
+            class="attachment-large size-large wp-image-1325"
+            alt=""
+            srcset="
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T2.png         545w,
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T2-300x268.png 300w
+            "
+            sizes="(max-width: 545px) 100vw, 545px"
+          />
+          <div class="message">
+            <h4>Hannah Smith</h4>
+
+            <h6>Designer</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+
+            <div class="icons-container">
+              <div class="social-icons">
+                <i class="fab fa-facebook"></i>
+              </div>
+              <div class="social-icons">
+                <i class="fab fa-twitter"></i>
+              </div>
+              <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            loading="lazy"
+            decoding="async"
+            width="499"
+            height="446"
+            src="https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T3.png"
+            class="attachment-large size-large wp-image-1326"
+            alt=""
+            srcset="
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T3.png         499w,
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T3-300x268.png 300w
+            "
+            sizes="(max-width: 499px) 100vw, 499px"
+          />
+          <div class="message">
+            <h4>Lexi Black</h4>
+
+            <h6>Designer</h6>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+
+            <div class="icons-container">
+              <div class="social-icons">
+                <i class="fab fa-facebook"></i>
+              </div>
+              <div class="social-icons">
+                <i class="fab fa-twitter"></i>
+              </div>
+              <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            loading="lazy"
+            decoding="async"
+            width="536"
+            height="479"
+            src="https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T4.png"
+            class="attachment-large size-large wp-image-1327"
+            alt=""
+            srcset="
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T4.png         536w,
+              https://kfkit.rometheme.pro/criativo/wp-content/uploads/sites/10/2021/08/T4-300x268.png 300w
+            "
+            sizes="(max-width: 536px) 100vw, 536px"
+          />
+          <div class="message">
+            <h4>Kevin Widagdo</h4>
+
+            <h6>Designer</h6>
+
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
+
+            <div class="icons-container">
+              <div class="social-icons">
+                <i class="fab fa-facebook"></i>
+              </div>
+              <div class="social-icons">
+                <i class="fab fa-twitter"></i>
+              </div>
+              <div class="social-icons">
+                <i class="fab fa-instagram"></i>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </main>
+    </section>
+
+    <div class="ocultar preview-marco">
+      <img src="" class="preview-img ocultar" alt="preview-img" />
+    </div>
+
+    <section class="cards" id="redirection">
+      <!-- Imagenes de Muestra -->
+      <div class="cards-container"></div>
+
+      <template class="template-card">
+        <div class="flip-card-container">
+          <div class="flip-card">
+            <div class="card-front">
+              <figure>
+                <div class="img-bg"></div>
+                <img class="img" src="" alt="Brohm Lake" />
+                <figcaption></figcaption>
+              </figure>
+
+              <ul>
+                <li>Producto: <span class="for-span nombre"></span></li>
+                <li>Tallas: <span class="for-span talla"></span></li>
+                <li>Precio: S/<span class="for-span precio"></span></li>
+                <li>Stock: <span class="for-span stock"></span>/uni</li>
+                <li>Para: <span class="for-span genero"></span></li>
+                <li class="li-color"></li>
+                <li class="li-descripcion">
+                  Descripcion:<span class="for-span span-descripcion"></span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="card-back">
+              <figure>
+                <div class="img-bg"></div>
+                <img class="img2" src="" alt="Brohm Lake" />
+                <i class="heart" aria-hidden="true"></i>
+                <i class="car" aria-hidden="true"></i>
+              </figure>
+
+              <button class="btn-ver">Ver</button>
+
+              <div class="design-container">
+                <span class="design design--1"></span>
+                <span class="design design--2"></span>
+                <span class="design design--3"></span>
+                <span class="design design--4"></span>
+                <span class="design design--5"></span>
+                <span class="design design--6"></span>
+                <span class="design design--7"></span>
+                <span class="design design--8"></span>
+                <span class="design design--9"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </section>
 
     <footer class="footer" id="footer">
-      <div class="footer-social-icons">
-        <ul class="social-icons">
-          <li>
-            <a href="" class="social-icon"> <i class="fa fa-facebook"></i></a>
-          </li>
-          <li>
-            <a href="" class="social-icon"> <i class="fa fa-twitter"></i></a>
-          </li>
-          <li>
-            <a href="" class="social-icon"> <i class="fa fa-rss"></i></a>
-          </li>
-          <li>
-            <a href="" class="social-icon"> <i class="fa fa-youtube"></i></a>
-          </li>
-          <li>
-            <a href="" class="social-icon"> <i class="fa fa-linkedin"></i></a>
-          </li>
-          <li>
-            <a href="" class="social-icon"> <i class="fa fa-github"></i></a>
-          </li>
-        </ul>
-      </div>
+      <ul>
+        <li>
+          <a class="social-icon"> <i class="fa fa-facebook"></i></a>
+        </li>
+        <li>
+          <a class="social-icon"> <i class="fa fa-twitter"></i></a>
+        </li>
+        <li>
+          <a class="social-icon"> <i class="fa fa-rss"></i></a>
+        </li>
+        <li>
+          <a class="social-icon"> <i class="fa fa-youtube"></i></a>
+        </li>
+        <li>
+          <a class="social-icon"> <i class="fa fa-linkedin"></i></a>
+        </li>
+        <li>
+          <a class="social-icon"> <i class="fa fa-github"></i></a>
+        </li>
+      </ul>
     </footer>
   </body>
 </html>

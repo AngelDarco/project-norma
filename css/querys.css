@@ -21,9 +21,20 @@
     /* Imagen Vista Previa */
     --object_fit: fill;
   }
+
+  body {
+    .about {
+      .cards-about {
+        flex-direction: column;
+        .card {
+          width: 300px;
+        }
+      }
+    }
+  }
 }
 
-@media screen and (max-width: 650px) {
+@media (max-width: 665px) {
   :root {
     /* Cabezera */
     --izquierda_content: 100%;
@@ -39,37 +50,54 @@
     /* Imagenes Grid */
     --grid_columnas: repeat(2, 1fr);
   }
-  .menu__header {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 50%;
-    height: 100vh;
-  }
-  .menu__header ul {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-flow: column;
-  }
-  .menu__header ul a {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: bold;
-  }
 
-  .disparador__menu {
-    width: 30%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  body {
+    header {
+      .izquierda {
+        ul {
+          gap: 2rem;
+        }
+      }
+
+      .derecha {
+        .menu__header {
+          position: absolute;
+          top: var(--header-height);
+          right: 0;
+          width: 50%;
+          height: calc(100vh - var(--header-height));
+          background-color: #00000091;
+
+          ul {
+            display: flex;
+            flex-direction: column;
+            padding: 3rem 1rem;
+
+            li {
+              height: 15%;
+              a {
+                height: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+              }
+              &:hover {
+                background-color: #ffffff91;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .disparador__menu {
+      width: 30%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 
@@ -117,15 +145,15 @@
     --corazonX: 1.5rem;
   }
 }
-
+/* 
 @media screen and (max-height: 600px) {
   :root {
-    /* Header Saludo */
+    /* Header Saludo 
     --header_height: 50%;
     --saludoH1_margin: 0.5;
     --fontH1_size: 2rem;
     --texto_size: 1rem;
-    /* Slider */
+    /* Slider 
     --slider_width: 70%;
     --slider_height: 45%;
   }
@@ -133,10 +161,11 @@
 
 @media screen and (max-height: 420px) {
   :root {
-    /* Header Saludo*/
+    /* Header Saludo
     --header_height: 50%;
     --heder_width: 100%;
-    /* Slider */
+    /* Slider 
     --slider_height: 40%;
   }
 }
+ */
