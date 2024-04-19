@@ -24,7 +24,7 @@
 
   body {
     .about {
-      .cards-container {
+      .cards-about {
         flex-direction: column;
         .card {
           width: 300px;
@@ -34,7 +34,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media (max-width: 665px) {
   :root {
     /* Cabezera */
     --izquierda_content: 100%;
@@ -53,6 +53,12 @@
 
   body {
     header {
+      .izquierda {
+        ul {
+          gap: 2rem;
+        }
+      }
+
       .derecha {
         .menu__header {
           position: absolute;

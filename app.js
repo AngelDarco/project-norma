@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   log();
   botonMenu(menuShow);
 
+  // change header styles with observer
+  headerObserver();
+
   // Slider
   const container = document.querySelector(".slider");
   const body = document.querySelector(".main");
@@ -128,4 +131,19 @@ function eventCar(arr, user, cardsContainer) {
         behavior: "smooth",
       });
     });
+}
+
+function headerObserver() {
+  const header = document.querySelector("header");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.intersectionRect.top <= 50) {
+          header.classList.add("headerSticky");
+        } else header.classList.remove("headerSticky");
+      });
+    },
+    { threshold: [1], rootMargin: "0px" }
+  );
+  observer.observe(document.querySelector("main"));
 }
