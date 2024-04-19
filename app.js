@@ -138,7 +138,7 @@ function headerObserver() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.intersectionRect.top <= 50) {
+        if (entry.intersectionRect.top <= 50 || window.scrollY > 50) {
           header.classList.add("headerSticky");
         } else header.classList.remove("headerSticky");
       });
