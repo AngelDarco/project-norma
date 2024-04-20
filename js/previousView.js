@@ -15,8 +15,8 @@ export default function previousView() {
 /* Lanzador de Vista previa de imagenes */
 function vistaPreviaImagenes(item) {
   if (!item) return;
-  // eventClassNames(cabezera, "add", "ocultar");
-  eventClassNames(fondo, "toggle", "ocultar");
+  // eventClassNames(cabezera, "add", "hidden");
+  eventClassNames(fondo, "toggle", "hidden");
   // eventClassNames(fondo, "toggle", "fondo__activo");
   eventClassNames(previewImg, "toggle", "preview-marco");
 
@@ -28,13 +28,13 @@ function vistaPreviaImagenes(item) {
 }
 
 function fondoPreviousView() {
-  // if (cabezera) cabezera.classList.remove("ocultar");
+  // if (cabezera) cabezera.classList.remove("hidden");
   if (fondo) {
-    fondo.classList.add("ocultar");
+    fondo.classList.add("hidden");
     // fondo.classList.remove("fondo__activo");
   }
   // if (previewImg) {
-  previewImg.classList.add("ocultar");
+  previewImg.classList.add("hidden");
   //   previewImg.classList.remove("preview-marco");
   // }
 }
