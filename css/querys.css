@@ -7,19 +7,8 @@
 
 @media screen and (max-width: 800px) {
   :root {
-    /* Header Saludo*/
-    --heder_width: 30%;
-    --header_height: 80%;
-    /* Slider */
-    --slider_width: 70%;
-    --slider_height: 70%;
-    /* Imagenes Grid */
-    /* --grid_columnas: repeat(3, 1fr); */
-    /* Corazon */
     --corazonY: 16rem;
     --corazonX: 1.7rem;
-    /* Imagen Vista Previa */
-    --object_fit: fill;
   }
 
   body {
@@ -36,17 +25,6 @@
 
 @media (max-width: 665px) {
   :root {
-    /* Cabezera */
-    /* --izquierda_content: 100%;
-    --derecha_content: 30%; */
-    /* Header Saludo*/
-    /* --heder_width: 100%;
-    --header_height: 40%; */
-    /* --saludoH1_margin: ; */
-    /* Slider */
-    /* --slider_width: 100%;
-    --slider_height: 60%; */
-
     /* Imagenes Grid */
     --grid_columnas: repeat(2, 1fr);
   }
@@ -193,6 +171,14 @@
 
           .disparador__menu {
             font-size: 1.5rem;
+          }
+        }
+
+        .about {
+          .cards-about {
+            .card {
+              width: 250px;
+            }
           }
         }
       }
