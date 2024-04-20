@@ -55,7 +55,7 @@
     header {
       .izquierda {
         ul {
-          gap: 2rem;
+          gap: 0.8rem;
         }
       }
 
@@ -65,7 +65,7 @@
           top: var(--header-height);
           right: 0;
           width: 50%;
-          height: calc(100vh - var(--header-height));
+          height: calc(100dvh - var(--header-height));
           background-color: #00000091;
 
           ul {
@@ -92,7 +92,8 @@
     }
 
     .disparador__menu {
-      width: 30%;
+      /* width: 30%; */
+      margin-right: 1rem;
       height: 100%;
       display: flex;
       align-items: center;
@@ -105,7 +106,7 @@
   :root {
     /* Cabezera */
     --izquierda_content: 100%;
-    --izquierda_iconsContent: 90%;
+    --izquierda_iconsContent: 10%;
     --iconos_size: 1.9rem;
     --derecha_content: auto;
 
@@ -124,48 +125,52 @@
     --corazonY: 14rem;
     --corazonX: 1.7rem;
   }
-}
+  /* }
 
 @media screen and (max-width: 400px) {
   :root {
-    /* Cabezera */
-    --izquierda_iconsContent: 100%;
+    /* Cabezera 
+    /* --izquierda_iconsContent: 100%; 
     --iconos_size: 1.5rem;
-    /* Header Saludo*/
-    --header_height: 45%;
-    --saludoH1_margin: 0;
-    --fontH1_size: 1.6rem;
-    --texto_size: 0.8rem;
-    /* Slider */
-    --slider_width: 100%;
-    --slider_height: 50%;
-    /* Imagenes Grid */
-    --grid_columnas: repeat(1, 1fr);
-    --corazonY: 17rem;
-    --corazonX: 1.5rem;
-  }
-}
-/* 
-@media screen and (max-height: 600px) {
-  :root {
-    /* Header Saludo 
-    --header_height: 50%;
-    --saludoH1_margin: 0.5;
-    --fontH1_size: 2rem;
-    --texto_size: 1rem;
-    /* Slider 
-    --slider_width: 70%;
-    --slider_height: 45%;
-  }
-}
-
-@media screen and (max-height: 420px) {
-  :root {
     /* Header Saludo
-    --header_height: 50%;
-    --heder_width: 100%;
+    /* --header_height: 45%; 
+    /* --saludoH1_margin: 0;
+    --fontH1_size: 1.6rem;
+    --texto_size: 0.8rem; 
     /* Slider 
-    --slider_height: 40%;
+    /* --slider_width: 100%;
+    --slider_height: 50%; 
+    /* Imagenes Grid 
+    /* --grid_columnas: repeat(1, 1fr);
+    --corazonY: 17rem;
+    --corazonX: 1.5rem; 
+  } */
+
+  body {
+    header {
+      padding: 0 0.5rem;
+
+      .izquierda {
+        ul {
+          gap: 0rem;
+          li {
+            a,
+            i {
+              font-size: 0.9rem;
+            }
+          }
+        }
+      }
+
+      .derecha {
+        .menu__header {
+          width: 70%;
+        }
+      }
+
+      .disparador__menu {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
- */
