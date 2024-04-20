@@ -39,25 +39,25 @@ function eliminarFavoritos(id, user) {
     timer: 500,
   });
 }
-// function add(z){
-function like(z) {
+// function add(item){
+function like(item) {
   const user = window.localStorage.getItem("session");
   const localStorageName = `${user}Likes`;
-  const id =
-    z.target.parentNode.parentNode.parentNode.childNodes[1].childNodes[1]
-      .childNodes[5].innerHTML;
+
+  const card = this.closest(".flip-card");
+  const id = card.querySelector("figcaption").innerHTML;
 
   if (user) {
     // not like
-    if (!z.target.classList.contains("like")) {
+    if (!item.target.classList.contains("like")) {
       agregarFavoritos(id, localStorageName);
-      z.target.classList.replace("far", "fas");
-      z.target.classList.add("like");
+      item.target.classList.replace("far", "fas");
+      item.target.classList.add("like");
     } else {
       // like
       eliminarFavoritos(id, localStorageName);
-      z.target.classList.replace("fas", "far");
-      z.target.classList.remove("like");
+      item.target.classList.replace("fas", "far");
+      item.target.classList.remove("like");
     }
   } else {
     Swal.fire({

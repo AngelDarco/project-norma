@@ -5,28 +5,11 @@
   --width: 100%;
 
   /* Cabezera */
-  --izquierda_content: 100%;
-  --derecha_content: 100%;
   --iconos_size: 2rem;
-  --izquierda_iconsContent: 100%;
-
-  /* Slider */
-  --slider_width: 50%;
-  --slider_height: 55%;
-
-  /* Body */
-  --color_fondo_body: #000c;
-
-  /* Imagenes Grid */
-  --grid_columnas: repeat(4, 1fr);
-  --row-gap: 30px;
-  --column-gap: 15px;
 
   /* Corazon */
   --corazon: 2rem;
   --corazon_color: #ff6fa0;
   --corazon_pulsado: 2.3rem;
   --corazon_pulsado_color: #ff0000;
-  --corazonY: 20rem;
-  --corazonX: 1rem;
 }
