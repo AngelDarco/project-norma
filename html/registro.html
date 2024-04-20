@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="../css/registro.css" />
     <script src="../js/sweetalert2.all.min.js"></script>
     <script src="../js/registro.js"></script>
+    <script>
+      if (localStorage.getItem("session")) window.location = "../index.html";
+    </script>
   </head>
   <body>
     <h1>Registro</h1>
