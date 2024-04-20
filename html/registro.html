@@ -25,10 +25,9 @@
     <script src="../js/registro.js"></script>
   </head>
   <body>
-    <div class="testbox">
-      <h1>Registro</h1>
-
-      <form method="POST" id="formulario">
+    <h1>Registro</h1>
+    <form method="POST" id="formulario">
+      <div>
         <label class="icon" for="nombre"><i class="icon-user"></i></label>
         <input
           type="text"
@@ -39,7 +38,9 @@
           required
         />
         <label class="guia">Nombre</label>
+      </div>
 
+      <div>
         <label class="icon" for="apellido"><i class="icon-user"></i></label>
         <input
           type="text"
@@ -50,7 +51,9 @@
           required
         />
         <label class="guia">Apellido</label>
+      </div>
 
+      <div>
         <label class="icon" for="email"><i class="icon-envelope"></i></label>
         <input
           type="text"
@@ -61,7 +64,9 @@
           required
         />
         <label class="guia">Email</label>
+      </div>
 
+      <div>
         <label class="icon" for="pass"><i class="icon-shield"></i></label>
         <input
           type="password"
@@ -72,15 +77,18 @@
           required
         />
         <label class="guia">clave</label>
+      </div>
 
-        <div class="terminos">
-          <p>
-            By clicking Register, you agree on our
-            <a href="#">terms and condition</a>.
-          </p>
+      <div class="terminos">
+        <p>
+          By clicking Register, you agree on our
+          <a href="#">terms and condition</a>.
+        </p>
+        <div>
           <input type="submit" class="button" value="Registrar" />
+          <a href="../index.html" class="button">Home</a>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </body>
 </html>
