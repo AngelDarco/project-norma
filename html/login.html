@@ -15,38 +15,31 @@
     <script type="module" src="../js/login.js" defer></script>
   </head>
   <body>
+    <h1>Ingresar</h1>
     <form method="post" id="formulario">
-      <h1>Ingresar</h1>
-      <div class="inset">
-        <p>
-          <label for="email">Correo Ó Usuario</label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Email ó Usuario"
-            required
-          />
-        </p>
-        <p>
-          <label for="pass">Contraseña</label>
-          <input
-            type="password"
-            name="pass"
-            id="password"
-            placeholder="Contraseña"
-            required
-          />
-        </p>
-        <p>
-          <input type="checkbox" name="remember" id="remember" />
-          <label for="remember">Guardar sesion por 14 days</label>
-        </p>
+      <div>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email ó Usuario"
+          required
+        />
       </div>
-      <p class="p-container">
+      <div>
+        <input
+          type="password"
+          name="pass"
+          id="password"
+          placeholder="Contraseña"
+          required
+        />
+      </div>
+      <div class="div-container">
+        <a href="../index.html">Home</a>
         <a href="./registro.html">Crear Cuenta</a>
         <input type="submit" name="go" id="go" value="Ingresar" />
-      </p>
+      </div>
     </form>
   </body>
 </html>

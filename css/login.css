@@ -1,146 +1,99 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
-  color: white;
-  font-size: 12px;
-  background: #333;
+  background-image: linear-gradient(to bottom right, #fdabdd, #374a5a);
+  background-repeat: no-repeat;
+  min-height: 100dvh;
+  min-width: 350px;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  text-shadow: 0 1px 0 black;
+  text-align: center;
+  position: relative;
+  padding: 2rem 0;
+  font-weight: 300;
 }
 
 form {
-  background: #111;
-  width: 300px;
-  margin: 30px auto;
-  border-radius: 0.4em;
-  border: 1px solid #191919;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
-}
-
-form:after {
-  content: "";
-  display: block;
-  position: absolute;
-  height: 1px;
-  width: 100px;
-  left: 20%;
-  background: linear-gradient(left, #111, #444, #b6b6b8, #444, #111);
-  top: 0;
-}
-
-form:before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 8px;
-  height: 5px;
-  border-radius: 50%;
-  left: 34%;
-  top: -7px;
-  box-shadow: 0 0 6px 4px #fff;
-}
-
-.inset {
-  padding: 20px;
-  border-top: 1px solid #19191a;
-}
-
-form h1 {
-  font-size: 18px;
-  text-shadow: 0 1px 0 black;
-  text-align: center;
-  padding: 15px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 1);
-  position: relative;
-}
-
-form h1:after {
-  content: "";
-  display: block;
-  width: 250px;
-  height: 100px;
-  position: absolute;
-  top: 0;
-  left: 50px;
-  pointer-events: none;
-  transform: rotate(70deg);
-  background: linear-gradient(
-    50deg,
-    rgba(255, 255, 255, 0.15),
-    rgba(0, 0, 0, 0)
-  );
-}
-
-label {
-  color: #666;
-  display: block;
-  padding-bottom: 9px;
-}
-
-input[type="text"],
-input[type="password"] {
-  width: 100%;
-  padding: 8px 5px;
-  background: linear-gradient(#1f2124, #27292c);
-  border: 1px solid #222;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
-  border-radius: 0.3em;
-  margin-bottom: 20px;
-}
-
-label[for="remember"] {
-  color: white;
-  display: inline-block;
-  padding-bottom: 0;
-  padding-top: 5px;
-}
-
-input[type="checkbox"] {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.p-container {
+  min-width: 300px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-}
+  justify-content: center;
+  gap: 2rem;
 
-.p-container:after {
-  clear: both;
-  display: table;
-  content: "";
-}
+  div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
 
-input,
-a {
-  text-decoration: none;
-  padding: 5px 20px;
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 10px 10px rgba(255, 255, 255, 0.1);
-  border-radius: 0.3em;
-  background: #0184ff;
-  color: white;
-  float: right;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 15px;
-}
+    input {
+      min-height: 2rem;
+      background-color: transparent;
+      border-radius: 4px;
+      padding: 0.5rem;
+      border: 0.13rem solid #f5f;
+      color: #fff !important;
+      padding-left: 0.5rem;
+      margin-left: 1rem;
 
-input[type="submit"]:hover {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -10px 10px rgba(255, 255, 255, 0.1);
-}
+      &::-webkit-input-placeholder {
+        color: #fff;
+      }
 
-input[type="text"]:hover,
-input[type="password"]:hover,
-label:hover ~ input[type="text"],
-label:hover ~ input[type="password"] {
-  background: #27292c;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .div-container {
+    padding: 2rem 0;
+    display: flex;
+    gap: 0.5rem;
+    flex: 1;
+
+    a,
+    input {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: white;
+      padding: 10px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      background-color: #3a57af;
+      -webkit-box-shadow: 0 3px rgba(58, 87, 175, 0.75);
+      -moz-box-shadow: 0 3px rgba(58, 87, 175, 0.75);
+      box-shadow: 0 3px rgba(58, 87, 175, 0.75);
+      transition: all 0.1s linear 0s;
+      position: relative;
+      margin: 0;
+
+      text-decoration: none;
+      border: 1px solid #fff;
+
+      &:hover {
+        top: 3px;
+        background-color: #2e458b;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
 }
