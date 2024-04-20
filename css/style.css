@@ -317,7 +317,6 @@ main {
 .clients {
   text-align: center;
   padding: 1rem;
-
   p {
     padding: 1rem;
     margin-bottom: 2rem;
@@ -334,7 +333,6 @@ main {
       display: flex;
       align-items: center;
       width: 420px;
-      min-width: 400px;
       height: 200px;
       padding: 0.5rem;
       border-radius: 10px;
