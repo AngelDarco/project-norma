@@ -14,7 +14,7 @@
     --slider_width: 70%;
     --slider_height: 70%;
     /* Imagenes Grid */
-    --grid_columnas: repeat(3, 1fr);
+    /* --grid_columnas: repeat(3, 1fr); */
     /* Corazon */
     --corazonY: 16rem;
     --corazonX: 1.7rem;
@@ -37,15 +37,15 @@
 @media (max-width: 665px) {
   :root {
     /* Cabezera */
-    --izquierda_content: 100%;
-    --derecha_content: 30%;
+    /* --izquierda_content: 100%;
+    --derecha_content: 30%; */
     /* Header Saludo*/
-    --heder_width: 100%;
-    --header_height: 40%;
-    --saludoH1_margin: ;
+    /* --heder_width: 100%;
+    --header_height: 40%; */
+    /* --saludoH1_margin: ; */
     /* Slider */
-    --slider_width: 100%;
-    --slider_height: 60%;
+    /* --slider_width: 100%;
+    --slider_height: 60%; */
 
     /* Imagenes Grid */
     --grid_columnas: repeat(2, 1fr);
@@ -100,32 +100,55 @@
       justify-content: center;
     }
   }
-}
 
-@media screen and (max-width: 450px) {
-  :root {
-    /* Cabezera */
-    --izquierda_content: 100%;
-    --izquierda_iconsContent: 10%;
-    --iconos_size: 1.9rem;
-    --derecha_content: auto;
+  @media screen and (max-width: 550px) {
+    body {
+      main {
+        flex-direction: column;
+        .message {
+          width: 100%;
+          height: fit-content;
+          flex: none;
 
-    /* Header Saludo*/
-    --heder_width: 100%;
-    --header_height: 35%;
-    --saludoH1_margin: 0.5;
-    --fontH1_size: 2.5rem;
-    --texto_size: 1.4rem;
-    --padding_saludo: 2rem;
-    /* Slider */
-    --slider_width: 100%;
-    --slider_height: 65%;
+          h1 {
+            font-size: 2rem;
+          }
+          p {
+            font-size: 1rem;
+          }
+        }
+        .slider {
+          width: 80%;
+          height: 350px;
+          flex: none;
+        }
+      }
+    }
 
-    /* Corazon */
-    --corazonY: 14rem;
-    --corazonX: 1.7rem;
-  }
-  /* }
+    @media screen and (max-width: 450px) {
+      :root {
+        /* Cabezera 
+        --izquierda_content: 100%;
+        --izquierda_iconsContent: 10%;
+        --iconos_size: 1.9rem;
+        --derecha_content: auto;*/
+
+        /* Header Saludo
+        --heder_width: 100%;
+        --header_height: 35%;
+        --saludoH1_margin: 0.5;
+        --fontH1_size: 2.5rem;
+        --texto_size: 1.4rem;
+        --padding_saludo: 2rem;*/
+        /* Slider 
+        --slider_width: 100%;
+        --slider_height: 65%;*/
+
+        /* Corazon */
+        --corazonY: 14rem;
+        --corazonX: 1.7rem;
+      }
+      /* }
 
 @media screen and (max-width: 400px) {
   :root {
@@ -146,30 +169,32 @@
     --corazonX: 1.5rem; 
   } */
 
-  body {
-    header {
-      padding: 0 0.5rem;
+      body {
+        header {
+          padding: 0 0.5rem;
 
-      .izquierda {
-        ul {
-          gap: 0rem;
-          li {
-            a,
-            i {
-              font-size: 0.9rem;
+          .izquierda {
+            ul {
+              gap: 0rem;
+              li {
+                a,
+                i {
+                  font-size: 0.9rem;
+                }
+              }
             }
           }
-        }
-      }
 
-      .derecha {
-        .menu__header {
-          width: 70%;
-        }
-      }
+          .derecha {
+            .menu__header {
+              width: 70%;
+            }
+          }
 
-      .disparador__menu {
-        font-size: 1.5rem;
+          .disparador__menu {
+            font-size: 1.5rem;
+          }
+        }
       }
     }
   }
