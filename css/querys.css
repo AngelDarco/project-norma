@@ -1,16 +1,4 @@
-@media screen and (max-width: 1150px) {
-  :root {
-    /* Imagenes Grid */
-    --grid_columnas: repeat(3, 1fr);
-  }
-}
-
 @media screen and (max-width: 800px) {
-  :root {
-    --corazonY: 16rem;
-    --corazonX: 1.7rem;
-  }
-
   body {
     .about {
       .cards-about {
@@ -24,11 +12,6 @@
 }
 
 @media (max-width: 665px) {
-  :root {
-    /* Imagenes Grid */
-    --grid_columnas: repeat(2, 1fr);
-  }
-
   body {
     header {
       .izquierda {
@@ -123,49 +106,6 @@
     }
 
     @media screen and (max-width: 450px) {
-      :root {
-        /* Cabezera 
-        --izquierda_content: 100%;
-        --izquierda_iconsContent: 10%;
-        --iconos_size: 1.9rem;
-        --derecha_content: auto;*/
-
-        /* Header Saludo
-        --heder_width: 100%;
-        --header_height: 35%;
-        --saludoH1_margin: 0.5;
-        --fontH1_size: 2.5rem;
-        --texto_size: 1.4rem;
-        --padding_saludo: 2rem;*/
-        /* Slider 
-        --slider_width: 100%;
-        --slider_height: 65%;*/
-
-        /* Corazon */
-        --corazonY: 14rem;
-        --corazonX: 1.7rem;
-      }
-      /* }
-
-@media screen and (max-width: 400px) {
-  :root {
-    /* Cabezera 
-    /* --izquierda_iconsContent: 100%; 
-    --iconos_size: 1.5rem;
-    /* Header Saludo
-    /* --header_height: 45%; 
-    /* --saludoH1_margin: 0;
-    --fontH1_size: 1.6rem;
-    --texto_size: 0.8rem; 
-    /* Slider 
-    /* --slider_width: 100%;
-    --slider_height: 50%; 
-    /* Imagenes Grid 
-    /* --grid_columnas: repeat(1, 1fr);
-    --corazonY: 17rem;
-    --corazonX: 1.5rem; 
-  } */
-
       body {
         header {
           padding: 0 0.5rem;
