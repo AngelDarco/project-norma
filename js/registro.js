@@ -1,9 +1,8 @@
 /* eslint-disable no-undef */
 document.addEventListener("DOMContentLoaded", () => {
-  let form = document.getElementById("formulario");
-
+  const form = document.getElementById("formulario");
   form.addEventListener("submit", (e) => {
-    let data = new FormData(form);
+    const data = new FormData(form);
     e.preventDefault();
 
     fetch("../php/registro.php", {
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data == "existente") {
           Swal.fire({
             position: "center",
@@ -54,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
       })
       .catch((err) => {
+        console.error(err);
         Swal.fire({
           position: "center",
           icon: "error",

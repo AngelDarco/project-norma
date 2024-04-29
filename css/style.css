@@ -9,11 +9,6 @@
   color: #fff;
 }
 
-/* Global class */
-.hiden {
-  display: none;
-}
-
 body {
   width: 100%;
   height: fit-content;
@@ -81,8 +76,8 @@ i {
 }
 
 /* Clase para Ocultar Elementos */
-.ocultar {
-  visibility: hidden;
+.hidden {
+  display: none !important;
   height: 0 !important;
 }
 

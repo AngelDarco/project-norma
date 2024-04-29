@@ -3,12 +3,12 @@ export default function botonMenu(menuShow) {
   const menu = document.getElementById("menu");
   const observer = new ResizeObserver((e) => {
     if (e[0].contentRect.width > 650) {
-      menuShow.classList.remove("ocultar");
+      menuShow.classList.remove("hidden");
       menuShow.classList.add("responsive");
-      menu.classList.add("ocultar");
+      menu.classList.add("hidden");
     } else {
-      menuShow.classList.add("ocultar");
-      menu.classList.remove("ocultar");
+      menuShow.classList.add("hidden");
+      menu.classList.remove("hidden");
     }
   });
 
@@ -17,7 +17,7 @@ export default function botonMenu(menuShow) {
 
   menu.addEventListener("click", () => {
     menu.classList.toggle("rotar");
-    menuShow.classList.toggle("ocultar");
+    menuShow.classList.toggle("hidden");
     menu.style.transition = ".3s";
   });
 }

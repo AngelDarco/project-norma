@@ -22,7 +22,7 @@ export default function removeEvents() {
   function removeFilters() {
     if (window.innerWidth < 650) {
       eventClassNames(menu, "remove", "rotar");
-      eventClassNames(menuShow, "add", "ocultar");
+      eventClassNames(menuShow, "add", "hidden");
     }
     if (menu) menu.style.transition = "1s";
   }
